@@ -1,0 +1,35 @@
+.ProductView .title {
+  position: relative;
+  font-size: 26px;
+  padding: 8px 0px;
+  font-weight: 600;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.ProductView .title::before {
+  content: "";
+  position: absolute;
+  width: 100px;
+  height: 4px;
+  background-color: #D52B1E;
+  top: -4px;
+  left: 0;
+}
+
+.ProductView .main {
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+}
+
+.ProductView .main .container-inner {
+  margin: 0px -8px;
+}
+
+.ProductView .main .product-card {
+  width: 100%;
+  height: 460px;
+  margin-bottom: 10px;
+}
+/*# sourceMappingURL=ProductView.css.map */

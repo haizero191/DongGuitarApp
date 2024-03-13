@@ -1,0 +1,77 @@
+.Typhography {
+    .title {
+        text-align: center;
+        width: fit-content;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        margin-bottom: 80px;
+        p {
+            width: 30%;
+            font-size: 26px;
+            font-weight: 600;
+            text-transform: uppercase;
+            transform: skewX(-10deg);
+            background-color: #D52B1E;
+            padding: 16px 20px;
+            color: white;
+        }
+    }
+
+    .main {
+        display: flex;
+        flex-direction: column;
+        gap: 60px;
+        .image {
+            background-color: #D52B1E;
+            height: 100%;
+            padding: 4%;
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+        }
+
+        .content {
+            h2 {
+                font-size: 28px;
+                color: #D52B1E;
+                margin-bottom: 16px;
+            }
+
+            p {
+                text-align: justify;
+              
+            }
+
+            .right-subtitle {
+                text-align: right;
+            }
+        }
+
+        .line {
+            width: 60%;
+            margin: 0 auto;
+            height: 2px;
+            border-top: 1px dashed #d52a1e51;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            .circle {
+                width: 40px;
+                height: 40px;
+                background-color: white;
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border: 1px solid #d52a1e5c;
+                i {
+                    font-size: 28px;
+                    color: #e724166e;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,103 @@
+.Typhography .title {
+  text-align: center;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-bottom: 80px;
+}
+
+.Typhography .title p {
+  width: 30%;
+  font-size: 26px;
+  font-weight: 600;
+  text-transform: uppercase;
+  -webkit-transform: skewX(-10deg);
+          transform: skewX(-10deg);
+  background-color: #D52B1E;
+  padding: 16px 20px;
+  color: white;
+}
+
+.Typhography .main {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 60px;
+}
+
+.Typhography .main .image {
+  background-color: #D52B1E;
+  height: 100%;
+  padding: 4%;
+}
+
+.Typhography .main .image img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.Typhography .main .content h2 {
+  font-size: 28px;
+  color: #D52B1E;
+  margin-bottom: 16px;
+}
+
+.Typhography .main .content p {
+  text-align: justify;
+}
+
+.Typhography .main .content .right-subtitle {
+  text-align: right;
+}
+
+.Typhography .main .line {
+  width: 60%;
+  margin: 0 auto;
+  height: 2px;
+  border-top: 1px dashed #d52a1e51;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.Typhography .main .line .circle {
+  width: 40px;
+  height: 40px;
+  background-color: white;
+  border-radius: 50%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  border: 1px solid #d52a1e5c;
+}
+
+.Typhography .main .line .circle i {
+  font-size: 28px;
+  color: #e724166e;
+}
+/*# sourceMappingURL=Typhography.css.map */

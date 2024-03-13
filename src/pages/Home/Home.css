@@ -1,0 +1,23 @@
+.Home .main {
+  width: 100%;
+  height: auto;
+}
+
+.Home .main .section-view-image {
+  padding: 4% 0px;
+  margin-bottom: 10px;
+}
+
+.Home .main .section-view-image .section-view {
+  height: 100%;
+  width: 100%;
+}
+
+.Home .main .section-view-brands {
+  margin-bottom: 40px;
+}
+
+.Home .main .section-view-products {
+  margin-bottom: 40px;
+}
+/*# sourceMappingURL=Home.css.map */

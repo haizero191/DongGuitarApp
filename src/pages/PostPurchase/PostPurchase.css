@@ -1,0 +1,78 @@
+.PostPurchase {
+  height: 100%;
+}
+
+.PostPurchase .PostPurchase-container {
+  width: 100%;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-transform: translateY(-20%);
+          transform: translateY(-20%);
+}
+
+.PostPurchase .PostPurchase-container .finish-purchase {
+  width: 250px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-bottom: 20px;
+}
+
+.PostPurchase .PostPurchase-container .finish-purchase i {
+  font-size: 90px;
+  opacity: 0.5;
+  color: green;
+}
+
+.PostPurchase .PostPurchase-container .text h2 {
+  text-transform: uppercase;
+  opacity: 0.5;
+  text-align: center;
+  margin-bottom: 6px;
+}
+
+.PostPurchase .PostPurchase-container .text p {
+  text-align: center;
+  line-height: 22px;
+  font-size: 14px;
+  color: rgba(0, 0, 0, 0.745);
+}
+
+.PostPurchase .PostPurchase-container .text p span {
+  color: #d52b1e;
+  font-weight: 700;
+  font-size: 18px;
+}
+
+.PostPurchase .PostPurchase-container .back {
+  margin-top: 50px;
+}
+
+.PostPurchase .PostPurchase-container .back button {
+  border: none;
+  outline: none;
+  padding: 10px 58px;
+  cursor: pointer;
+  text-transform: uppercase;
+  background-color: #198754;
+  color: white;
+}
+/*# sourceMappingURL=PostPurchase.css.map */

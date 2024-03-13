@@ -1,0 +1,35 @@
+@import url('https://fonts.googleapis.com/css2?family=Teko:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Asap:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.App-layout {
+  font-family: 'Asap', sans-serif;
+}
+
+.App-layout .app-header {
+  position: fixed;
+  z-index: 10000;
+  width: 100%;
+  top: 0;
+}
+
+.App-layout .app-main {
+  margin-top: 10%;
+  height: auto;
+  margin-bottom: 80px;
+  /* font-family: 'Teko', sans-serif; */
+}
+
+.app-main-full-screen {
+  height: 100vh;
+}
+
+.App-layout .app-footer {
+
+}

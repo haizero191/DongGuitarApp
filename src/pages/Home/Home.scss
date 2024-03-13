@@ -1,0 +1,30 @@
+.Home {
+    .banner {
+
+    }
+
+    .main {
+        width: 100%;
+        height: auto;
+        .section-view-image {
+            padding: 4% 0px;
+            margin-bottom: 10px;
+            .section-view {
+                height: 100%;
+                width: 100%;
+            }
+        }
+
+        .section-view-brands {
+            margin-bottom: 40px;
+        }
+        
+        .section-view-products {
+            margin-bottom: 40px;
+        }
+
+        .section-view-typhography {
+            // background-color: red;
+        }
+    }
+}

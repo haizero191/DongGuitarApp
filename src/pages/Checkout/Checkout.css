@@ -1,0 +1,254 @@
+.Checkout {
+  height: 100%;
+  overflow: hidden;
+}
+
+.Checkout .checkout-container {
+  height: 100%;
+}
+
+.Checkout .checkout-container .checkout-form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 100%;
+}
+
+.Checkout .checkout-container .checkout-form .checkout-overlay {
+  -ms-flex-preferred-size: 35%;
+      flex-basis: 35%;
+  height: 100%;
+  background-color: rgba(232, 36, 36, 0.794);
+}
+
+.Checkout .checkout-container .checkout-form .checkout-overlay img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -webkit-filter: brightness(40%);
+          filter: brightness(40%);
+}
+
+.Checkout .checkout-container .checkout-form .checkout-product {
+  -ms-flex-preferred-size: 30%;
+      flex-basis: 30%;
+  -ms-flex-negative: 1;
+      flex-shrink: 1;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  position: relative;
+}
+
+.Checkout .checkout-container .checkout-form .checkout-product .image {
+  width: 100%;
+  height: 40%;
+  padding: 0px 20px;
+}
+
+.Checkout .checkout-container .checkout-form .checkout-product .image img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+
+.Checkout .checkout-container .checkout-form .checkout-product .name {
+  -ms-flex-preferred-size: 10%;
+      flex-basis: 10%;
+  width: 100%;
+  padding: 40px 6%;
+}
+
+.Checkout .checkout-container .checkout-form .checkout-product .name h2 {
+  text-align: center;
+  font-size: 20px;
+}
+
+.Checkout .checkout-container .checkout-form .checkout-product .info-p-field {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: 8px 6%;
+}
+
+.Checkout .checkout-container .checkout-form .checkout-product .info-p-field p:nth-child(2) {
+  font-weight: 500;
+  text-transform: capitalize;
+}
+
+.Checkout .checkout-container .checkout-form .checkout-product .price {
+  margin-top: 20px;
+  border-top: 1px solid #ddd;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: end !important;
+      -ms-flex-align: end !important;
+          align-items: flex-end !important;
+  padding: 18px 6%;
+}
+
+.Checkout .checkout-container .checkout-form .checkout-product .price p:nth-child(1) {
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.Checkout .checkout-container .checkout-form .checkout-product .price p:nth-child(2) {
+  font-weight: 700;
+  color: #d52b1e;
+  font-size: 32px;
+}
+
+.Checkout .checkout-container .checkout-form .checkout-info-buy {
+  -ms-flex-preferred-size: 1;
+      flex-basis: 1;
+  -ms-flex-negative: 1;
+      flex-shrink: 1;
+  -ms-flex-preferred-size: 35%;
+      flex-basis: 35%;
+  border-left: 1px solid #ddd;
+  padding: 40px 40px;
+  text-transform: uppercase;
+}
+
+.Checkout .checkout-container .checkout-form .checkout-info-buy h2 {
+  margin-bottom: 80px;
+}
+
+.Checkout .checkout-container .checkout-form .checkout-info-buy .checkout-info-field {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.Checkout .checkout-container .checkout-form .checkout-info-buy .checkout-info-field .label {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.Checkout .checkout-container .checkout-form .checkout-info-buy .checkout-info-field .label p {
+  font-size: 12px;
+  text-transform: capitalize;
+  margin-bottom: 8px;
+}
+
+.Checkout .checkout-container .checkout-form .checkout-info-buy .checkout-info-field .error-message {
+  color: rgba(255, 0, 0, 0.52);
+  font-size: 12px;
+  text-transform: initial;
+  position: absolute;
+  right: 0;
+  display: none;
+}
+
+.Checkout .checkout-container .checkout-form .checkout-info-buy .checkout-info-field input {
+  width: 100%;
+  height: 45px;
+  border: none;
+  outline: none;
+  background-color: #eeeeee78;
+  padding: 0px 10px;
+  border-radius: 4px;
+}
+
+.Checkout .checkout-container .checkout-form .checkout-info-buy .checkout-info-field input[type="number"]::-webkit-inner-spin-button,
+.Checkout .checkout-container .checkout-form .checkout-info-buy .checkout-info-field input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.Checkout .checkout-container .checkout-form .checkout-info-buy .checkout-info-field input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+.Checkout .checkout-container .checkout-form .checkout-info-buy .checkout-info-field.invalid-field .warning-icon {
+  display: -webkit-box !important;
+  display: -ms-flexbox !important;
+  display: flex !important;
+}
+
+.Checkout .checkout-container .checkout-form .checkout-info-buy .checkout-info-field.invalid-field .error-message {
+  display: block;
+}
+
+.Checkout .checkout-container .checkout-form .checkout-info-buy .checkout-info-field .warning-icon {
+  position: absolute;
+  bottom: calc(50% - 25px);
+  right: 10px;
+  width: 28px;
+  height: 28px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  display: none;
+}
+
+.Checkout .checkout-container .checkout-form .checkout-info-buy .checkout-info-field .warning-icon i {
+  font-size: 20px;
+  cursor: pointer;
+  color: rgba(255, 0, 0, 0.52);
+}
+
+.Checkout .checkout-container .checkout-form .checkout-info-buy .note {
+  font-size: 12px;
+  text-transform: initial;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 4px;
+  color: #939191;
+}
+
+.Checkout .checkout-container .checkout-form .checkout-info-buy .note span {
+  margin-right: 4px;
+  font-size: 20px;
+}
+
+.Checkout .checkout-container .checkout-form .checkout-info-buy .checkout-btn {
+  margin-top: 40px;
+  background-color: #d52b1e;
+  padding: 14px 0px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  font-size: 18px;
+  color: white;
+  cursor: pointer;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+          box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+/*# sourceMappingURL=Checkout.css.map */
