@@ -22,19 +22,40 @@ const ProductLayout = () => {
   const categoryParam = searchParams.get("category"); // Access specific param by key
   const brandParam = searchParams.get("brand");
   const searchParam = searchParams.get("search");
-  const [brandFilter, setBrandFilter] = useState([]);
+  const sortByParams = searchParams.get("sortBy");
   const [params, setParams] = useState({
     category: "",
     brand: "",
   });
-
-  const options = [
-    { value: "item 0", label: "Tất cả sản phẩm" },
-    { value: "item 1", label: "Giá - Từ thấp đến cao" },
-    { value: "item 2", label: "Giá - Từ cao đến thấp" },
+  const sortByOptions = [
+    { value: "all", label: "Tất cả sản phẩm" },
+    { value: "incs", label: "Giá - Từ thấp đến cao" },
+    { value: "desc", label: "Giá - Từ cao đến thấp" },
   ];
-
   const initValue = [];
+
+  // LIFE CYCLE HOOK --->
+  useEffect(() => {
+    initData();
+  }, []);
+
+  useEffect(() => {
+    initData();
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, [brandParam, categoryParam, sortByParams]);
+
+  useEffect(() => {
+    var paramsValid = removeEmptyField({
+      category: categoryParam,
+      brand: params.brand,
+      search: searchParam,
+      sortBy: params.sortBy
+    });
+    setSearchParams(paramsValid);
+  }, [params]);
+
+
+
 
   // Create option item for filter select
   const createOption = (data) => {
@@ -53,9 +74,13 @@ const ProductLayout = () => {
         page: page,
         limit: 9,
         filter: {
-          category: categoryParam ? categoryParam.split(" ") : null,
+          category:
+            categoryParam && categoryParam !== "all"
+              ? categoryParam.split(" ")
+              : null,
           brand: brandParam ? brandParam.split(" ") : null,
-          search: searchParam ? searchParam : null
+          search: searchParam ? searchParam : null,
+          sortBy: sortByParams ? sortByParams : null
         },
       })
     );
@@ -99,26 +124,7 @@ const ProductLayout = () => {
     }
   };
 
-  // LIFE CYCLE HOOK --->
-  useEffect(() => {
-    initData();
-  }, []);
-
-  useEffect(() => {
-    initData();
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  }, [brandParam, categoryParam]);
-
-  useEffect(() => {
-
-    var paramsValid = removeEmptyField({
-      category: categoryParam,
-      brand: params.brand,
-      search: searchParam
-    });
-    setSearchParams(paramsValid);
-  }, [params]);
-
+  // Remove empty field
   const removeEmptyField = (obj) => {
     for (const key in obj) {
       if (obj[key] === null || obj[key] === "") {
@@ -133,6 +139,10 @@ const ProductLayout = () => {
     setParams({ ...params, [element.name]: paramStringArray.join(" ") });
   };
 
+  const handleSortByChange = (target, element) => {
+    setParams({ ...params, ['sortBy']: target.value });
+  };
+
   return (
     <div className="ProductLayout">
       <Loading isLoading={state.products.isLoading} />
@@ -141,7 +151,11 @@ const ProductLayout = () => {
           <div className="col">
             <div className="p-header-container">
               <div className="p-header">
-                <h1>{categoryParam ? categoryParam : "Sản phẩm"}</h1>
+                <h1>
+                  {categoryParam && categoryParam !== "all"
+                    ? categoryParam
+                    : "Sản phẩm"}
+                </h1>
                 <p> {state.products.navigate.productCount} sản phẩm</p>
               </div>
               <div className="p-sort">
@@ -150,7 +164,7 @@ const ProductLayout = () => {
                   className="react-select-container"
                   width="400px"
                   placeholder="Bộ lọc sản phẩm"
-                  options={options}
+                  options={sortByOptions}
                   theme={(theme) => ({
                     ...theme,
                     borderRadius: 0,
@@ -160,6 +174,9 @@ const ProductLayout = () => {
                       primary: "#D52B1E",
                     },
                   })}
+                  onChange={(target, element) =>
+                    handleSortByChange(target, element)
+                  }
                 />
               </div>
             </div>
@@ -171,7 +188,7 @@ const ProductLayout = () => {
               <div className="side-filter">
                 {/* side item for filter*/}
                 <div className="side-filter-item">
-                  <h2 className="title">Nhãn hàng</h2>
+                  <h2 className="title">Thương hiệu</h2>
                   <Select
                     defaultValue={getBrandDefault}
                     styles={{
@@ -205,7 +222,6 @@ const ProductLayout = () => {
                     isMulti
                   />
                 </div>
-
                 {/* side item for filter*/}
                 <div className="side-filter-item">
                   <h2 className="title">Kiểu dáng</h2>
@@ -308,7 +324,9 @@ const ProductLayout = () => {
                     <></>
                   )}
 
-                  {state.products && state.products.data && state.products.data.length === 0 ? (
+                  {state.products &&
+                  state.products.data &&
+                  state.products.data.length === 0 ? (
                     <div className="col-12">
                       <div className="p-not-found">
                         <img src="https://th.bing.com/th/id/R.6cec46d3aed2c4bd0d4d02a4cd542ecc?rik=I0iq3AnGeTZpoQ&riu=http%3a%2f%2fmix-iran.com%2fwp-content%2fuploads%2f2020%2f10%2fcart.png&ehk=6bwRLj2D4dPAHBhPJxkRWwZsTIAOWDM0suUY%2fJ1P9Lo%3d&risl=&pid=ImgRaw&r=0" />

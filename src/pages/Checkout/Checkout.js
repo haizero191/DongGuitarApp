@@ -123,7 +123,6 @@ const Checkout = () => {
     var newOrder = order;
     newOrder.Product = data._id;
     newOrder.PaymentCost = data.SellingPrice;
-    newOrder.Status = "Open";
     setIsLoading(true);
     var Create_Order_Result = await axios({
       method: "post",

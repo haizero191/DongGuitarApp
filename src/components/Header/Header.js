@@ -15,6 +15,8 @@ const Header = () => {
   const [productSearch, setProductSearch] = useState([]);
   const [productSearchCount, setProductSearchCount] = useState(0);
   const [isSearchContainer, setIsSearchContainer] = useState(false);
+  const [isSearchResultEnter, setIsSearchResultEnter] = useState(false);
+
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const state = useSelector((state) => state);
@@ -117,7 +119,27 @@ const Header = () => {
   };
 
   const onBlurSearch = () => {
-    if (searchTerm === "" || !searchTerm) setIsSearchContainer(false);
+    if (!isSearchResultEnter) setIsSearchContainer(false);
+  };
+
+  const onMouseEnterSearchResult = () => {
+    setIsSearchResultEnter(true);
+  };
+
+  const onMouseLeaveSearchResult = () => {
+    setIsSearchResultEnter(false);
+  };
+
+  // Go to view detail product
+  const onViewProduct = (product) => {
+    const data = {
+      alias: product.Alias,
+      id: product._id,
+    };
+    setIsSearchContainer(false);
+    var searchInput = document.querySelector(".search-p-input");
+    searchInput.value = product.Name;
+    navigate(`/products/view/${product.Alias}`, { state: data });
   };
 
   return (
@@ -151,13 +173,18 @@ const Header = () => {
                 <i className="bi bi-search"></i>
                 <input
                   type="text"
+                  className="search-p-input"
                   placeholder="Tìm kiếm"
                   onChange={(event) => onSearchProduct(event)}
                   onFocus={onFocusSearch}
                   onBlur={onBlurSearch}
                 />
-                {isSearchContainer && (
-                  <div className="search-container">
+                {isSearchContainer && searchTerm && (
+                  <div
+                    className="search-container"
+                    onMouseEnter={() => onMouseEnterSearchResult()}
+                    onMouseLeave={() => onMouseLeaveSearchResult()}
+                  >
                     <h2>
                       Kết quả tìm kiếm{" "}
                       <span>({productSearchCount} kết quả)</span>
@@ -170,6 +197,7 @@ const Header = () => {
                               <div
                                 className="product-item"
                                 key={"search-p" + product._id}
+                                onClick={(event) => onViewProduct(product)}
                               >
                                 <div className="image">
                                   <img src="https://lh3.googleusercontent.com/d/1Mb_iGkREhEoVR_VXDISh40Yw0rqdzH3I?authuser=0" />
@@ -219,6 +247,17 @@ const Header = () => {
       <div className="header-bottom">
         <div className="container">
           <div className="categories-nav">
+            <div
+              className={
+                cateSelected === 'All'
+                  ? "cate-item cate-active"
+                  : "cate-item"
+              }
+              key={"Header-category-key-" + 'All'}
+              onClick={() => onCateClicked('All')}
+            >
+              <span>Shop</span>
+            </div>
             {state.categories.data ? (
               state.categories.data.map((cate) => {
                 return (
