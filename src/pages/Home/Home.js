@@ -88,28 +88,7 @@ const Home = () => {
           </>
         )}
 
-        {/* Section view products */}
-        {/* <div className="section-view-products">
-          <div className="container">
-            <div className="row">
-              <div className="col">
-                <ProductView title={"New Products"} />
-              </div>
-            </div>
-          </div>
-        </div> */}
-
-        {/* Section view products */}
-        {/* <div className="section-view-products">
-          <div className="container">
-            <div className="row">
-              <div className="col">
-                <ProductView title={"Best Seller"} />
-              </div>
-            </div>
-          </div>
-        </div> */}
-
+    
         {/* Section view typhography */}
         <div className="section-view-typhography">
           <div className="container">

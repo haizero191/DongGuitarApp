@@ -11,10 +11,10 @@
             font-size: 26px;
             font-weight: 600;
             text-transform: uppercase;
-            transform: skewX(-10deg);
-            background-color: #D52B1E;
+            color: #D52B1E;
+     
             padding: 16px 20px;
-            color: white;
+
         }
     }
 
@@ -23,7 +23,7 @@
         flex-direction: column;
         gap: 60px;
         .image {
-            background-color: #D52B1E;
+
             height: 100%;
             padding: 4%;
             img {

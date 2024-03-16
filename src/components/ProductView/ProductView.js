@@ -17,10 +17,9 @@ const ProductView = ({ title, featureId }) => {
 
   useEffect(() => {
     const getProductFeature = async (featureId) => {
-      const Get_Product_Feature_Result = await axios.get(
-        "http://localhost:4000/api/product-feature/getProductWithFeatureId/" +
-          featureId
-      );
+      const Get_Product_Feature_Result = await axios.get(process.env.REACT_APP_API_URL + "/api/product-feature/getProductWithFeatureId/" + featureId);
+
+      console.log(Get_Product_Feature_Result)
       if (
         Get_Product_Feature_Result.status === 200 &&
         Get_Product_Feature_Result.data.success
@@ -44,7 +43,7 @@ const ProductView = ({ title, featureId }) => {
     var getProduct = async (pId) => {
       if (pId) {
         const response = await axios.get(
-          `http://localhost:4000/api/products/detail/${pId}`
+          process.env.REACT_APP_API_URL + `/api/products/detail/${pId}`
         );
         if (response.status === 200) {
           return response.data.data;
@@ -62,7 +61,6 @@ const ProductView = ({ title, featureId }) => {
         return getProduct(id);
       })
     ).then((result) => {
-      console.log(result);
       setProductList(result);
     });
   }, [productIdList]);

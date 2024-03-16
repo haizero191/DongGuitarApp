@@ -6,7 +6,7 @@ const Typhography = () => {
   return (
     <div className='Typhography'>
         <div className='title'>
-            <p>About us</p>
+            <p>About Us</p>
         </div>
         <div className='main'>
             <div className='row'>
@@ -23,7 +23,7 @@ const Typhography = () => {
                 </div>
             </div>
 
-            <div className='row'>
+            {/* <div className='row'>
                 <div className='col'>
                     <div className='line'>
                         <div className='circle'>
@@ -31,7 +31,7 @@ const Typhography = () => {
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> */}
 
             <div className='row'>
                 <div className='col-6'>
