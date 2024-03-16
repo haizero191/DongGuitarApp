@@ -72,32 +72,32 @@ const Home = () => {
           <></>
         ) : (
           <>
-            {data.features.data && data.features.data.map((feature) => {
-              return (
-                <div className="section-view-products" key={'feature-product-view' + feature._id}>
-                  <div className="container">
-                    <div className="row">
-                      <div className="col">
-                        <ProductView title={feature.Name} featureId={feature._id}/>
+            {data.features.data &&
+              data.features.data.map((feature) => {
+                return (
+                  <div
+                    className="section-view-products"
+                    key={"feature-product-view" + feature._id}
+                  >
+                    <div className="container">
+                      <div className="row">
+                        <div className="col">
+                          <ProductView
+                            title={feature.Name}
+                            featureId={feature._id}
+                          />
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
-              );
-            })}
+                );
+              })}
           </>
         )}
 
-    
         {/* Section view typhography */}
         <div className="section-view-typhography">
-          <div className="container">
-            <div className="row">
-              <div className="col">
-                <Typhography />
-              </div>
-            </div>
-          </div>
+          <Typhography />
         </div>
       </div>
     </div>

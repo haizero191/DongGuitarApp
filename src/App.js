@@ -2,22 +2,32 @@ import AppRoutes from "./routes/AppRoutes";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 import React, { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
+
 import "./App.css";
 
 const App = () => {
   const location = useLocation();
   const endpointUrl = location.pathname;
   const [isHeader, setIsHeader] = useState(true);
+  const navigate = useNavigate();
+
 
   useEffect(() => {
-    if (endpointUrl === "/checkout" || endpointUrl === '/thanks') {
+    if (endpointUrl === "/checkout" || endpointUrl === '/thanks' || endpointUrl === '/update') {
       setIsHeader(false);
     }
     else {
       setIsHeader(true);
     }
   });
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(max-width: 768px)");
+    if (mediaQuery.matches) {
+      navigate("/update");
+    }
+  }, [navigate]);
 
 
   return (

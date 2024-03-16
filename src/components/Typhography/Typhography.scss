@@ -1,19 +1,34 @@
+@import url("https://fonts.googleapis.com/css2?family=Charis+SIL:ital,wght@0,400;0,700;1,400;1,700&family=Lobster&display=swap");
+
 .Typhography {
+    margin-top: 20px;
+    border-top: 1px solid #ddd;
+    overflow: hidden;
     .title {
         text-align: center;
         width: fit-content;
         width: 100%;
         display: flex;
+        flex-direction: column;
         justify-content: center;
-        margin-bottom: 80px;
-        p {
-            width: 30%;
-            font-size: 26px;
-            font-weight: 600;
+        align-items: center;
+        color: black;
+
+        padding: 48px 0px;
+        p:nth-child(1) {
+            font-family: "Charis SIL", serif;
+            font-weight: 500;
+            font-style: normal;
+            font-size: 46px;
             text-transform: uppercase;
-            color: #D52B1E;
-     
-            padding: 16px 20px;
+        }
+
+        p:nth-child(2) {
+            font-family: "Charis SIL", serif;
+            font-weight: 300;
+            font-style: normal;
+            font-size: 18px;
+            letter-spacing: 8px;
 
         }
     }
@@ -22,10 +37,16 @@
         display: flex;
         flex-direction: column;
         gap: 60px;
+        .about-main-image {
+            height: 520px;
+            overflow: hidden;
+            background-position: 10%;
+            background-size: cover;
+            background-attachment: fixed;
+            filter:  saturate(0.9) contrast(1.17) brightness(70%);
+        }
         .image {
-
             height: 100%;
-            padding: 4%;
             img {
                 width: 100%;
                 height: 100%;
@@ -34,15 +55,32 @@
         }
 
         .content {
+            padding: 20px 0px;
+            
+            h4 {
+                margin-bottom: 16px;
+                font-size: 18px;
+                font-weight: 300;
+                border-bottom: 1px solid #ddd;
+                padding: 8px 0px;
+                text-transform: uppercase;
+            }
             h2 {
                 font-size: 28px;
-                color: #D52B1E;
-                margin-bottom: 16px;
+                color: black;
+                margin-bottom: 14px;
+                text-transform: uppercase;
+                line-height: 38px;
+                font-weight: 600;
+                text-align: justify;
             }
 
             p {
                 text-align: justify;
-              
+                font-size: 18px;
+                word-spacing: 4px;
+                line-height: 26px;
+                margin-bottom: 10px;
             }
 
             .right-subtitle {

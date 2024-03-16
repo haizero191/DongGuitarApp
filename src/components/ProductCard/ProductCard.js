@@ -5,8 +5,6 @@ import "./ProductCard.scss";
 const ProductCard = ({ images, name, price }) => {
   const [imageSelected, setImageSelected] = useState(null);
  
-
-
   // Chuyển đổi sang định dạng VND
   const formatCurrency = (amount) => {
     const formatter = new Intl.NumberFormat("vi-VN", {
@@ -45,6 +43,9 @@ const ProductCard = ({ images, name, price }) => {
   const getImageFromDriver = (id) => {
     return `https://lh3.googleusercontent.com/d/${id}?authuser=0`
   }
+
+
+  
 
 
   useEffect(() => {

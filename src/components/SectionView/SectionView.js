@@ -12,7 +12,7 @@ const SectionView = ({img, title}) => {
             <div className='title'>
                 <p>{title}</p>
             </div>
-            <p className='view-text'>View now</p>
+            <p className='view-text'>Xem ngay</p>
         </div>
     </div>
   )

@@ -3,23 +3,41 @@ import "./ProductView.scss";
 import ProductCard from "../ProductCard/ProductCard";
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
+import { useLocation, useNavigate } from "react-router-dom";
+
+
 
 const ProductView = ({ title, featureId }) => {
   const [data, setData] = useState([]);
   const [productIdList, setProductIdList] = useState([]);
   const [imageList, setImageList] = useState([]);
   const [productList, setProductList] = useState([]);
+  const navigate = useNavigate();
+
 
   // Lấy hình ảnh từ drive theo id
   const getImageFromDriver = (id) => {
     return `https://lh3.googleusercontent.com/d/${id}?authuser=0`;
   };
 
+  // Go to view detail product
+  const onViewProduct = (id, alias, event) => {
+    const data = {
+      alias: alias,
+      id: id,
+    };
+    navigate(`/products/view/${alias}`, { state: data });
+  };
+
   useEffect(() => {
     const getProductFeature = async (featureId) => {
-      const Get_Product_Feature_Result = await axios.get(process.env.REACT_APP_API_URL + "/api/product-feature/getProductWithFeatureId/" + featureId);
+      const Get_Product_Feature_Result = await axios.get(
+        process.env.REACT_APP_API_URL +
+          "/api/product-feature/getProductWithFeatureId/" +
+          featureId
+      );
 
-      console.log(Get_Product_Feature_Result)
+      console.log(Get_Product_Feature_Result);
       if (
         Get_Product_Feature_Result.status === 200 &&
         Get_Product_Feature_Result.data.success
@@ -80,7 +98,7 @@ const ProductView = ({ title, featureId }) => {
                 {productList.map((product, index) => {
                   return (
                     <div className="col-3">
-                      <div className="product-card">
+                      <div className="product-card" onClick={(event) => onViewProduct(product._id, product.Alias, event)}>
                         <ProductCard
                           name={product.Name}
                           price={product.SellingPrice}
@@ -92,7 +110,9 @@ const ProductView = ({ title, featureId }) => {
                 })}
               </>
             ) : (
-              <></>
+              <>
+              <div className="product-loader"></div>
+              </>
             )}
           </div>
         </div>

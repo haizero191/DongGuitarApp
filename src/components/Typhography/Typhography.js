@@ -1,56 +1,72 @@
-import React from 'react'
-import "./Typhography.scss"
-
+import React from "react";
+import "./Typhography.scss";
+import POSTER from "../../assets/images/poster.jpg";
 
 const Typhography = () => {
   return (
-    <div className='Typhography'>
-        <div className='title'>
-            <p>About Us</p>
+    <div className="Typhography">
+      <div className="title">
+        <p>Đồng Guitar</p>
+        <p>Uy tín - Chất lượng - Đẳng cấp</p>
+      </div>
+      <div className="main">
+        <div className="row">
+          <div className="col-12">
+            <div
+              className="about-main-image"
+              style={{ backgroundImage: `url('https://scontent.fhan14-3.fna.fbcdn.net/v/t39.30808-6/428697020_122123798780166282_6290848348524541422_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeF26oqdlRtqdBls9aClNIVCOJCHrFxutTk4kIesXG61OXoz1V5Cwiwj62Kytv4TYggl3uBVfDDdImtSX7iBiHOT&_nc_ohc=GtSN1p0JsJMAX_Uz3CE&_nc_oc=AQmcej6msCilZ8dtEKAOtHu4I_WK8M2zEszLolEg4J7cb8P6AH9vkNfLvtqTH4gyxWE&_nc_ht=scontent.fhan14-3.fna&oh=00_AfAsjCh2d-sf5oktSVHs3wKyvwf8lH44Xi3Gx0hZ0B1dEA&oe=65F9A285')` }}
+            >
+              <div className="text"></div>
+            </div>
+          </div>
         </div>
-        <div className='main'>
-            <div className='row'>
-                <div className='col-6'>
-                    <div className='content'>
-                        <h2>Lorem Ipsum Dolar</h2>
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-                    </div>
-                </div>
-                <div className='col-6'>
-                    <div className='image'>
-                        <img alt="img1" src='https://th.bing.com/th/id/R.ce6a63f6706738d588af7a67eded38d6?rik=%2f8%2fpm6Ag4AhDKg&riu=http%3a%2f%2fmedia.gettyimages.com%2fphotos%2fman-opens-the-doors-to-regent-sounds-studio-on-denmark-street-on-20-picture-id113132447%3fk%3d6%26m%3d113132447%26s%3d612x612%26w%3d0%26h%3duI0TDWNf2vq8GWWjUoMz6RM2Ts0CrRaZa9kIsNS0sEQ%3d&ehk=JM2vpoJYbgtfbyUe7qBgv%2buh0xA%2f7GaDJsl7CuVnWkc%3d&risl=&pid=ImgRaw&r=0'/>
-                    </div>
-                </div>
-            </div>
 
-            {/* <div className='row'>
-                <div className='col'>
-                    <div className='line'>
-                        <div className='circle'>
-                            <i className="bi bi-music-note"></i>
-                        </div>
-                    </div>
-                </div>
-            </div> */}
-
-            <div className='row'>
-                <div className='col-6'>
-                    <div className='image'>
-                        <img alt="img2" src='https://th.bing.com/th/id/R.ce6a63f6706738d588af7a67eded38d6?rik=%2f8%2fpm6Ag4AhDKg&riu=http%3a%2f%2fmedia.gettyimages.com%2fphotos%2fman-opens-the-doors-to-regent-sounds-studio-on-denmark-street-on-20-picture-id113132447%3fk%3d6%26m%3d113132447%26s%3d612x612%26w%3d0%26h%3duI0TDWNf2vq8GWWjUoMz6RM2Ts0CrRaZa9kIsNS0sEQ%3d&ehk=JM2vpoJYbgtfbyUe7qBgv%2buh0xA%2f7GaDJsl7CuVnWkc%3d&risl=&pid=ImgRaw&r=0'/>
-                    </div>
-                </div>
-                <div className='col-6'>
-                    <div className='content'>
-                        <h2 className='right-subtitle'>Lorem Ipsum Dolar</h2>
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-                    </div>
-                </div>
-            </div>
-
+        <div className="container">
+          <div className="row">
+          <div className="col-6">
+              <div className="content" style={{ paddingRight: "20px", marginBottom: "10px" }}>
+                <h4>Giới thiệu</h4>
+                <h2>
+                  Đồng guitar - Cửa hàng phân phối đàn và nhạc cụ chính hãng
+                </h2>
+                <p>
+                  <b>Đồng Guitar</b> là một cửa hàng chuyên phân phối, bán lẻ đàn
+                  Guitar và các loại nhạc cụ chính hãng tại thành phố Hồ Chí
+                  Minh. Chúng tôi tự hào khi sản phẩm kinh doanh đều có xuất xứ
+                  từ các thương hiệu nổi tiếng như Avarez, TenTon Guitar,
+                  Martin&Co...
+                </p>
+                <br></br>
             
-        </div>
-    </div>
-  )
-}
+              </div>
 
-export default Typhography
+              <div className="content" style={{ paddingRight: "20px" }}>
+                <h4>Mục tiêu</h4>
+                <h2>
+                  Đem âm nhạc thế giới lại gần hơn với tay bạn.
+                </h2>
+                <p><b>Đồng Guitar</b> mong muốn trở thành người bạn đồng hành tin cậy của tất cả những ai yêu thích và theo đuổi âm nhạc.</p>
+                <p>
+                  Với đội ngũ nhân viên nhiệt tình, chu đáo. Chúng tôi luôn hướng tới
+                  phương châm hài lòng khách hàng cả về sản phẩm lẫn trải nghiệm
+                  mua hàng, luôn sẵn sàng tư vấn và giải đáp các thắc mắc của khách hàng một cách nhanh chóng nhất và hài lòng nhất. 
+                </p>
+              </div>
+            </div>
+            <div className="col-6">
+              <div className="image">
+                <img
+                  alt="img1"
+                  src={POSTER}
+                />
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Typhography;

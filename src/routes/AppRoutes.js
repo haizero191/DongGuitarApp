@@ -6,9 +6,11 @@ import ProductDetail from "../pages/ProductDetail/ProductDetail";
 import About from "../pages/About/About";
 import Checkout from "../pages/Checkout/Checkout";
 import PostPurchase from "../pages/PostPurchase/PostPurchase";
+import Update from "../pages/Update/Update";
 
 const AppRoutes = () => {
 
+  
 
   return (
     <Routes>
@@ -27,6 +29,9 @@ const AppRoutes = () => {
 
       {/* About page */}
       <Route path="/about" element={<About />}></Route>
+
+       {/* About page */}
+       <Route path="/update" element={<Update/>}></Route>
     </Routes>
   );
 };

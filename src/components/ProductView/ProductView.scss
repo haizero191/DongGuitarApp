@@ -18,15 +18,20 @@
     }
 
     .main {
-
         height: fit-content;
         .container-inner {
             margin: 0px -8px;
+            min-height: 460px;
         }
         .product-card {
             width: 100%;
             height: 460px;
             // background-color: rebeccapurple;
+            margin-bottom: 10px;
+        }
+        .product-loader {
+            width: 100%;
+            height: 460px;
             margin-bottom: 10px;
         }
     }
