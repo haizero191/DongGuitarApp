@@ -49,13 +49,10 @@ const ProductLayout = () => {
       category: categoryParam,
       brand: params.brand,
       search: searchParam,
-      sortBy: params.sortBy
+      sortBy: params.sortBy,
     });
     setSearchParams(paramsValid);
   }, [params]);
-
-
-
 
   // Create option item for filter select
   const createOption = (data) => {
@@ -73,15 +70,15 @@ const ProductLayout = () => {
       getProducts({
         page: page,
         limit: 9,
-        filter: {
+        filter: removeEmptyField({
           category:
             categoryParam && categoryParam !== "all"
               ? categoryParam.split(" ")
               : null,
           brand: brandParam ? brandParam.split(" ") : null,
           search: searchParam ? searchParam : null,
-          sortBy: sortByParams ? sortByParams : null
-        },
+          sortBy: sortByParams ? sortByParams : null,
+        }),
       })
     );
     dispatch(getBrands());
@@ -140,7 +137,7 @@ const ProductLayout = () => {
   };
 
   const handleSortByChange = (target, element) => {
-    setParams({ ...params, ['sortBy']: target.value });
+    setParams({ ...params, ["sortBy"]: target.value });
   };
 
   return (
