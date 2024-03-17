@@ -124,7 +124,7 @@ const ProductLayout = () => {
   // Remove empty field
   const removeEmptyField = (obj) => {
     for (const key in obj) {
-      if (obj[key] === null || obj[key] === "") {
+      if (obj[key] === null || obj[key] === "" || obj === undefined) {
         delete obj[key];
       }
     }
