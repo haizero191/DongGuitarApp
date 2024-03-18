@@ -45,7 +45,20 @@ const Header = () => {
   }, []);
 
   useEffect(() => {
-    if (location.pathname === "/") setCateSelected("");
+    if (location.pathname === "/") {
+      setCateSelected("");
+    }
+    if (
+      location.pathname === "/" ||
+      location.pathname === "/about" ||
+      location.pathname === "/contact"
+    ) {
+      var searchInput = document.querySelector(".search-p-input");
+      searchInput.value = "";
+      setCateSelected("");
+    } else {
+      setIsSearchContainer(false);
+    }
   }, [location]);
 
   useEffect(() => {
@@ -116,6 +129,7 @@ const Header = () => {
 
   const onFocusSearch = (event) => {
     setIsSearchContainer(true);
+    setSearchTerm(event.target.value);
   };
 
   const onBlurSearch = () => {
@@ -140,6 +154,14 @@ const Header = () => {
     var searchInput = document.querySelector(".search-p-input");
     searchInput.value = product.Name;
     navigate(`/products/view/${product.Alias}`, { state: data });
+  };
+
+  const navigateToPage = (endpoint) => {
+    navigate(`${endpoint}`);
+  };
+
+  const navigateToUrl = (url) => {
+    window.open(url, "_blank");
   };
 
   return (
@@ -170,7 +192,12 @@ const Header = () => {
             </div>
             <div className="col-md-8">
               <div className="search-bar">
-                <i className="bi bi-search"></i>
+                <i
+                  className="bi bi-search"
+                  onClick={() =>
+                    navigateToPage(`/products?search=${searchTerm}`)
+                  }
+                ></i>
                 <input
                   type="text"
                   className="search-p-input"
@@ -219,7 +246,12 @@ const Header = () => {
                         </div>
                       </div>
                       {productSearchCount > 3 && (
-                        <div className="watch-more">
+                        <div
+                          className="watch-more"
+                          onClick={() =>
+                            navigateToPage(`/products?search=${searchTerm}`)
+                          }
+                        >
                           <p>Xem thêm</p>
                         </div>
                       )}
@@ -230,15 +262,25 @@ const Header = () => {
             </div>
             <div className="col-md-2 d-none d-sm-block">
               <div className="social">
-                <div className="social-icon">
+                <div
+                  className="social-icon"
+                  onClick={() =>
+                    navigateToUrl(
+                      "https://www.facebook.com/profile.php?id=61554988470959"
+                    )
+                  }
+                >
                   <i className="bi bi-facebook"></i>
                 </div>
                 <div className="social-icon">
                   <img src="https://clipground.com/images/zalo-icon-clipart-2.png" />
                 </div>
-                <div className="social-icon">
+                <a
+                  className="social-icon"
+                  href="mailto:donghuuduc0101@example.com"
+                >
                   <i className="bi bi-envelope-at"></i>
-                </div>
+                </a>
               </div>
             </div>
           </div>
@@ -249,15 +291,47 @@ const Header = () => {
           <div className="categories-nav">
             <div
               className={
-                cateSelected === 'All'
+                location.pathname === "/"
                   ? "cate-item cate-active"
                   : "cate-item"
               }
-              key={"Header-category-key-" + 'All'}
-              onClick={() => onCateClicked('All')}
+              onClick={() => navigateToPage("/")}
+            >
+              <span>Home</span>
+            </div>
+            <div
+              className={
+                location.pathname === "/products"
+                  ? "cate-item cate-active"
+                  : "cate-item"
+              }
+              onClick={() => navigateToPage("/products")}
             >
               <span>Shop</span>
             </div>
+            <div
+              className={
+                location.pathname === "/about"
+                  ? "cate-item cate-active"
+                  : "cate-item"
+              }
+              onClick={() => navigateToPage("/about")}
+            >
+              <span>About</span>
+            </div>
+            <div
+              className={
+                location.pathname === "/contact"
+                  ? "cate-item cate-active"
+                  : "cate-item"
+              }
+              onClick={() => navigateToPage("/contact")}
+            >
+              <span>Contact</span>
+            </div>
+
+            <div className="line"></div>
+
             {state.categories.data ? (
               state.categories.data.map((cate) => {
                 return (

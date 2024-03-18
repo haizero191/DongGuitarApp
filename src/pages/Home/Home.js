@@ -21,6 +21,7 @@ const Home = () => {
 
   useEffect(() => {
     initData();
+    document.title = "Đồng Guitar"
   }, []);
 
   return (

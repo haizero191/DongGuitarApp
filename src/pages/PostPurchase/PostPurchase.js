@@ -10,6 +10,10 @@ const PostPurchase = () => {
   const data = location.state;
 
 
+
+  useEffect(() => {
+    document.title = "Thanks you"
+  }, [])
  
   useEffect(() => {
     console.log("Data order: ", data)

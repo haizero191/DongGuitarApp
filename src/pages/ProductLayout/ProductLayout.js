@@ -37,6 +37,7 @@ const ProductLayout = () => {
   // LIFE CYCLE HOOK --->
   useEffect(() => {
     initData();
+    document.title = "Store - Đồng Guitar"
   }, []);
 
   useEffect(() => {
@@ -123,11 +124,13 @@ const ProductLayout = () => {
 
   // Remove empty field
   const removeEmptyField = (obj) => {
+
     for (const key in obj) {
-      if (obj[key] === null || obj[key] === "" || obj === undefined) {
+      if (obj[key] === null || obj[key] === "" || obj[key] === 'undefined' || obj[key] === undefined) {
         delete obj[key];
       }
     }
+    console.log(obj)
     return obj;
   };
 
@@ -220,7 +223,7 @@ const ProductLayout = () => {
                   />
                 </div>
                 {/* side item for filter*/}
-                <div className="side-filter-item">
+                {/* <div className="side-filter-item">
                   <h2 className="title">Kiểu dáng</h2>
                   <Select
                     defaultValue={[initValue[0]]}
@@ -254,9 +257,9 @@ const ProductLayout = () => {
                     }
                     isMulti
                   />
-                </div>
+                </div> */}
                 {/* side item for filter*/}
-                <div className="side-filter-item">
+                {/* <div className="side-filter-item">
                   <h2 className="title">Loại dây</h2>
                   <Select
                     defaultValue={getBrandDefault}
@@ -286,7 +289,7 @@ const ProductLayout = () => {
                     options={createOption(null)}
                     isMulti
                   />
-                </div>
+                </div> */}
               </div>
             </div>
           </div>

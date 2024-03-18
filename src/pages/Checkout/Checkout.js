@@ -21,6 +21,7 @@ const Checkout = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
+    document.title = "Checkout - Đồng Guitar"
     if (data) {
       setTimeout(() => {
         setIsLoading(false);
