@@ -22,6 +22,8 @@ const Checkout = () => {
 
   useEffect(() => {
     document.title = "Checkout - Đồng Guitar"
+
+    console.log(data)
     if (data) {
       setTimeout(() => {
         setIsLoading(false);
@@ -123,6 +125,9 @@ const Checkout = () => {
   const handleCheckout = async () => {
     var newOrder = order;
     newOrder.Product = data._id;
+    newOrder.ProductName = data.Name;
+    newOrder.BrandName = data.Brand.Name;
+    newOrder.CategoryName = data.Category.Name;
     newOrder.PaymentCost = data.SellingPrice;
     setIsLoading(true);
     var Create_Order_Result = await axios({
@@ -175,18 +180,18 @@ const Checkout = () => {
           </div>
           <div className="checkout-product">
             <div className="image">
-              <img src={getImageFromDriver(data.Images[0].DriverId)} />
+              <img src={data.Images[0] && data.Images[0].DriverId ? getImageFromDriver(data.Images[0].DriverId) : "https://static.vecteezy.com/system/resources/previews/005/337/799/original/icon-image-not-found-free-vector.jpg"} />
             </div>
             <div className="name">
-              <h2>{data.Name}</h2>
+              <h2>{data && data.Name ? data.Name : "N/a"}</h2>
             </div>
             <div className="info-p-field">
               <p>Nhãn hàng</p>
-              <p>{data.Brand.Name}</p>
+              <p>{data.Brand && data.Brand.Name ? data.Brand.Name : "N/a"}</p>
             </div>
             <div className="info-p-field">
               <p>Danh mục</p>
-              <p>{data.Category.Name}</p>
+              <p>{data.Category && data.Category.Name ? data.Category.Name : "N/a"}</p>
             </div>
             <div className="info-p-field">
               <p>Số lượng</p>

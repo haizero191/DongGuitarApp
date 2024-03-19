@@ -51,6 +51,8 @@
 
                 .social-icon {
                     cursor: pointer;
+                    display: flex;
+                    align-items: center;
                     img {
                         width: 28px;
                         opacity: 0.6;

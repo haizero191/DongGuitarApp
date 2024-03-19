@@ -36,16 +36,18 @@ const ProductView = ({ title, featureId }) => {
           "/api/product-feature/getProductWithFeatureId/" +
           featureId
       );
-
-      console.log(Get_Product_Feature_Result);
       if (
         Get_Product_Feature_Result.status === 200 &&
         Get_Product_Feature_Result.data.success
       ) {
-        var pIds = Get_Product_Feature_Result.data.data.map(
-          (fp) => fp.Product._id
-        );
+        
 
+
+        var pIds = Get_Product_Feature_Result.data.data.map(
+          (fp) => {
+            return fp.Product._id
+          }
+        );
         setProductIdList(pIds);
         setData(Get_Product_Feature_Result.data.data);
       }
@@ -97,7 +99,7 @@ const ProductView = ({ title, featureId }) => {
               <>
                 {productList.map((product, index) => {
                   return (
-                    <div className="col-3">
+                    <div className="col-6 col-sm-3">
                       <div className="product-card" onClick={(event) => onViewProduct(product._id, product.Alias, event)}>
                         <ProductCard
                           name={product.Name}
@@ -111,7 +113,7 @@ const ProductView = ({ title, featureId }) => {
               </>
             ) : (
               <>
-              <div className="product-loader"></div>
+                <div className="product-loader"></div>
               </>
             )}
           </div>

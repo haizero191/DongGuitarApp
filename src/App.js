@@ -22,10 +22,13 @@ const App = () => {
     }
   });
 
+
+
+  // Redirect for update mobile UI
   useEffect(() => {
     const mediaQuery = window.matchMedia("(max-width: 768px)");
     if (mediaQuery.matches) {
-      navigate("/update");
+      // navigate("/update");
     }
   }, [navigate]);
 

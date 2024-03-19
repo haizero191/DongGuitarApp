@@ -17,6 +17,9 @@ const Header = () => {
   const [isSearchContainer, setIsSearchContainer] = useState(false);
   const [isSearchResultEnter, setIsSearchResultEnter] = useState(false);
 
+  // Handle for mobile design
+  const [isMenuMobile, setIsMenuMobile] = useState(false);
+
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const state = useSelector((state) => state);
@@ -26,12 +29,17 @@ const Header = () => {
     const handleScroll = () => {
       // Update the scroll position when the user scrolls
       const position = window.pageYOffset;
-      if (position > 176) {
-        const headerEl = document.querySelector(".Header");
-        headerEl.style.transform = "translateY(-28px)";
+      const mediaQuery = window.matchMedia("(max-width: 768px)");
+
+      if (mediaQuery.matches) {
       } else {
-        const headerEl = document.querySelector(".Header");
-        headerEl.style.transform = "translateY(0px)";
+        if (position > 176) {
+          const headerEl = document.querySelector(".Header");
+          headerEl.style.transform = "translateY(-28px)";
+        } else {
+          const headerEl = document.querySelector(".Header");
+          headerEl.style.transform = "translateY(0px)";
+        }
       }
     };
 
@@ -157,11 +165,19 @@ const Header = () => {
   };
 
   const navigateToPage = (endpoint) => {
+    if(isMenuMobile) {
+      setIsMenuMobile(false)
+    }
     navigate(`${endpoint}`);
   };
 
   const navigateToUrl = (url) => {
+    
     window.open(url, "_blank");
+  };
+
+  const onHamburgerClick = () => {
+    setIsMenuMobile((isMenuMobile) => !isMenuMobile);
   };
 
   return (
@@ -177,20 +193,18 @@ const Header = () => {
         </div>
       </div>
 
-      <div className="header-top">
-        <div className="container">
-          <div className="row">
-            <div className="col-2">
+      <div className="header-top ">
+        <div className="container h-100">
+          <div className="row w-100 h-100">
+            <div className="h-100 col-4 d-md-none"></div>
+            <div className="h-100 col-4 col-sm-2 col-md-2 ">
               <div className="logo" onClick={onLogoClicked}>
                 <div className="logo-container">
                   <img alt="logo" src={LOGO} />
                 </div>
               </div>
             </div>
-            <div className="col d-md-none">
-              <div className="hamburger">Hamburger</div>
-            </div>
-            <div className="col-md-8">
+            <div className="d-none d-md-block col-md-8">
               <div className="search-bar">
                 <i
                   className="bi bi-search"
@@ -283,74 +297,101 @@ const Header = () => {
                 </a>
               </div>
             </div>
+
+            {/* Hamburger for mobile UI */}
+            <div className="d-flex align-items-center justify-content-end h-100 col-4 d-md-none">
+              <div className="hamburger" onClick={onHamburgerClick}>
+                {isMenuMobile ? (
+                  <i class="bi bi-x-lg"></i>
+                ) : (
+                  <i class="bi bi-list"></i>
+                )}
+              </div>
+            </div>
           </div>
         </div>
+        {!isMenuMobile ? (
+          <></>
+        ) : (
+          <div className="mobile-menu">
+            <ul>
+              <li onClick={() => navigateToPage("/")}>Home</li>
+              <li onClick={() => navigateToPage("/products")}>Shop</li>
+              <li onClick={() => navigateToPage("/about")}>About</li>
+              <li onClick={() => navigateToPage("/contact")}>Contact</li>
+            </ul>
+          </div>
+        )}
       </div>
       <div className="header-bottom">
         <div className="container">
-          <div className="categories-nav">
-            <div
-              className={
-                location.pathname === "/"
-                  ? "cate-item cate-active"
-                  : "cate-item"
-              }
-              onClick={() => navigateToPage("/")}
-            >
-              <span>Home</span>
-            </div>
-            <div
-              className={
-                location.pathname === "/products"
-                  ? "cate-item cate-active"
-                  : "cate-item"
-              }
-              onClick={() => navigateToPage("/products")}
-            >
-              <span>Shop</span>
-            </div>
-            <div
-              className={
-                location.pathname === "/about"
-                  ? "cate-item cate-active"
-                  : "cate-item"
-              }
-              onClick={() => navigateToPage("/about")}
-            >
-              <span>About</span>
-            </div>
-            <div
-              className={
-                location.pathname === "/contact"
-                  ? "cate-item cate-active"
-                  : "cate-item"
-              }
-              onClick={() => navigateToPage("/contact")}
-            >
-              <span>Contact</span>
-            </div>
+          <div className="row">
+            <div className="col-12 d-none d-md-block">
+              <div className="categories-nav">
+                <div
+                  className={
+                    location.pathname === "/"
+                      ? "cate-item cate-active"
+                      : "cate-item"
+                  }
+                  onClick={() => navigateToPage("/")}
+                >
+                  <span>Home</span>
+                </div>
+                <div
+                  className={
+                    location.pathname === "/products"
+                      ? "cate-item cate-active"
+                      : "cate-item"
+                  }
+                  onClick={() => navigateToPage("/products")}
+                >
+                  <span>Shop</span>
+                </div>
+                <div
+                  className={
+                    location.pathname === "/about"
+                      ? "cate-item cate-active"
+                      : "cate-item"
+                  }
+                  onClick={() => navigateToPage("/about")}
+                >
+                  <span>About</span>
+                </div>
+                <div
+                  className={
+                    location.pathname === "/contact"
+                      ? "cate-item cate-active"
+                      : "cate-item"
+                  }
+                  onClick={() => navigateToPage("/contact")}
+                >
+                  <span>Contact</span>
+                </div>
 
-            <div className="line"></div>
+                <div className="line"></div>
 
-            {state.categories.data ? (
-              state.categories.data.map((cate) => {
-                return (
-                  <div
-                    className={
-                      cate.Name === cateSelected
-                        ? "cate-item cate-active"
-                        : "cate-item"
-                    }
-                    key={"Header-category-key-" + cate._id}
-                    onClick={() => onCateClicked(cate.Name)}
-                  >
-                    <span>{cate.Name}</span>
-                  </div>
-                );
-              })
-            ) : (
-              <></>
-            )}
+                {state.categories.data ? (
+                  state.categories.data.map((cate) => {
+                    return (
+                      <div
+                        className={
+                          cate.Name === cateSelected
+                            ? "cate-item cate-active"
+                            : "cate-item"
+                        }
+                        key={"Header-category-key-" + cate._id}
+                        onClick={() => onCateClicked(cate.Name)}
+                      >
+                        <span>{cate.Name}</span>
+                      </div>
+                    );
+                  })
+                ) : (
+                  <></>
+                )}
+              </div>
+            </div>
           </div>
         </div>
       </div>

@@ -26,10 +26,9 @@ const Typhography = () => {
 
         <div className="container">
           <div className="row">
-            <div className="col-6">
+            <div className="col-12 col-md-6">
               <div
                 className="content"
-                style={{ paddingRight: "20px", marginBottom: "10px" }}
               >
                 <h4>Giới thiệu</h4>
                 <h2>
@@ -45,7 +44,7 @@ const Typhography = () => {
                 <br></br>
               </div>
 
-              <div className="content" style={{ paddingRight: "20px" }}>
+              <div className="content">
                 <h4>Mục tiêu</h4>
                 <h2>Đem âm nhạc thế giới lại gần hơn với người Việt.</h2>
                 <p>
@@ -61,7 +60,7 @@ const Typhography = () => {
                 </p>
               </div>
             </div>
-            <div className="col-6">
+            <div className="col-12 col-md-6">
               <div className="image">
                 <img alt="img1" src={POSTER} />
               </div>
