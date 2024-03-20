@@ -5,6 +5,7 @@ import React, { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 
 import "./App.css";
+import ContactCircle from "./pages/ContactCircle/ContactCircle";
 
 const App = () => {
   const location = useLocation();
@@ -44,6 +45,10 @@ const App = () => {
         </div>
         <div className="app-footer">
           {isHeader ? <Footer /> : <></>}
+        </div>
+
+        <div className="contact-circle">
+            <ContactCircle />
         </div>
       </div>
     </div>

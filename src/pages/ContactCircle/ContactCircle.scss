@@ -1,0 +1,68 @@
+.ContactCircle {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition:
+        0.24s cubic-bezier(0.165, 0.84, 0.44, 1) padding,
+        0.14s cubic-bezier(0.165, 0.84, 0.44, 1) opacity;
+    position: relative;
+
+    .text {
+        background-color: rgba(255, 255, 255, 0.22);
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+        width: 60px;
+        height: 150px;
+        border-radius: 60px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-transform: uppercase;
+        color: #d52b1e;
+
+        /* From https://css.glass */
+        background: rgba(255, 255, 255, 0.09);
+        border-radius: 16px;
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        backdrop-filter: blur(5px);
+        -webkit-backdrop-filter: blur(5px);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        span {
+            width: 100%;
+
+            text-wrap: nowrap;
+            display: block;
+            transform: rotate(90deg) translateX(-16px) translateY(2px);
+            font-family: "Teko", sans-serif;
+            font-size: 28px;
+        }
+    }
+
+    .circle {
+        width: 60px;
+        height: 60px;
+        background: rgba(255, 255, 255, 0.09);
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        backdrop-filter: blur(5px);
+        -webkit-backdrop-filter: blur(5px);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        display: flex;
+
+        align-items: center;
+        justify-content: center;
+        transition: 0.24s;
+        background-color: white;
+        border-radius: 50%;
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+        img {
+            width: 55%;
+            height: 55%;
+            mix-blend-mode: difference;
+        }
+        cursor: pointer;
+        i {
+            font-size: 28px;
+        }
+    }
+}

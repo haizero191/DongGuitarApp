@@ -103,7 +103,7 @@ const Home = () => {
 
 
          {/* Section view images */}
-         <div className="section-view-image">
+         {/* <div className="section-view-image">
           <div className="container">
             <div className="row">
               <div className="col-12 col-sm-6">
@@ -128,7 +128,7 @@ const Home = () => {
               </div>
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   );
