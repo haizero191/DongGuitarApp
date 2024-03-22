@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import LOGO from "../../assets/images/DongGuitar.png";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate, useSearchParams } from "react-router-dom";
 import "./Header.scss";
 
 // Redux usage
@@ -16,9 +16,14 @@ const Header = () => {
   const [productSearchCount, setProductSearchCount] = useState(0);
   const [isSearchContainer, setIsSearchContainer] = useState(false);
   const [isSearchResultEnter, setIsSearchResultEnter] = useState(false);
+  const [isSubMenu, setIsSubMenu] = useState(false);
+  const [searchParams, setSearchParams] = useSearchParams();
 
+  
   // Handle for mobile design
   const [isMenuMobile, setIsMenuMobile] = useState(false);
+  const [subCate, setSubCate] = useState([])
+  const [cateHover, setCateHover] = useState(null)
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -106,7 +111,6 @@ const Header = () => {
     dispatch(getCategories());
   };
 
-
   // On Logo Clicked
   const onLogoClicked = () => {
     navigate("/");
@@ -118,6 +122,13 @@ const Header = () => {
     setCateSelected(name);
     navigate(`/products?category=` + cateName);
   };
+
+  // On select subcate
+  const onSubCateClicked = (sc) => {
+    var cateName = cateHover.Name.toLowerCase();
+    setCateSelected(cateHover.Name);
+    navigate(`/products?category=` + cateName + '&' + 'sub-category=' + sc.Name);
+  }
 
   // Handle search products
   const onSearchProduct = (event) => {
@@ -170,8 +181,8 @@ const Header = () => {
 
   // Navigate with endpoint
   const navigateToPage = (endpoint) => {
-    if(isMenuMobile) {
-      setIsMenuMobile(false)
+    if (isMenuMobile) {
+      setIsMenuMobile(false);
     }
     navigate(`${endpoint}`);
   };
@@ -184,6 +195,16 @@ const Header = () => {
   // On Menu UI clicked
   const onHamburgerClick = () => {
     setIsMenuMobile((isMenuMobile) => !isMenuMobile);
+  };
+
+  // Action for hover mouse into category
+  const handleCateHoverIn = (cate, event) => {
+    setIsSubMenu(true);
+    setCateHover(cate)
+  };
+  const handleCateHoverOut = (event) => {
+    setIsSubMenu(false);
+    setCateHover(null)
   };
 
   return (
@@ -199,7 +220,7 @@ const Header = () => {
         </div>
       </div>
 
-      <div className="header-top ">
+      <div className="header-top"  onMouseOver={handleCateHoverOut}>
         <div className="container h-100">
           <div className="row w-100 h-100">
             <div className="h-100 col-4 d-md-none"></div>
@@ -330,15 +351,15 @@ const Header = () => {
         )}
       </div>
       <div className="header-bottom">
-        <div className="container">
+        <div className="container" >
           <div className="row">
             <div className="col-12 d-none d-md-block">
               <div className="categories-nav">
                 <div
                   className={
                     location.pathname === "/"
-                      ? "cate-item cate-active"
-                      : "cate-item"
+                      ? "cate-item cate-page cate-active"
+                      : "cate-item cate-page"
                   }
                   onClick={() => navigateToPage("/")}
                 >
@@ -347,8 +368,8 @@ const Header = () => {
                 <div
                   className={
                     location.pathname === "/products"
-                      ? "cate-item cate-active"
-                      : "cate-item"
+                      ? "cate-item cate-page cate-active"
+                      : "cate-item cate-page "
                   }
                   onClick={() => navigateToPage("/products")}
                 >
@@ -357,8 +378,8 @@ const Header = () => {
                 <div
                   className={
                     location.pathname === "/about"
-                      ? "cate-item cate-active"
-                      : "cate-item"
+                      ? "cate-item cate-page cate-active"
+                      : "cate-item cate-page"
                   }
                   onClick={() => navigateToPage("/about")}
                 >
@@ -367,8 +388,8 @@ const Header = () => {
                 <div
                   className={
                     location.pathname === "/contact"
-                      ? "cate-item cate-active"
-                      : "cate-item"
+                      ? "cate-item cate-page cate-active"
+                      : "cate-item cate-page "
                   }
                   onClick={() => navigateToPage("/contact")}
                 >
@@ -378,7 +399,7 @@ const Header = () => {
                 <div className="line"></div>
 
                 {state.categories.data ? (
-                  state.categories.data.map((cate) => {
+                  state.categories.data.map((cate, index) => {
                     return (
                       <div
                         className={
@@ -388,6 +409,7 @@ const Header = () => {
                         }
                         key={"Header-category-key-" + cate._id}
                         onClick={() => onCateClicked(cate.Name)}
+                        onMouseOver={(event) => handleCateHoverIn(cate, event)}
                       >
                         <span>{cate.Name}</span>
                       </div>
@@ -400,6 +422,29 @@ const Header = () => {
             </div>
           </div>
         </div>
+
+        {isSubMenu && <div className="overlay" onMouseOver={handleCateHoverOut}></div>}
+
+        {isSubMenu && (
+          <div className="sub-cate-nav">
+            <div className="container">
+              <div className="sub-cate-nav-container">
+                <div className="sub-cate-nav-content">
+                  <div className="sub-cate-nav-title">
+                    <h3>Types of <span>{cateHover ? cateHover.Name : "Category"}</span></h3>
+                  </div>
+                  <div className="sub-cate-nav-list">
+                    {
+                      cateHover && cateHover.SubCategory.map(sc => {
+                        return <div key={'sub-category-header-' + sc._id} className="sub-cate-nav-item"   onClick={() => onSubCateClicked(sc)}>{sc.Name}</div>
+                      })
+                    }
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );

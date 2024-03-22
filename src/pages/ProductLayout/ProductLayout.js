@@ -22,6 +22,7 @@ const ProductLayout = () => {
   const categoryParam = searchParams.get("category"); // Access specific param by key
   const brandParam = searchParams.get("brand");
   const searchParam = searchParams.get("search");
+  const subCategoryParams = searchParams.get("sub-category");
   const sortByParams = searchParams.get("sortBy");
   const [params, setParams] = useState({
     category: "",
@@ -43,7 +44,7 @@ const ProductLayout = () => {
   useEffect(() => {
     initData();
     window.scrollTo({ top: 0, behavior: "smooth" });
-  }, [brandParam, categoryParam, sortByParams]);
+  }, [brandParam, categoryParam, sortByParams, subCategoryParams]);
 
   useEffect(() => {
     var paramsValid = removeEmptyField({
@@ -51,6 +52,7 @@ const ProductLayout = () => {
       brand: params.brand,
       search: searchParam,
       sortBy: params.sortBy,
+      ["sub-category"]: subCategoryParams
     });
     setSearchParams(paramsValid);
   }, [params]);
@@ -79,6 +81,7 @@ const ProductLayout = () => {
           brand: brandParam ? brandParam.split(" ") : null,
           search: searchParam ? searchParam : null,
           sortBy: sortByParams ? sortByParams : null,
+          subCategory: subCategoryParams ? subCategoryParams : null
         }),
       })
     );
@@ -124,7 +127,6 @@ const ProductLayout = () => {
 
   // Remove empty field
   const removeEmptyField = (obj) => {
-
     for (const key in obj) {
       if (obj[key] === null || obj[key] === "" || obj[key] === 'undefined' || obj[key] === undefined) {
         delete obj[key];
