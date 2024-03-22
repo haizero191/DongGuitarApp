@@ -9,6 +9,8 @@ import RichTextEditor from "react-quill";
 const ProductDetail = () => {
   let sliderRef = useRef(null);
   const [product, setProduct] = useState(null);
+  const [productSpecs, setProductSpecs] = useState([]);
+  const [isViewMore, setIsViewMore] = useState(false);
   const location = useLocation();
   const data = location.state;
   const navigate = useNavigate();
@@ -26,20 +28,36 @@ const ProductDetail = () => {
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
     if (data) {
+
       initData();
     }
   }, [data]);
+
+  // Get Product Specs
+  const getProductSpecs = async () => {
+    var Get_ProductSpecs_Result = await axios({
+      method: "get",
+      url:
+        process.env.REACT_APP_API_URL +
+        "/api/product_specs?productId=" +
+        data.id,
+      headers: {},
+    });
+    if (Get_ProductSpecs_Result.data.success) {
+      setProductSpecs(Get_ProductSpecs_Result.data.data);
+    }
+  };
 
   const initData = async () => {
     const response = await axios.get(
       process.env.REACT_APP_API_URL + `/api/products/detail/${data.id}`
     );
     if (response.status === 200) {
-      console.log(response.data.data);
+      console.log(response.data.data)
       setProduct(response.data.data);
+      getProductSpecs();
     }
   };
-
   // Action for slider --------
   const onNext = () => {
     console.log("hehehe");
@@ -75,6 +93,14 @@ const ProductDetail = () => {
     navigate("/checkout", { state: product });
   };
 
+  const viewMore = () => {
+    setIsViewMore(true);
+  };
+
+  // Navigate with URL
+  const navigateToUrl = (url) => {
+    window.open(url, "_blank");
+  };
   return (
     <div className="ProductDetail">
       <Loading isLoading={!data} />
@@ -101,10 +127,6 @@ const ProductDetail = () => {
                     })
                   )}
                 </Slider>
-                {/* <div className="logo-overlay">
-                  <img src={LOGO}/>
-                </div> */}
-                {/* Custom arrow control of slide */}
                 <div className="custom-arrow-next">
                   <div onClick={onNext}>
                     <i class="bi bi-chevron-compact-right"></i>
@@ -129,77 +151,45 @@ const ProductDetail = () => {
                   </div>
                   <div className="product-specs-container">
                     <div className="p-specs">
-                      <h2 className="underline-title">FEATURES</h2>
+                      <h2 className="underline-title">INFORMATION</h2>
                       <div className="product-specs-list">
                         <div className="row">
-                          <div className="col-5">
-                            <div className="product-specs-item">
-                              <p>Material: </p>
-                              <p>
-                                {product.Product_specs.Material
-                                  ? product.Product_specs.Material
-                                  : "N/a"}
-                              </p>
+                          <div className="col-12">
+                            <div className="product-specs-item" style={{textTransform: "capitalize"}}>
+                              <p>Category  </p>
+                              <p>{product.Category.Name} | {product.SubCategory ? product.SubCategory.Name : ""}</p>
                             </div>
-                            <div className="product-specs-item">
-                              <p>Back: </p>
-                              <p>
-                                {product.Product_specs.Back
-                                  ? product.Product_specs.Back
-                                  : "N/a"}
-                              </p>
+
+                            <div className="product-specs-item" style={{textTransform: "capitalize"}}>
+                              <p>Brand </p>
+                              <p>{product.Brand.Name}</p>
                             </div>
-                            <div className="product-specs-item">
-                              <p>Top: </p>
-                              <p>
-                                {product.Product_specs.Top
-                                  ? product.Product_specs.Top
-                                  : "N/a"}
-                              </p>
-                            </div>
-                            <div className="product-specs-item">
-                              <p>Side: </p>
-                              <p>
-                                {product.Product_specs.Side
-                                  ? product.Product_specs.Side
-                                  : "N/a"}
-                              </p>
-                            </div>
+
                           </div>
-                          <div className="col-1"></div>
-                          <div className="col-6">
-                            <div className="product-specs-item">
-                              <p>EQ: </p>
-                              <p>
-                                {product.Product_specs.EQ
-                                  ? product.Product_specs.EQ
-                                  : "N/a"}
+                        </div>
+                      </div>
+                    </div>
+                    <div className="p-specs">
+                      <h2 className="underline-title">KEY FEATURES</h2>
+                      <div className="product-specs-list">
+                        <div className="row">
+                          <div className="col-12">
+                            {productSpecs.map((ps, index) => {
+                              if (index <= 3 || isViewMore) {
+                                return (
+                                  <div className="product-specs-item">
+                                    <p>{ps.Name} </p>
+                                    <p>{ps.Description}</p>
+                                  </div>
+                                );
+                              }
+                            })}
+
+                            {productSpecs.length > 4 && !isViewMore && (
+                              <p className="view-more" onClick={viewMore}>
+                                View more
                               </p>
-                            </div>
-                            <div className="product-specs-item">
-                              <p>Condition: </p>
-                              <p>
-                                {product.Product_specs.Condition
-                                  ? product.Product_specs.Condition
-                                  : "N/a"}
-                              </p>
-                            </div>
-                            <div className="product-specs-item">
-                              <p>String type: </p>
-                              <p>
-                                {product.Product_specs.String_type
-                                  ? product.Product_specs.String_type
-                                  : "N/a"}
-                              </p>
-                            </div>
-                            <div className="product-specs-item">
-                              <p>Timbre: </p>
-                              <p>
-                                {product.Product_specs.Timbre
-                                  ? product.Product_specs.Timbre
-                                  : "N/a"}
-                              </p>
-                            </div>
+                            )}
                           </div>
                         </div>
                       </div>
@@ -209,8 +199,8 @@ const ProductDetail = () => {
                       <div className="product-price">
                         {formatCurrency(product.SellingPrice)}
                       </div>
-                      <div className="btn-buy" onClick={onBuy}>
-                        MUA SẢN PHẨM
+                      <div className="btn-buy" onClick={() => navigateToUrl('https://www.facebook.com/profile.php?id=61554988470959')}>
+                        LIÊN HỆ NGAY
                       </div>
                     </div>
                   </div>
@@ -219,7 +209,6 @@ const ProductDetail = () => {
                 <></>
               )}
             </div>
-
             <div className="col-12">
               <div className="video-show">
                 <div
@@ -246,8 +235,6 @@ const ProductDetail = () => {
             </div>
           </div>
         </div>
-
-        {/* <div className='main'>{product.Name}</div> */}
       </div>
     </div>
   );

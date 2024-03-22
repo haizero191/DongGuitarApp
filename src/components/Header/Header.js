@@ -106,16 +106,20 @@ const Header = () => {
     dispatch(getCategories());
   };
 
+
+  // On Logo Clicked
   const onLogoClicked = () => {
     navigate("/");
   };
 
+  // On select category
   const onCateClicked = (name) => {
     var cateName = name.toLowerCase();
     setCateSelected(name);
     navigate(`/products?category=` + cateName);
   };
 
+  // Handle search products
   const onSearchProduct = (event) => {
     const newTimeoutId = setTimeout(() => {
       setSearchTerm(event.target.value);
@@ -164,6 +168,7 @@ const Header = () => {
     navigate(`/products/view/${product.Alias}`, { state: data });
   };
 
+  // Navigate with endpoint
   const navigateToPage = (endpoint) => {
     if(isMenuMobile) {
       setIsMenuMobile(false)
@@ -171,11 +176,12 @@ const Header = () => {
     navigate(`${endpoint}`);
   };
 
+  // Navigate with URL
   const navigateToUrl = (url) => {
-    
     window.open(url, "_blank");
   };
 
+  // On Menu UI clicked
   const onHamburgerClick = () => {
     setIsMenuMobile((isMenuMobile) => !isMenuMobile);
   };

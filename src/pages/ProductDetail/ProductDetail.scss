@@ -1,4 +1,5 @@
 .ProductDetail {
+    padding: 20px 0px;
     .underline-title {
         padding-bottom: 5px;
         margin-bottom: 20px;
@@ -15,11 +16,11 @@
     .product-detail-container {
         position: relative;
         padding-top: 45px;
-
         .product-name-container {
             margin-bottom: 30px;
             h1 {
                 text-transform: uppercase;
+                line-height: 32px;
             }
             p {
                 font-size: 14px;
@@ -29,25 +30,27 @@
         }
 
         .product-images-container {
-            position: relative;
+            position: sticky;
+            top: 28%;
             height: 500px;
             display: flex;
             flex-direction: column;
             .custom-arrow-next {
                 position: absolute;
                 z-index: 1000;
-                right: 10px;
-                top: calc(50% - 20px);
-                width: 40px;
-                height: 40px;
+                right: 0;
+                top: 0;
+                width: 80px;
+                height: 100%;
                 display: flex;
                 align-items: center;
                 justify-content: center;
                 cursor: pointer;
                 i {
                     font-size: 38px;
-                    color: black;
+                    color: white;
                     opacity: 0.5;
+
                     &:hover {
                         opacity: 1;
                     }
@@ -56,17 +59,21 @@
             .custom-arrow-prev {
                 position: absolute;
                 z-index: 1000;
-                left: 10px;
-                top: calc(50% - 20px);
-                width: 40px;
-                height: 40px;
+                left: 0;
+                top: 0;
+                width: 80px;
+                height: 100%;
                 display: flex;
                 align-items: center;
                 justify-content: center;
                 cursor: pointer;
+
+                &:hover {
+                   
+                }
                 i {
                     font-size: 38px;
-                    color: black;
+                    color: white;
                     opacity: 0.5;
                     &:hover {
                         opacity: 1;
@@ -93,7 +100,7 @@
                 object-fit: cover;
             }
             .slick-slide div {
-                outline: none!important;
+                outline: none !important;
             }
             .slick-slider,
             .slick-track,
@@ -101,8 +108,8 @@
             .slick-item {
                 height: 100%;
                 img:focus-visible {
-                    border: none!important;
-                    outline: none!important;
+                    border: none !important;
+                    outline: none !important;
                 }
             }
             .slick-slide {
@@ -137,6 +144,17 @@
             padding: 20px;
             display: flex;
             flex-direction: column;
+            .view-more {
+                margin-top: 20px;
+                opacity: 0.5;
+                cursor: pointer;
+                color: red;
+                text-transform: uppercase;
+                font-size: 14px;
+                &:hover {
+                    text-decoration: underline;
+                }
+            }
             .p-specs {
                 h2 {
                     position: relative;
@@ -157,10 +175,20 @@
                     z-index: 1000;
                     .product-specs-item {
                         display: flex;
-                        justify-content: space-between;
-                        margin-bottom: 8px;
+
+                        margin-bottom: 10px;
+                        p {
+                            font-size: 14px;
+                        }
+                        p:nth-child(1) {
+                            opacity: 0.95;
+                            font-weight: 600;
+                            display: block;
+                            flex-basis: 30%;
+                            max-width: 30%;
+                            min-width: 30%;
+                        }
                         p:nth-child(2) {
-                            font-size: 16px;
                             opacity: 0.95;
                         }
                     }
@@ -195,7 +223,7 @@
                     justify-content: flex-end;
                     color: #d52b1e;
                     font-weight: 600;
-                    font-size: 24px;
+                    font-size: 30px;
                     margin-top: 30px;
                     margin-bottom: 16px;
                 }

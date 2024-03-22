@@ -5,7 +5,7 @@ import React, { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 
 import "./App.css";
-import ContactCircle from "./pages/ContactCircle/ContactCircle";
+import ContactCircle from "./components/ContactCircle/ContactCircle";
 
 const App = () => {
   const location = useLocation();

@@ -40,21 +40,50 @@
     }
 
     .circle {
-        width: 60px;
-        height: 60px;
+        width: 50px;
+        height: 50px;
         background: rgba(255, 255, 255, 0.09);
         box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
         backdrop-filter: blur(5px);
         -webkit-backdrop-filter: blur(5px);
         border: 1px solid rgba(255, 255, 255, 0.3);
         display: flex;
-
         align-items: center;
         justify-content: center;
         transition: 0.24s;
         background-color: white;
         border-radius: 50%;
         box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+        position: relative;
+        &.phone {
+
+            .phone-number {
+                position: absolute;
+                height: 100%;
+                left: -290px;
+                display: flex;
+                padding: 0px 30px;
+                align-items: center;
+                background-color: white;
+                border: 1px solid #d52b1e;
+                text-wrap: nowrap;
+                border-radius: 40px;
+                color: #d52b1e;
+                font-weight: 600;
+                display: none;
+                font-size: 18px;
+                letter-spacing: 2px;
+            }
+            &:hover {
+                border: 1px solid #d52b1e;
+                i {
+                    color: #d52b1e;
+                }
+                .phone-number {
+                    display: flex;
+                }
+            }
+        }
         img {
             width: 55%;
             height: 55%;
