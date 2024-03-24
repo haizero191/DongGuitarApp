@@ -1,0 +1,116 @@
+.no-scroll {
+    overflow: hidden !important;
+}
+
+.ImgViewFull {
+    position: fixed;
+    width: 100vw;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.832);
+    z-index: 10000;
+    top: 0;
+    left: 0;
+    overflow-x: auto;
+    /* width */
+    &::-webkit-scrollbar {
+        width: 6px;
+    }
+
+    /* Track */
+    &::-webkit-scrollbar-track {
+        background: #f1f1f1;
+    }
+
+    /* Handle */
+    &::-webkit-scrollbar-thumb {
+        background: #888;
+    }
+
+    /* Handle on hover */
+    &::-webkit-scrollbar-thumb:hover {
+        background: #555;
+    }
+    .img-view-container {
+        width: 80%;
+        max-width: 80%;
+        min-height: 100vh;
+        margin: 0 auto;
+        position: relative;
+        max-width: 1200px;
+        border-right: 1px solid #dddddd98;
+        border-left: 1px solid #dddddd98;
+        display: flex;
+        align-items: center;
+        background-color: black;
+        &:hover {
+            .image-select {
+                bottom: 10px;
+            }
+        }
+        .image-select {
+            position: fixed;
+            display: flex;
+            bottom: -100px;
+            left: calc(50% - 150px);
+            gap: 10px;
+            transition: 0.23s;
+            .sq-img {
+                width: 60px;
+                height: 60px;
+                background-color: rgba(255, 255, 255, 0.348);
+                opacity: 0.5;
+                border: 1px solid white;
+                border-radius: 8px;
+                overflow: hidden;
+                &:hover {
+                    opacity: 1;
+                }
+                img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                    cursor: pointer;
+                }
+            }
+        }
+        .logo-overlay {
+            width: 150px;
+            height: 150px;
+            position: fixed;
+            bottom: 0;
+            left: 12%;
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: contain;
+                opacity: 0.38;
+            }
+        }
+        .close {
+            position: fixed;
+            background-color: rgba(255, 255, 255, 0.316);
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            right: 14%;
+            top: 20px;
+            cursor: pointer;
+            &:hover {
+                background-color: white;
+                i {
+                    color: black;
+                }
+            }
+            i {
+                color: white;
+                font-size: 26px;
+            }
+        }
+        img {
+            width: 100%;
+            object-fit: contain;
+        }
+    }
+}

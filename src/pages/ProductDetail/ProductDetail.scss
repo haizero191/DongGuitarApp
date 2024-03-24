@@ -1,9 +1,12 @@
 .ProductDetail {
     padding: 20px 0px;
+
     .underline-title {
         padding-bottom: 5px;
         margin-bottom: 20px;
         position: relative;
+        font-weight: 600;
+        font-size: 28px;
         &::before {
             content: "";
             position: absolute;
@@ -20,12 +23,15 @@
             margin-bottom: 30px;
             h1 {
                 text-transform: uppercase;
-                line-height: 32px;
+                line-height: 42px;
+                font-size: 44px;
+                font-weight: 500;
             }
             p {
-                font-size: 14px;
+                font-size: 16px;
                 margin-top: 6px;
                 color: #666666;
+                font-family: Arial, Helvetica, sans-serif;
             }
         }
 
@@ -35,6 +41,41 @@
             height: 500px;
             display: flex;
             flex-direction: column;
+            &:hover {
+                .view-full {
+                    display: flex;
+                }
+            }
+            .view-full {
+                position: absolute;
+                width: 200px;
+                height: 50px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                left: 0;
+                z-index: 10000;
+                left: calc(50% - 100px);
+                bottom: 4%;
+                display: none;
+                gap: 6px;
+                font-family: Arial, Helvetica, sans-serif;
+                p{
+                    font-size: 10px;
+                    text-transform: uppercase;
+                    color: white;
+                }
+                i {
+                    color: white;
+                    font-size: 36px;
+                    opacity: 0.6;
+                    cursor: pointer;
+                    &:hover {
+                        opacity: 1;
+                    }
+                }
+            }
             .custom-arrow-next {
                 position: absolute;
                 z-index: 1000;
@@ -69,7 +110,6 @@
                 cursor: pointer;
 
                 &:hover {
-                   
                 }
                 i {
                     font-size: 38px;
@@ -107,6 +147,8 @@
             .slick-list,
             .slick-item {
                 height: 100%;
+                position: relative;
+
                 img:focus-visible {
                     border: none !important;
                     outline: none !important;
@@ -156,6 +198,7 @@
                 }
             }
             .p-specs {
+                margin-bottom: 16px;
                 h2 {
                     position: relative;
                     padding-bottom: 5px;
@@ -175,21 +218,21 @@
                     z-index: 1000;
                     .product-specs-item {
                         display: flex;
-
-                        margin-bottom: 10px;
+                        margin-bottom: 8px;
                         p {
-                            font-size: 14px;
+                            font-size: 20px;
+                  
                         }
                         p:nth-child(1) {
                             opacity: 0.95;
-                            font-weight: 600;
+                            font-weight: 500;
                             display: block;
                             flex-basis: 30%;
                             max-width: 30%;
                             min-width: 30%;
                         }
                         p:nth-child(2) {
-                            opacity: 0.95;
+                            opacity: 0.65;
                         }
                     }
                 }
@@ -213,6 +256,7 @@
                     bottom: 0;
                     opacity: 0.6;
                     z-index: 100000;
+                    font-size: 24px;
                     &:hover {
                         opacity: 1;
                     }
@@ -233,9 +277,11 @@
         .product-description-container {
             height: auto;
             margin-top: 50px;
+
             .product-description-inner {
                 padding: 40px 0px;
                 line-height: 140%;
+                font-family: Arial, Helvetica, sans-serif;
             }
             ul {
                 padding: 0px 60px;

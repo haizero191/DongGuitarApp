@@ -13,7 +13,6 @@ const App = () => {
   const [isHeader, setIsHeader] = useState(true);
   const navigate = useNavigate();
 
-
   useEffect(() => {
     if (endpointUrl === "/checkout" || endpointUrl === '/thanks' || endpointUrl === '/update') {
       setIsHeader(false);

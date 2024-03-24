@@ -3,6 +3,7 @@
 .Typhography {
     overflow: hidden;
     margin-bottom: 40px;
+    font-family: "Charis SIL", serif;
     .title {
         text-align: center;
         width: fit-content;
@@ -28,7 +29,6 @@
             font-style: normal;
             font-size: 18px;
             letter-spacing: 8px;
-
         }
     }
 
@@ -42,7 +42,7 @@
             background-position: 100% -80%;
             background-size: cover;
             background-attachment: fixed;
-            filter:  saturate(0.9) contrast(1.17) brightness(60%);
+            filter: saturate(0.9) contrast(1.17) brightness(60%);
         }
         .image {
             height: 100%;
@@ -56,7 +56,7 @@
         .content {
             margin-right: 20px;
             margin-bottom: 10px;
-            
+
             h4 {
                 margin-bottom: 16px;
                 font-size: 18px;

@@ -29,9 +29,9 @@ const ProductLayout = () => {
     brand: "",
   });
   const sortByOptions = [
-    { value: "all", label: "Tất cả sản phẩm" },
-    { value: "incs", label: "Giá - Từ thấp đến cao" },
-    { value: "desc", label: "Giá - Từ cao đến thấp" },
+    { value: "all", label: "All of price" },
+    { value: "incs", label: "Price - ascending" },
+    { value: "desc", label: "Price - descending" },
   ];
   const initValue = [];
 
@@ -155,17 +155,17 @@ const ProductLayout = () => {
               <div className="p-header">
                 <h1>
                   {categoryParam && categoryParam !== "all"
-                    ? categoryParam
-                    : "Sản phẩm"}
+                    ? categoryParam.split("-").join(" ")
+                    : "Collection"}
                 </h1>
-                <p> {state.products.navigate.productCount} sản phẩm</p>
+                <p> {state.products.navigate.productCount} results found</p>
               </div>
               <div className="p-sort">
                 <span>Sort by: </span>
                 <Select
                   className="react-select-container"
                   width="400px"
-                  placeholder="Bộ lọc sản phẩm"
+                  placeholder="Sort by price"
                   options={sortByOptions}
                   theme={(theme) => ({
                     ...theme,
@@ -190,7 +190,7 @@ const ProductLayout = () => {
               <div className="side-filter">
                 {/* side item for filter*/}
                 <div className="side-filter-item">
-                  <h2 className="title">Thương hiệu</h2>
+                  <h2 className="title">Filter By Brand</h2>
                   <Select
                     defaultValue={getBrandDefault}
                     styles={{
@@ -215,7 +215,7 @@ const ProductLayout = () => {
                     }}
                     className="filter-select-item"
                     width="400px"
-                    placeholder="Lựa chọn nhãn hàng"
+                    placeholder="Brand select"
                     options={createOption(state.brands.data)}
                     name="brand"
                     onChange={(target, element) =>

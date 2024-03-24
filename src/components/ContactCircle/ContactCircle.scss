@@ -55,8 +55,9 @@
         border-radius: 50%;
         box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
         position: relative;
+        
         &.phone {
-
+            
             .phone-number {
                 position: absolute;
                 height: 100%;
@@ -78,6 +79,7 @@
                 border: 1px solid #d52b1e;
                 i {
                     color: #d52b1e;
+                  
                 }
                 .phone-number {
                     display: flex;
@@ -92,6 +94,12 @@
         cursor: pointer;
         i {
             font-size: 28px;
+            width: 100%;
+            height: 100%;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
     }
 }

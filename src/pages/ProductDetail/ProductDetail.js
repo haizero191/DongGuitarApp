@@ -5,12 +5,16 @@ import Loading from "../../components/Loading/Loading";
 import Slider from "react-slick";
 import "./ProductDetail.scss";
 import RichTextEditor from "react-quill";
+import ImgViewFull from "../../components/ImgViewFull/ImgViewFull";
 
 const ProductDetail = () => {
   let sliderRef = useRef(null);
   const [product, setProduct] = useState(null);
   const [productSpecs, setProductSpecs] = useState([]);
   const [isViewMore, setIsViewMore] = useState(false);
+  const [isViewFull, setIsViewFull] = useState(false);
+  const [imgView, setImgView] = useState('');
+
   const location = useLocation();
   const data = location.state;
   const navigate = useNavigate();
@@ -28,7 +32,6 @@ const ProductDetail = () => {
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
     if (data) {
-
       initData();
     }
   }, [data]);
@@ -53,7 +56,7 @@ const ProductDetail = () => {
       process.env.REACT_APP_API_URL + `/api/products/detail/${data.id}`
     );
     if (response.status === 200) {
-      console.log(response.data.data)
+      console.log(response.data.data);
       setProduct(response.data.data);
       getProductSpecs();
     }
@@ -101,6 +104,20 @@ const ProductDetail = () => {
   const navigateToUrl = (url) => {
     window.open(url, "_blank");
   };
+
+
+  // Handle Open view full image
+  const onOpenViewFull = () => {
+    var imgList = product.Images.map(image => image.DriverId)
+    setIsViewFull(true)
+    setImgView(imgList)
+  }
+
+  const handleClose = () => {
+    setIsViewFull(false)
+    setImgView('')
+  }
+
   return (
     <div className="ProductDetail">
       <Loading isLoading={!data} />
@@ -109,6 +126,10 @@ const ProductDetail = () => {
           <div className="row">
             <div className="col-7">
               <div className="product-images-container">
+                <div className="view-full" onClick={onOpenViewFull}>
+                  <i class="bi bi-arrows-fullscreen"></i>
+                  <p>Full Image</p>
+                </div>
                 <Slider
                   {...settings}
                   ref={(slider) => {
@@ -145,8 +166,7 @@ const ProductDetail = () => {
                   <div className="product-name-container">
                     <h1>{product.Name}</h1>
                     <p>
-                      Trạng thái:{" "}
-                      {product.Quantity > 0 ? "Còn hàng" : "Hết hàng"}
+                      {product.Quantity > 0 ? "In Stock" : "Out of stock"}
                     </p>
                   </div>
                   <div className="product-specs-container">
@@ -155,16 +175,26 @@ const ProductDetail = () => {
                       <div className="product-specs-list">
                         <div className="row">
                           <div className="col-12">
-                            <div className="product-specs-item" style={{textTransform: "capitalize"}}>
-                              <p>Category  </p>
-                              <p>{product.Category.Name} | {product.SubCategory ? product.SubCategory.Name : ""}</p>
+                            <div
+                              className="product-specs-item"
+                              style={{ textTransform: "capitalize" }}
+                            >
+                              <p>Category </p>
+                              <p>
+                                {product.Category.Name} |{" "}
+                                {product.SubCategory
+                                  ? product.SubCategory.Name
+                                  : ""}
+                              </p>
                             </div>
 
-                            <div className="product-specs-item" style={{textTransform: "capitalize"}}>
+                            <div
+                              className="product-specs-item"
+                              style={{ textTransform: "capitalize" }}
+                            >
                               <p>Brand </p>
                               <p>{product.Brand.Name}</p>
                             </div>
-
                           </div>
                         </div>
                       </div>
@@ -199,8 +229,15 @@ const ProductDetail = () => {
                       <div className="product-price">
                         {formatCurrency(product.SellingPrice)}
                       </div>
-                      <div className="btn-buy" onClick={() => navigateToUrl('https://www.facebook.com/profile.php?id=61554988470959')}>
-                        LIÊN HỆ NGAY
+                      <div
+                        className="btn-buy"
+                        onClick={() =>
+                          navigateToUrl(
+                            "https://www.facebook.com/profile.php?id=61554988470959"
+                          )
+                        }
+                      >
+                        CONTACT NOW
                       </div>
                     </div>
                   </div>
@@ -235,6 +272,12 @@ const ProductDetail = () => {
             </div>
           </div>
         </div>
+      </div>
+
+      <div className="view-full-container">
+        {
+          isViewFull ? <ImgViewFull onclose={handleClose} data={imgView}/> : <></>
+        }
       </div>
     </div>
   );
