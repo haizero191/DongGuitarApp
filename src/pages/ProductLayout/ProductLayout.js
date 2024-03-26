@@ -48,7 +48,7 @@ const ProductLayout = () => {
 
   useEffect(() => {
     var paramsValid = removeEmptyField({
-      category: categoryParam.split("-").join(" "),
+      category: categoryParam ? categoryParam.split("-").join(" "): null,
       brand: params.brand,
       search: searchParam,
       sortBy: params.sortBy,
