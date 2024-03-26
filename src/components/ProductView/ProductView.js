@@ -90,7 +90,7 @@ const ProductView = ({ title, featureId }) => {
   return (
     <div className="ProductView">
       <div className="title">
-        <p>{title}</p>
+        <h2>{title}</h2>
       </div>
       <div className="main">
         <div className="container-inner">

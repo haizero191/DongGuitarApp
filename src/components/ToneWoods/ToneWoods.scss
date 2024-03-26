@@ -1,0 +1,165 @@
+.ToneWoods {
+    height: 120vh;
+    padding: 66px 0px;
+    .ToneWoods-title {
+        text-align: center;
+        text-transform: uppercase;
+        font-size: 26px;
+        font-weight: 600;
+        position: relative;
+        display: block;
+        margin-bottom: 80px;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        padding-bottom: 20px;
+        p {
+            font-size: 24px;
+            width: 60%;
+            font-weight: 300;
+            margin: 0 auto;
+            color: rgba(55, 54, 54, 0.754);
+            text-transform: initial;
+        }
+        &::after {
+            content: "";
+            position: absolute;
+            width: 10%;
+            height: 4px;
+            left: calc(45%);
+            bottom: -10px;
+            background-color: #d52b1e;
+            margin: 0 auto;
+        }
+    }
+
+    .ToneWoods-list {
+        position: relative;
+        .ToneWoods-inner {
+            .slide-item {
+                width: 100%;
+                .slide-image {
+                    width: 100%;
+                    height: 380px !important;
+                    margin-bottom: 10px;
+                    img {
+                        width: 100%;
+                        height: 100%;
+                        object-fit: contain;
+                    }
+                }
+
+                .name {
+                    text-align: center;
+                    font-size: 24px;
+                    font-weight: 500;
+                }
+                .description {
+                    font-weight: 300;
+                    font-size: 20px;
+                    text-align: center;
+                    padding: 0px 20px;
+                }
+            }
+        }
+
+        .custom-arrow-next {
+            position: absolute;
+            z-index: 1000;
+            right: -10px;
+            top: calc(50% - 30px);
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            background-color: #d52a1e77;
+            &:hover {
+                background-color: #d52b1e;
+            }
+            i {
+                font-size: 38px;
+                width: 40px;
+                height: 40px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: white;
+                &:hover {
+                    opacity: 1;
+                }
+            }
+        }
+        .custom-arrow-prev {
+            position: absolute;
+            z-index: 1000;
+            left: -10px;
+            top: calc(50% - 30px);
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            background-color: #d52a1e77;
+            &:hover {
+                background-color: #d52b1e;
+            }
+            i {
+                font-size: 38px;
+                width: 40px;
+                height: 40px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: white;
+                &:hover {
+                    opacity: 1;
+                }
+            }
+        }
+    }
+
+    .slick-dots {
+        display: none!important;
+    }
+    .slick-slide div {
+        outline: none !important;
+    }
+    .slick-slider,
+    .slick-track,
+    .slick-list,
+    .slick-item {
+        height: 100%;
+        position: relative;
+
+        img:focus-visible {
+            border: none !important;
+            outline: none !important;
+        }
+    }
+    .slick-slide {
+        height: 100%;
+        div {
+            height: 100%;
+        }
+    }
+    .slick-arrow {
+        background-color: red;
+        display: none !important;
+    }
+
+    .slick-item:active {
+        outline: none !important;
+        border: none !important;
+    }
+
+    .slide-item {
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+    }
+}

@@ -1,9 +1,29 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./Footer.scss";
 import GoogleMapAddress from "../GoogleMapAddress/GoogleMapAddress";
 import ZALO_ICON from "../../assets/images/icon-zalo-100.png";
+import { useLocation, useNavigate, useSearchParams } from "react-router-dom";
+
+import { useDispatch, useSelector } from "react-redux";
+import { getCategories } from "../../redux/services/category.service";
+import axios from "axios";
 
 const Footer = () => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const state = useSelector((state) => state);
+  const location = useLocation();
+
+  const initData = () => {
+    dispatch(getCategories());
+  };
+
+  useEffect(() => {
+    initData();
+  }, []);
+
+  console.log("hehehe", state.categories);
+
   return (
     <div className="Footer">
       <footer>
@@ -34,11 +54,12 @@ const Footer = () => {
                           <div className="brands footer-col">
                             <div className="footer-col-title">Thương hiệu</div>
                             <ul>
+                              <li>Nhẫn Guitar</li>
+                              <li>Alvarez</li>
+                              <li>Ortega</li>
                               <li>Marshall</li>
-                              <li>Draha</li>
-                              <li>Epiphone</li>
-                              <li>Martin & Co.</li>
-                              <li>Yamaha</li>
+                              <li>B&O</li>
+                              <li>JPL</li>
                             </ul>
                           </div>
                         </div>
@@ -46,11 +67,13 @@ const Footer = () => {
                           <div className="categories footer-col">
                             <div className="footer-col-title">Phân loại</div>
                             <ul>
-                              <li>Guitar</li>
-                              <li>Piano</li>
-                              <li>Cajon</li>
-                              <li>Amply</li>
-                              <li>Repair</li>
+                              {state.categories && state.categories.data ? (
+                                state.categories.data.map((cate) => {
+                                  return <li>{cate.Name}</li>;
+                                })
+                              ) : (
+                                <></>
+                              )}
                             </ul>
                           </div>
                         </div>

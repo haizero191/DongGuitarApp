@@ -1,15 +1,16 @@
 .ProductView {
     .title {
         position: relative;
-        font-size: 26px;
+        font-size: 24px;
         padding: 8px 0px;
         font-weight: 600;
         text-transform: uppercase;
-        margin-bottom: 10px;
+        margin-bottom: 40px;
+        width: fit-content;
         &::before {
             content:"";
             position: absolute;
-            width: 100px;
+            width: calc(70%);
             height: 4px;
             background-color: #D52B1E;
             top: -4px;

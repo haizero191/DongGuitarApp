@@ -38,8 +38,7 @@ const Typhography = () => {
                   <b>Đồng Guitar</b> là một cửa hàng chuyên phân phối, bán lẻ
                   đàn Guitar và các loại nhạc cụ chính hãng tại thành phố Hồ Chí
                   Minh. Chúng tôi tự hào khi sản phẩm kinh doanh đều có xuất xứ
-                  từ các thương hiệu nổi tiếng như Avarez, TenTon Guitar,
-                  Martin&Co...
+                  từ các thương hiệu nổi tiếng như Alvarez, Baton Rouge, Nhẫn Guitar...
                 </p>
                 <br></br>
               </div>

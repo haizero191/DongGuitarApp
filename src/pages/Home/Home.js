@@ -9,6 +9,7 @@ import BrandView from "../../components/BrandView/BrandView";
 import { useDispatch, useSelector } from "react-redux";
 import { getProducts } from "../../redux/services/product.service";
 import { getFeaturesActive } from "../../redux/services/feature.service";
+import ToneWoods from "../../components/ToneWoods/ToneWoods";
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -21,7 +22,7 @@ const Home = () => {
 
   useEffect(() => {
     initData();
-    document.title = "Đồng Guitar"
+    document.title = "Đồng Guitar";
   }, []);
 
   return (
@@ -96,14 +97,17 @@ const Home = () => {
           </>
         )}
 
+        <div className="tone-woods">
+          <ToneWoods />
+        </div>
+
         {/* Section view typhography */}
         <div className="section-view-typhography">
           <Typhography />
         </div>
 
-
-         {/* Section view images */}
-         {/* <div className="section-view-image">
+        {/* Section view images */}
+        {/* <div className="section-view-image">
           <div className="container">
             <div className="row">
               <div className="col-12 col-sm-6">

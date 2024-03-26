@@ -279,6 +279,7 @@ const ProductDetail = () => {
           isViewFull ? <ImgViewFull onclose={handleClose} data={imgView}/> : <></>
         }
       </div>
+      
     </div>
   );
 };

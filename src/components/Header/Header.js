@@ -478,7 +478,7 @@ const Header = () => {
                             className={
                               "sub-cate-nav-item " +
                               (subCategoryParams &&
-                              subCategoryParams.toLowerCase() ===
+                              subCategoryParams.split('-').join(" ").toLowerCase() ===
                                 sc.Name.toLowerCase()
                                 ? "sub-cate-nav-item-active"
                                 : "")
