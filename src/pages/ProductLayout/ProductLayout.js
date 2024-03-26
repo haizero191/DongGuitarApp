@@ -10,6 +10,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getProducts } from "../../redux/services/product.service";
 import { getBrands } from "../../redux/services/brand.service";
 import { useSearchParams } from "react-router-dom";
+import ToneWoods from "../../components/ToneWoods/ToneWoods";
 
 const ProductLayout = () => {
   const [page, setPage] = useState(1);
@@ -38,7 +39,7 @@ const ProductLayout = () => {
   // LIFE CYCLE HOOK --->
   useEffect(() => {
     initData();
-    document.title = "Store - Đồng Guitar"
+    document.title = "Store - Đồng Guitar";
   }, []);
 
   useEffect(() => {
@@ -48,11 +49,13 @@ const ProductLayout = () => {
 
   useEffect(() => {
     var paramsValid = removeEmptyField({
-      category: categoryParam ? categoryParam.split("-").join(" "): null,
+      category: categoryParam ? categoryParam.split("-").join(" ") : null,
       brand: params.brand,
       search: searchParam,
       sortBy: params.sortBy,
-      ["sub-category"]: subCategoryParams ? subCategoryParams.split("-").join(" ") : null
+      ["sub-category"]: subCategoryParams
+        ? subCategoryParams.split("-").join(" ")
+        : null,
     });
     setSearchParams(paramsValid);
   }, [params]);
@@ -69,7 +72,6 @@ const ProductLayout = () => {
   };
 
   const initData = () => {
-
     dispatch(
       getProducts({
         page: page,
@@ -82,7 +84,9 @@ const ProductLayout = () => {
           brand: brandParam ? brandParam.split(" ") : null,
           search: searchParam ? searchParam : null,
           sortBy: sortByParams ? sortByParams : null,
-          subCategory: subCategoryParams ? subCategoryParams.split("-").join(" ") : null
+          subCategory: subCategoryParams
+            ? subCategoryParams.split("-").join(" ")
+            : null,
         }),
       })
     );
@@ -129,7 +133,12 @@ const ProductLayout = () => {
   // Remove empty field
   const removeEmptyField = (obj) => {
     for (const key in obj) {
-      if (obj[key] === null || obj[key] === "" || obj[key] === 'undefined' || obj[key] === undefined) {
+      if (
+        obj[key] === null ||
+        obj[key] === "" ||
+        obj[key] === "undefined" ||
+        obj[key] === undefined
+      ) {
         delete obj[key];
       }
     }
@@ -340,36 +349,41 @@ const ProductLayout = () => {
                   )}
                 </div>
               </div>
-
-              {/* product navigation */}
-              <div className="navigation-container">
-                <div className="navigation">
-                  {state.products.data ? (
-                    Array.from({
-                      length: state.products.navigate.totalPage,
-                    }).map((item, index) => {
-                      return (
-                        <div
-                          key={"product-render" + index}
-                          className={
-                            index + 1 === page
-                              ? "navigation-number navigate-active"
-                              : "navigation-number"
-                          }
-                          onClick={(event) => onNavigate(index + 1, event)}
-                        >
-                          {index + 1}
-                        </div>
-                      );
-                    })
-                  ) : (
-                    <></>
-                  )}
-                </div>
+            </div>
+          </div>
+          <div className="col-12">
+            {/* product navigation */}
+            <div className="navigation-container">
+              <div className="navigation">
+                {state.products.data ? (
+                  Array.from({
+                    length: state.products.navigate.totalPage,
+                  }).map((item, index) => {
+                    return (
+                      <div
+                        key={"product-render" + index}
+                        className={
+                          index + 1 === page
+                            ? "navigation-number navigate-active"
+                            : "navigation-number"
+                        }
+                        onClick={(event) => onNavigate(index + 1, event)}
+                      >
+                        {index + 1}
+                      </div>
+                    );
+                  })
+                ) : (
+                  <></>
+                )}
               </div>
             </div>
           </div>
         </div>
+      </div>
+
+      <div className="tone-woods">
+        <ToneWoods />
       </div>
     </div>
   );

@@ -59,7 +59,7 @@ const Footer = () => {
                               <li>Ortega</li>
                               <li>Marshall</li>
                               <li>B&O</li>
-                              <li>JPL</li>
+                              <li>JBL</li>
                             </ul>
                           </div>
                         </div>

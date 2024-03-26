@@ -1,6 +1,6 @@
 .ProductLayout {
     padding: 60px 0px;
-    padding-bottom: 10px;
+    padding-bottom: 0;
     position: relative;
 
     .p-header-container {
@@ -110,37 +110,47 @@
             }
         }
 
-        .navigation-container {
-            display: flex;
-            justify-content: center;
-            .navigation {
-                display: flex;
-                gap: 8px;
-                .navigation-number {
-                    width: 36px;
-                    height: 36px;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    cursor: pointer;
-                    border: 1px solid #ddd;
-                    color: #333333d9;
-                    font-size: 14px;
-                    transition: 0.12s;
-                    &:hover {
-                        background-color: #D52B1E;
-                        color: white;
-                        border: 1px solid #D52B1E;
-                    }
-                }
+    }
 
-                .navigate-active {
-                    background-color: #D52B1E!important;
-                    color: white !important;
-                    border: 1px solid #D52B1E!important;
+    .navigation-container {
+        display: flex;
+        justify-content: center;
+        padding: 20px 0px;
+        .navigation {
+            display: flex;
+            gap: 8px;
+            .navigation-number {
+                width: 36px;
+                height: 36px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                cursor: pointer;
+                border: 1px solid #ddd;
+                color: #333333d9;
+                font-size: 14px;
+                transition: 0.12s;
+                &:hover {
+                    background-color: #D52B1E;
+                    color: white;
+                    border: 1px solid #D52B1E;
                 }
             }
+
+            .navigate-active {
+                background-color: #D52B1E!important;
+                color: white !important;
+                border: 1px solid #D52B1E!important;
+            }
         }
+    }
+
+    .tone-woods {
+        border-top: 1px solid #ddd;
+        background-color: #EAE5DF;
+        margin-top: 90px;
+        padding: 20px 0px;
+        padding-bottom: 80px;
     }
 }
 

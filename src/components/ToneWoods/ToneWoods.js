@@ -13,6 +13,53 @@ const ToneWoods = () => {
     autoplayspeed: 500,
   });
 
+  const toneWoods = [
+    {
+      image: "11g-7AiFLwGGUbsIsgg3lk7S9L89LqQHM",
+      name: "Indian Rosewood",
+      desc: "Indian Rosewood là một loại gỗ phổ biến trong làm đàn Guitar, với âm thanh cân bằng từ âm Bass đến Treble và âm vang tốt. Đây là lựa chọn tốt cho đàn Classic guitar. Loại gỗ này cân bằng cả âm Bass lẫn Treble ngoài ra âm vang cũng rất tốt nên được ưa chuộng làm đàn guitar.",
+    },
+    {
+      image: "1lSh134F7ETcZGAzTY1_fYL06a4IWQchS",
+      name: "Koa",
+      desc: "Gỗ Koa này thường được sử dụng làm những cây đà giá trị rất cao.Koa âm chắc,trong trẻo,mạnh mẽ.",
+    },
+    {
+      image: "17v9_feEIOJHQg1rot55-1vD0BiJF35YZ",
+      name: "Macassar Ebony",
+      desc: "Đàn guitar làm từ loại gỗ này mang lại âm thanh toát lên sự rõ ràng. Âm bass mạnh mẽ, âm trung trung bình và âm treble trong, rõ ràng. Kết hợp gỗ Mun với mặt đàn là Spruce hoặc Cedar sẽ tạo ra âm thanh cân bằng hơn. Loại gỗ này có thể sử dụng trong nhiều loại đàn guitar.",
+    },
+    {
+      image: "1oOSOmxMYZqBx2vP8-ugrKMBjyB5MpP3a",
+      name: "Mahogany",
+      desc: "Mahogany là một trong những dòng gỗ có âm sắc rất chắc chắn, cân bằng với dải tầng trung mạnh mẽ. Ngoài ra Mahogany cũng là tiêu chuẩn cần đàn cho hầu hết tất cả cây đàn.",
+    },
+    {
+      image: "1xV_DqO8q-8QRGBoT1WUDdNfnPZQOBGGl",
+      name: "Maple",
+      desc: "Maple thường có trọng lượng nhẹ và cho ra âm thanh rõ ràng, trong và tươi sáng. ",
+    },
+    {
+      image: "1ZMoFPM4oYUBkd-q9GzoGZAmmcpyjZJvq",
+      name: "Sitka Spruce",
+      desc: "Sitka Spruce là vật liệu được sử dụng phổ biến nhất cho mặt đàn guitar trong thời đại hiện đại. Tầm vực sử dụng của nó rất đa dạng, phù hợp với mọi thể loại âm nhạc. Vân gỗ thông thường có màu trắng hơi đục và có vân cườm. Số lượng vân cườm càng nhiều thì gỗ càng có tuổi thọ lâu hơn. ",
+    },
+    {
+      image: "12IFz53Dg_sjDzKMQs5ejFbrqZxEYoF4d",
+      name: "Walnut",
+      desc: "Walnut âm trung khá giống Mahogany nhưng ấm hơn, dải Treble cực kì ấm. Thích hợp kết với gỗ Cedar để chơi Fingerstyle.",
+    },
+    {
+      image: "1gyEfzyp6ZAwSq70huf_mhzmeDQYRONz9",
+      name: "Western Cedar",
+      desc: "Western Cedar không chắc bằng Spruce, nhưng cho âm thanh dịu hơn, ấm hơn.Các âm thanh khi đàn nhẹ nghe to hơn tuy nhiên khi đàn mạnh Cedar sẽ bị chạm ngưỡng giới hạn về âm lượng. Thường dùng cho người chơi Fingerstyle, Classical. ",
+    },
+  ];
+
+  const getImageFromDriver = (id) => {
+    return `https://lh3.googleusercontent.com/d/${id}?authuser=0`;
+  };
+
   // Action for slider --------
   const onNext = () => {
     console.log("hehehe");
@@ -28,9 +75,9 @@ const ToneWoods = () => {
         <div className="ToneWoods-title">
           <h2>ToneWoods</h2>
           <p>
-            Uncover the hidden realm of tonewoods, where wood transforms into
-            musical expression.
+            Khám phá thế giới tiềm ẩn của gỗ
           </p>
+          <p>Nơi gỗ biến thành biểu tượng âm nhạc.</p>
         </div>
 
         <div className="ToneWoods-list">
@@ -41,94 +88,22 @@ const ToneWoods = () => {
                 sliderRef = slider;
               }}
             >
-              <div className="slide-item">
-                <div className="slide-image">
-                  <img
-                    src={
-                      "https://www.taylorguitars.com/sites/default/files/styles/multi_column_module_guitar_light/public/images/2022-12/taylor-ad17-e-bt-wal-1208121180-frontleft-2022.png?itok=A2KoYlVW"
-                    }
-                  />
-                </div>
-                <div className="name">American Dream</div>
-                <div className="description">
-                  <span>
-                    The American Dream® Series reflects the principles of
-                    innovation and resourcefulness that Taylor Guitars is famous
-                    for.{" "}
-                  </span>
-                </div>
-              </div>
-              <div className="slide-item">
-                <div className="slide-image">
-                  <img
-                    src={
-                      "https://www.taylorguitars.com/sites/default/files/styles/multi_column_module_guitar_light/public/images/2022-12/taylor-327e-00887766098430-frontleft-2021.png?itok=e2NxxnYN"
-                    }
-                  />
-                </div>
-                <div className="name">Grand Pacific</div>
-                <div className="description">
-                  <span>
-                    Taylor’s versatile new round-shoulder dreadnought guitar
-                    brings a whole new sonic personality to the dreadnought
-                    category and the Taylor line.{" "}
-                  </span>
-                </div>
-              </div>
-              <div className="slide-item">
-                <div className="slide-image">
-                  <img
-                    src={
-                      "https://www.taylorguitars.com/sites/default/files/styles/multi_column_module_guitar_light/public/images/2022-12/builders_edition_k24ce-front.png?itok=C7LCxFDH"
-                    }
-                  />
-                </div>
-                <div className="name">Builder's Edition</div>
-                <div className="description">
-                  <span>
-                    Each guitar in the Builder’s Edition family represents the
-                    peak of Taylor’s design philosophy: comfortable, inviting
-                    guitars with rich, robust tone and stunning aesthetics.{" "}
-                  </span>
-                </div>
-              </div>
-              <div className="slide-item">
-                <div className="slide-image">
-                  <img
-                    src={
-                      "https://www.taylorguitars.com/sites/default/files/styles/multi_column_module_guitar_light/public/images/2022-12/gt_urban_ash-front.png?itok=rT7NI5K7"
-                    }
-                  />
-                </div>
-                <div className="name">Taylor GT</div>
-                <div className="description">
-                  <span>
-                    The Taylor GT™ (short for Grand Theater) introduces a new
-                    category of acoustic guitar in size, feel and sound. GT’s
-                    uniquely modern proportions make it super fun and easy to
-                    play, with a big sonic personality worthy of any pro
-                    player’s toolbox.{" "}
-                  </span>
-                </div>
-              </div>
-
-
-
-              <div className="slide-item">
-                <div className="slide-image">
-                  <img
-                    src={
-                      "https://www.taylorguitars.com/sites/default/files/styles/multi_column_module_guitar_light/public/images/2022-12/taylor-724ce-1201272186-frontleft-2022_0.png?itok=3gx-aNoq"
-                    }
-                  />
-                </div>
-                <div className="name">Koa</div>
-                <div className="description">
-                  <span>
-                  Powered by a new V-Class voicing recipe, koa’s sweet midrange sings out more vividly, and with a punchier response, than ever before.{" "}
-                  </span>
-                </div>
-              </div>
+              {toneWoods.map((tw) => {
+                return (
+                  <div
+                    className="slide-item"
+                    key={"tonewood-render-" + tw.name}
+                  >
+                    <div className="slide-image">
+                      <img alt="tonewoods" src={getImageFromDriver(tw.image)} />
+                    </div>
+                    <div className="name">{tw.name}</div>
+                    <div className="description">
+                      <span>{tw.desc} </span>
+                    </div>
+                  </div>
+                );
+              })}
             </Slider>
 
             <div className="custom-arrow-next">
