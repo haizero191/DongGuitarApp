@@ -48,11 +48,11 @@ const ProductLayout = () => {
 
   useEffect(() => {
     var paramsValid = removeEmptyField({
-      category: categoryParam,
+      category: categoryParam.split("-").join(" "),
       brand: params.brand,
       search: searchParam,
       sortBy: params.sortBy,
-      ["sub-category"]: subCategoryParams
+      ["sub-category"]: subCategoryParams ? subCategoryParams.split("-").join(" ") : null
     });
     setSearchParams(paramsValid);
   }, [params]);
@@ -69,6 +69,7 @@ const ProductLayout = () => {
   };
 
   const initData = () => {
+
     dispatch(
       getProducts({
         page: page,
@@ -76,12 +77,12 @@ const ProductLayout = () => {
         filter: removeEmptyField({
           category:
             categoryParam && categoryParam !== "all"
-              ? categoryParam.split(" ")
+              ? categoryParam.split("-").join(" ")
               : null,
           brand: brandParam ? brandParam.split(" ") : null,
           search: searchParam ? searchParam : null,
           sortBy: sortByParams ? sortByParams : null,
-          subCategory: subCategoryParams ? subCategoryParams : null
+          subCategory: subCategoryParams ? subCategoryParams.split("-").join(" ") : null
         }),
       })
     );
@@ -96,7 +97,7 @@ const ProductLayout = () => {
           page: pageSelected,
           limit: 9,
           filter: {
-            category: categoryParam ? categoryParam.split(" ") : null,
+            category: categoryParam ? categoryParam.split("-").join(" ") : null,
             brand: brandParam ? brandParam.split(" ") : null,
           },
         })
@@ -132,7 +133,6 @@ const ProductLayout = () => {
         delete obj[key];
       }
     }
-    console.log(obj)
     return obj;
   };
 

@@ -10,7 +10,7 @@ const Banner = () => {
     speed: 650,
     slidesToShow: 1,
     slidesToScroll: 1,
-    // autoplay: true
+    autoplay: true
   };
   return (
     <div className="Banner">
@@ -19,14 +19,22 @@ const Banner = () => {
           <div className="slide-item">
             <LazyLoadImage
               effect="blur"
-              height={'100%'}
-              src={"https://stuff.fendergarage.com/images/m/H/n/DESKTOP-1.jpg"} // use normal <img> attributes as props
-              width={'100%'}
+              height={"75vh"}
+              src={
+                "https://cdn11.bigcommerce.com/s-8f505/product_images/uploaded_images/gt-gallery-module-4taylor-gt-productstory-gallery-guitarmodel-02.jpg"
+              } // use normal <img> attributes as props
+              width={"100%"}
             />
-            {/* <img src="https://stuff.fendergarage.com/images/m/H/n/DESKTOP-1.jpg"/> */}
           </div>
           <div className="slide-item">
-            <img src="https://stuff.fendergarage.com/images/g/6/2/Web_Squier_0425_23_NPI_Squier_Sonic_Series_Launch_HPS_DESKTOP.jpg" />
+            <LazyLoadImage
+              effect="blur"
+              height={"75vh"}
+              src={
+                "https://www.taylorguitars.com/sites/default/files/2022-02-08/AD27eFlametop-Gallery%2016.jpg"
+              } // use normal <img> attributes as props
+              width={"100%"}
+            />
           </div>
         </Slider>
       </div>

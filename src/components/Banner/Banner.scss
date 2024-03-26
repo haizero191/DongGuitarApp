@@ -16,6 +16,7 @@
                             height: 100%;
                             img {
                                 object-fit: cover;
+                                filter: brightness(85%);
                             }
                         }
                     }

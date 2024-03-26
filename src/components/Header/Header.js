@@ -130,17 +130,34 @@ const Header = () => {
         if (n === "&") return "%26";
         else return n;
       })
-      .join("-")
+      .join("-");
+
+    console.log(name);
     setCateSelected(name);
     navigate(`/products?category=` + cateName);
   };
 
   // On select subcate
   const onSubCateClicked = (sc) => {
-    var cateName = cateHover.Name.toLowerCase();
+    var cateName = cateHover.Name.toLowerCase()
+      .split(" ")
+      .map((n) => {
+        if (n === "&") return "%26";
+        else return n;
+      })
+      .join("-");
     setCateSelected(cateHover.Name);
+
+    var subCateName = sc.Name.toLowerCase()
+      .split(" ")
+      .map((n) => {
+        if (n === "&") return "%26";
+        else return n;
+      })
+      .join("-");
+
     navigate(
-      `/products?category=` + cateName + "&" + "sub-category=" + sc.Name
+      `/products?category=` + cateName + "&" + "sub-category=" + subCateName
     );
   };
 
