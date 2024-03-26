@@ -52,7 +52,7 @@ const ToneWoods = () => {
     {
       image: "1gyEfzyp6ZAwSq70huf_mhzmeDQYRONz9",
       name: "Western Cedar",
-      desc: "Western Cedar không chắc bằng Spruce, nhưng cho âm thanh dịu hơn, ấm hơn.Các âm thanh khi đàn nhẹ nghe to hơn tuy nhiên khi đàn mạnh Cedar sẽ bị chạm ngưỡng giới hạn về âm lượng. Thường dùng cho người chơi Fingerstyle, Classical. ",
+      desc: "Western Cedar không chắc bằng Spruce, nhưng cho âm thanh dịu hơn, ấm hơn. Các âm thanh khi đàn nhẹ nghe to hơn tuy nhiên khi đàn mạnh Cedar sẽ bị chạm ngưỡng giới hạn về âm lượng. Thường dùng cho người chơi Fingerstyle, Classical. ",
     },
   ];
 
