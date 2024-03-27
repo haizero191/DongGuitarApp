@@ -34,6 +34,8 @@ const ProductLayout = () => {
     { value: "incs", label: "Price - ascending" },
     { value: "desc", label: "Price - descending" },
   ];
+  const [searchTerm, setSearchTerm] = useState("");
+  const [subCate, setSubCate] = useState(null);
   const initValue = [];
 
   // LIFE CYCLE HOOK --->
@@ -44,10 +46,9 @@ const ProductLayout = () => {
 
   useEffect(() => {
     initData();
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  }, [brandParam, categoryParam, sortByParams, subCategoryParams]);
 
-  useEffect(() => {
+
+    window.scrollTo({ top: 0, behavior: "smooth" });
     var paramsValid = removeEmptyField({
       category: categoryParam ? categoryParam.split("-").join(" ") : null,
       brand: params.brand,
@@ -58,7 +59,37 @@ const ProductLayout = () => {
         : null,
     });
     setSearchParams(paramsValid);
+  }, [brandParam, categoryParam, sortByParams, subCategoryParams, searchParam]);
+
+  useEffect(() => {
+    var paramsValid = removeEmptyField({
+      category: params.category ? params.category.split(" ").join("-") : null,
+      brand: params.brand,
+      search: searchParam,
+      sortBy: params.sortBy,
+      ["sub-category"]: params["sub-category"]
+        ? params["sub-category"].split("-").join(" ")
+        : null,
+    });
+    setSearchParams(paramsValid);
+
+    console.log("Params: ", params["sub-category"])
   }, [params]);
+
+  useEffect(() => {
+    console.log("Hehehehehehe")
+  }, [subCate]);
+
+  // Handle search products
+  const onSearchProduct = (event) => {
+    setSearchTerm(event.target.value);
+  };
+
+  // Navigate with endpoint
+  const navigateToPage = (endpoint) => {
+    navigate(`${endpoint}`);
+    initData();
+  };
 
   // Create option item for filter select
   const createOption = (data) => {
@@ -150,6 +181,21 @@ const ProductLayout = () => {
     setParams({ ...params, [element.name]: paramStringArray.join(" ") });
   };
 
+  const handleSingleFilterChange = (target, element) => {
+    var cateSelect = state.categories.data.find((cate) => {
+      return cate._id === target.value
+    })
+    console.log(cateSelect)
+    setSubCate([...cateSelect.SubCategory])
+    setParams({ ...params, [element.name]: target.label.split(" ").join("-") });
+  };
+
+  const handleSubCateFilterChange = (target, element) => {
+
+    console.log(target.label)
+    setParams({...params,["sub-category"]: target.label.split(" ").join("-"),});
+  };
+
   const handleSortByChange = (target, element) => {
     setParams({ ...params, ["sortBy"]: target.value });
   };
@@ -176,6 +222,7 @@ const ProductLayout = () => {
                   width="400px"
                   placeholder="Sort by price"
                   options={sortByOptions}
+                  classNamePrefix="sort-custom-select"
                   theme={(theme) => ({
                     ...theme,
                     borderRadius: 0,
@@ -190,11 +237,134 @@ const ProductLayout = () => {
                   }
                 />
               </div>
+              <div className="filter-container">
+                {/* Categories filter for mobile UI */}
+                <div className="p-filter d-flex d-md-none">
+                  <span className="title">Type</span>
+                  <Select
+                    defaultValue={getBrandDefault}
+                    classNamePrefix="custom-select"
+                    styles={{
+                      control: (baseStyles, state) => ({
+                        ...baseStyles,
+                        border: "none",
+                        padding: "0px",
+                        cursor: state.isFocused ? "pointer" : "pointer",
+                      }),
+                      dropdownIndicator: (baseStyles) => ({
+                        ...baseStyles,
+                        display: "none",
+                      }),
+                      indicatorSeparator: (baseStyles) => ({
+                        ...baseStyles,
+                        display: "none",
+                      }),
+                    }}
+                    classNames={{
+                      control: (state) =>
+                        state.isFocused ? "border-red-600" : "border-grey-300",
+                    }}
+                    className="filter-select-item"
+                    width="400px"
+                    placeholder="Category select"
+                    options={createOption(state.categories.data)}
+                    name="category"
+                    onChange={(target, element) =>
+                      handleSingleFilterChange(target, element)
+                    }
+                  />
+
+                  <Select
+                    defaultValue={getBrandDefault}
+                    classNamePrefix="custom-select"
+                    styles={{
+                      control: (baseStyles, state) => ({
+                        ...baseStyles,
+                        border: "none",
+                        padding: "0px",
+                        cursor: state.isFocused ? "pointer" : "pointer",
+                      }),
+                      dropdownIndicator: (baseStyles) => ({
+                        ...baseStyles,
+                        display: "none",
+                      }),
+                      indicatorSeparator: (baseStyles) => ({
+                        ...baseStyles,
+                        display: "none",
+                      }),
+                    }}
+                    classNames={{
+                      control: (state) =>
+                        state.isFocused ? "border-red-600" : "border-grey-300",
+                    }}
+                    className="filter-select-item"
+                    width="400px"
+                    placeholder="Type select"
+                    options={createOption(subCate)}
+                    name="category"
+                    onChange={(target, element) =>
+                      handleSubCateFilterChange(target, element)
+                    }
+                  />
+                </div>
+
+                {/* Brand filter for mobile UI */}
+                <div className="p-filter d-flex d-md-none">
+                  <span className="title">Brands</span>
+                  <Select
+                    defaultValue={getBrandDefault}
+                    classNamePrefix="custom-select"
+                    styles={{
+                      control: (baseStyles, state) => ({
+                        ...baseStyles,
+                        border: "none",
+                        padding: "0px",
+                        cursor: state.isFocused ? "pointer" : "pointer",
+                      }),
+                      dropdownIndicator: (baseStyles) => ({
+                        ...baseStyles,
+                        display: "none",
+                      }),
+                      indicatorSeparator: (baseStyles) => ({
+                        ...baseStyles,
+                        display: "none",
+                      }),
+                    }}
+                    classNames={{
+                      control: (state) =>
+                        state.isFocused ? "border-red-600" : "border-grey-300",
+                    }}
+                    className="filter-select-item"
+                    width="400px"
+                    placeholder="Brand select"
+                    options={createOption(state.brands.data)}
+                    name="brand"
+                    onChange={(target, element) =>
+                      handleFilterChange(target, element)
+                    }
+                    isMulti
+                  />
+                </div>
+              </div>
+
+              <div className="p-search-mobile d-flex d-md-none">
+                <i
+                  class="bi bi-search"
+                  onClick={() =>
+                    navigateToPage(`/products?search=${searchTerm}`)
+                  }
+                ></i>
+                <input
+                  type="text"
+                  placeholder="Tìm kiếm sản phẩm"
+                  onChange={onSearchProduct}
+                />
+              </div>
             </div>
           </div>
         </div>
         <div className="row">
-          <div className="col-3">
+          <div className="col-xs-12 col-md-3">
             <div className="side">
               <div className="side-filter">
                 {/* side item for filter*/}
@@ -304,7 +474,7 @@ const ProductLayout = () => {
               </div>
             </div>
           </div>
-          <div className="col-9">
+          <div className="col-xs-12 col-md-9">
             <div className="main">
               {/* List of product */}
               <div className="product-list">
@@ -315,7 +485,7 @@ const ProductLayout = () => {
                     state.products.data.map((item) => {
                       return (
                         <div
-                          className="col-md-4 p-c-container"
+                          className="col-6 col-md-4 p-c-container"
                           key={"p-" + item._id}
                           onClick={(event) =>
                             onViewProduct(item._id, item.Alias, event)
@@ -381,7 +551,6 @@ const ProductLayout = () => {
           </div>
         </div>
       </div>
-
       <div className="tone-woods">
         <ToneWoods />
       </div>

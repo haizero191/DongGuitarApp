@@ -31,34 +31,7 @@ const Home = () => {
         <Banner />
       </div>
       <div className="main">
-        {/* Section view images */}
-        {/* <div className="section-view-image">
-          <div className="container">
-            <div className="row">
-              <div className="col-12 col-sm-6">
-                <div className="section-view">
-                  <SectionView
-                    title={"New Products"}
-                    img={
-                      "https://stuff.fendergarage.com/images/X/6/q/av2-shop-card-v3@2x.jpg"
-                    }
-                  />
-                </div>
-              </div>
-              <div className="col-12 col-sm-6">
-                <div className="section-view">
-                  <SectionView
-                    title={"What News"}
-                    img={
-                      "https://stuff.fendergarage.com/images/P/i/Z/Web_Fender_0609_23_SquierParanormalShop_Assets_SHOP-CARD@2x.jpg"
-                    }
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
-        </div> */}
-
+      
         {/* Section view products */}
         <div className="section-view-brands">
           <div className="container h-100">
@@ -106,33 +79,6 @@ const Home = () => {
           <Typhography />
         </div>
 
-        {/* Section view images */}
-        {/* <div className="section-view-image">
-          <div className="container">
-            <div className="row">
-              <div className="col-12 col-sm-6">
-                <div className="section-view">
-                  <SectionView
-                    title={"New Products"}
-                    img={
-                      "https://stuff.fendergarage.com/images/X/6/q/av2-shop-card-v3@2x.jpg"
-                    }
-                  />
-                </div>
-              </div>
-              <div className="col-12 col-sm-6">
-                <div className="section-view">
-                  <SectionView
-                    title={"What News"}
-                    img={
-                      "https://stuff.fendergarage.com/images/P/i/Z/Web_Fender_0609_23_SquierParanormalShop_Assets_SHOP-CARD@2x.jpg"
-                    }
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
-        </div> */}
       </div>
     </div>
   );

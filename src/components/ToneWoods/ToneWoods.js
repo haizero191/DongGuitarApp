@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import "./ToneWoods.scss";
 import Slider from "react-slick";
 
@@ -12,6 +12,15 @@ const ToneWoods = () => {
     slidesToScroll: 1,
     autoplayspeed: 500,
   });
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(max-width: 768px)");
+    if (mediaQuery.matches) {
+      var newSetting = settings
+      newSetting.slidesToShow = 1;
+      setSettings(newSetting);
+    }
+  }, []);
 
   const toneWoods = [
     {

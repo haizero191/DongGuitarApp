@@ -4,7 +4,7 @@ import Footer from "./components/Footer/Footer";
 import React, { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 
-import "./App.css";
+import "./App.scss";
 import ContactCircle from "./components/ContactCircle/ContactCircle";
 
 const App = () => {

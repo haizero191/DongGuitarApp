@@ -99,7 +99,7 @@ const ProductView = ({ title, featureId }) => {
               <>
                 {productList.map((product, index) => {
                   return (
-                    <div className="col-6 col-sm-3">
+                    <div className="col-6 col-sm-3 padding-0">
                       <div className="product-card" onClick={(event) => onViewProduct(product._id, product.Alias, event)}>
                         <ProductCard
                           name={product.Name}

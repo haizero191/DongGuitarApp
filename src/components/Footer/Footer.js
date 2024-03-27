@@ -22,7 +22,7 @@ const Footer = () => {
     initData();
   }, []);
 
-  console.log("hehehe", state.categories);
+
 
   return (
     <div className="Footer">
