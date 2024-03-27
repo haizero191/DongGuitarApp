@@ -85,7 +85,10 @@
         .ImgViewFull {
             width: 100vw;
             height: 100vh;
-            overflow: hidden;
+            overflow-y: hidden;
+            &::-webkit-scrollbar {
+                display: none;
+            }
             .img-view-container {
                 width: 100%!important;
                 height: 100%!important;
@@ -106,7 +109,7 @@
                     left: calc(100% - 60px);
                     height: fit-content;
                     width: fit-content;
-                    position: absolute;
+                    position: fixed;
                     .sq-img {
                         width: 50px;
                         height: 50px;
