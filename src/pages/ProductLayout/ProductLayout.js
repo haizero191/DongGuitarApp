@@ -182,18 +182,23 @@ const ProductLayout = () => {
   };
 
   const handleSingleFilterChange = (target, element) => {
-    var cateSelect = state.categories.data.find((cate) => {
-      return cate._id === target.value
-    })
-    console.log(cateSelect)
-    setSubCate([...cateSelect.SubCategory])
-    setParams({ ...params, [element.name]: target.label.split(" ").join("-") });
+    if(target.label !== 'All') {
+      var cateSelect = state.categories.data.find((cate) => {
+        return cate._id === target.value
+      })
+      var subCateList = [{_id: '', Name: 'All'}].concat(cateSelect.SubCategory);
+      setSubCate(subCateList)
+      setParams({ ...params, [element.name]: target.label.split(" ").join("-") });
+    }
+    else  setParams({ ...params, [element.name]: null });
   };
 
   const handleSubCateFilterChange = (target, element) => {
+    if(target.label !== 'All') {
+      setParams({...params,["sub-category"]: target.label.split(" ").join("-")});
+    }
+    else setParams({...params,["sub-category"]: null});
 
-    console.log(target.label)
-    setParams({...params,["sub-category"]: target.label.split(" ").join("-"),});
   };
 
   const handleSortByChange = (target, element) => {
@@ -282,7 +287,7 @@ const ProductLayout = () => {
                     className="filter-select-item"
                     width="400px"
                     placeholder="Product select"
-                    options={createOption(state.categories.data)}
+                    options={createOption( [{_id: '', Name: 'All'}].concat(state.categories.data))}
                     name="category"
                     onChange={(target, element) =>
                       handleSingleFilterChange(target, element)
