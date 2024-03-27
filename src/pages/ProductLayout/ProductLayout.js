@@ -237,13 +237,28 @@ const ProductLayout = () => {
                   }
                 />
               </div>
-              <div className="filter-container">
+              <div className="p-search-mobile d-flex d-md-none">
+                <i
+                  class="bi bi-search"
+                  onClick={() =>
+                    navigateToPage(`/products?search=${searchTerm}`)
+                  }
+                ></i>
+                <input
+                  type="text"
+                  placeholder="Tìm kiếm sản phẩm"
+                  onChange={onSearchProduct}
+                />
+              </div>
+              
+              <div className="filter-container d-flex d-md-none ">
                 {/* Categories filter for mobile UI */}
                 <div className="p-filter d-flex d-md-none">
                   <span className="title">Type</span>
                   <Select
                     defaultValue={getBrandDefault}
                     classNamePrefix="custom-select"
+                    readOnly="true"
                     styles={{
                       control: (baseStyles, state) => ({
                         ...baseStyles,
@@ -266,7 +281,7 @@ const ProductLayout = () => {
                     }}
                     className="filter-select-item"
                     width="400px"
-                    placeholder="Category select"
+                    placeholder="Product select"
                     options={createOption(state.categories.data)}
                     name="category"
                     onChange={(target, element) =>
@@ -307,7 +322,6 @@ const ProductLayout = () => {
                     }
                   />
                 </div>
-
                 {/* Brand filter for mobile UI */}
                 <div className="p-filter d-flex d-md-none">
                   <span className="title">Brands</span>
@@ -345,20 +359,6 @@ const ProductLayout = () => {
                     isMulti
                   />
                 </div>
-              </div>
-
-              <div className="p-search-mobile d-flex d-md-none">
-                <i
-                  class="bi bi-search"
-                  onClick={() =>
-                    navigateToPage(`/products?search=${searchTerm}`)
-                  }
-                ></i>
-                <input
-                  type="text"
-                  placeholder="Tìm kiếm sản phẩm"
-                  onChange={onSearchProduct}
-                />
               </div>
             </div>
           </div>

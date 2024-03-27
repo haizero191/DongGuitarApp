@@ -4,9 +4,12 @@ import Logo from "../../assets/images/logo_transparent.png";
 
 const ImgViewFull = ({ onclose, data }) => {
   const [displayImg, setDisplayImg] = useState("");
-
+  const [isOption, setIsOption] = useState(false)
   useEffect(() => {
     onImgViewFullCreated();
+    return () => {
+      onImgViewFullClosed();
+    }
   }, []);
 
   useEffect(() => {
@@ -39,6 +42,11 @@ const ImgViewFull = ({ onclose, data }) => {
     onImgViewFullClosed();
   }
 
+
+  const onPressImg = () => {
+    setIsOption(isOption => !isOption)
+  }
+
   return (
     <div className="ImgViewFull">
       <div className="img-view-container">
@@ -49,14 +57,14 @@ const ImgViewFull = ({ onclose, data }) => {
           <i class="bi bi-x-lg"></i>
         </div>
 
-        <div className="image-select">
-          {data.map((image) => {
-            return <div className="sq-img" onClick={() => onSelectImg(image)}>
+        <div className={"image-select" + (isOption ? " image-select-active" : "")}>
+          {data.map((image, index) => {
+            return <div className="sq-img" key={'sm-view-full-' + index} onClick={() => onSelectImg(image)}>
                <img src={getImageFromDriver(image)} />
             </div>;
           })}
         </div>
-        {data && <img src={getImageFromDriver(displayImg)} />}
+        {data && <img src={getImageFromDriver(displayImg)} onClick={() => onPressImg()}/>}
       </div>
     </div>
   );

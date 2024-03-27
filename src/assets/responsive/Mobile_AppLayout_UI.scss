@@ -1,6 +1,10 @@
 /* Styles for mobile devices (up to 768px) */
 @media only screen and (max-width: 768px) {
 
+    html div {
+        -webkit-tap-highlight-color: transparent;
+    }
+
     .h-100 {
       height: 100%;
     }
@@ -23,10 +27,12 @@
       max-width: 100%;
     }
   
-    .app-main div {}
+    .app-main div {
+
+    }
   
     .app-footer .Footer {
-      padding: 10px 0px;
+      padding: 10px 10px;
     }
   
     .app-footer ul {
@@ -46,7 +52,7 @@
     }
   
     .app-footer .footer-col-title {
-      font-size: 14px !important;
+      font-size: 12px !important;
     }
   
     .app-footer .footer-bottom {

@@ -63,7 +63,6 @@ const ProductDetail = () => {
   };
   // Action for slider --------
   const onNext = () => {
-    console.log("hehehe");
     sliderRef.slickNext();
   };
   const onPrev = () => {
@@ -124,7 +123,7 @@ const ProductDetail = () => {
       <div className="container">
         <div className="product-detail-container">
           <div className="row">
-            <div className="col-7">
+            <div className="detail-image col-12 col-md-7">
               <div className="product-images-container">
                 <div className="view-full" onClick={onOpenViewFull}>
                   <i class="bi bi-arrows-fullscreen"></i>
@@ -141,7 +140,7 @@ const ProductDetail = () => {
                   ) : (
                     product.Images.map((item) => {
                       return (
-                        <div className="slide-item">
+                        <div className="slide-item" key={'slide-'+item._id}> 
                           <img src={getImageFromDriver(item.DriverId)} />
                         </div>
                       );
@@ -160,7 +159,7 @@ const ProductDetail = () => {
                 </div>
               </div>
             </div>
-            <div className="col-5">
+            <div className="col-12 col-md-5">
               {product ? (
                 <div className="r-info">
                   <div className="product-name-container">
@@ -207,7 +206,7 @@ const ProductDetail = () => {
                             {productSpecs.map((ps, index) => {
                               if (index <= 3 || isViewMore) {
                                 return (
-                                  <div className="product-specs-item">
+                                  <div className="product-specs-item" key={ps._id}>
                                     <p>{ps.Name} </p>
                                     <p>{ps.Description}</p>
                                   </div>
@@ -225,12 +224,12 @@ const ProductDetail = () => {
                       </div>
                     </div>
 
-                    <div className="btn-action">
+                    <div className="btn-action d-none d-md-flex">
                       <div className="product-price">
                         {formatCurrency(product.SellingPrice)}
                       </div>
                       <div
-                        className="btn-buy"
+                        className="btn-buy "
                         onClick={() =>
                           navigateToUrl(
                             "https://www.facebook.com/profile.php?id=61554988470959"
@@ -246,7 +245,7 @@ const ProductDetail = () => {
                 <></>
               )}
             </div>
-            <div className="col-12">
+            <div className="col-12 col-md-12">
               <div className="video-show">
                 <div
                   dangerouslySetInnerHTML={{
@@ -255,7 +254,7 @@ const ProductDetail = () => {
                 ></div>
               </div>
             </div>
-            <div className="col-12">
+            <div className="col-12 col-md-12">
               <div className="product-description-container">
                 <h2 className="underline-title">DESCRIPTION</h2>
                 <div className="row">

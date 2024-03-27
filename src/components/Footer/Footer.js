@@ -35,7 +35,7 @@ const Footer = () => {
                   <div className="col-md-6 p-0 col-sm-12">
                     <div className="footer-list-info">
                       <div className="row">
-                        <div className="col-6 p-0 col-md-4">
+                        <div className="col-5 p-0 col-md-4">
                           <div className="brands footer-col">
                             <div className="footer-col-title">
                               Thông tin chung
@@ -63,13 +63,13 @@ const Footer = () => {
                             </ul>
                           </div>
                         </div>
-                        <div className="col-2 p-0 col-md-4">
+                        <div className="col-3 p-0 col-md-4">
                           <div className="categories footer-col">
                             <div className="footer-col-title">Phân loại</div>
                             <ul>
                               {state.categories && state.categories.data ? (
                                 state.categories.data.map((cate) => {
-                                  return <li>{cate.Name}</li>;
+                                  return <li key={'footer-cate-'+cate._id}>{cate.Name}</li>;
                                 })
                               ) : (
                                 <></>
@@ -105,7 +105,7 @@ const Footer = () => {
                       <b>Đồng Guitar </b>.
                     </p>
                   </div>
-                  <div className="col-6 col-md-4 text-end">
+                  <div className="col-6 col-md-4 ">
                     <p> Địa chỉ kinh doanh: </p>
                     <p>
                       101/2 Nguyễn Khuyến, Phường 12, Bình Thạnh, Thành phố Hồ

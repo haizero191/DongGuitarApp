@@ -30,6 +30,8 @@ const Home = () => {
       <div className="banner">
         <Banner />
       </div>
+
+
       <div className="main">
       
         {/* Section view products */}

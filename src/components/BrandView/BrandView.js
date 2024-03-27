@@ -4,7 +4,7 @@ import Slider from "react-slick";
 
 const BrandView = () => {
   const [settings, setSettings] = useState({
-    autoplay: true,
+    // autoplay: true,
     dots: true,
     infinite: true,
     speed: 650,

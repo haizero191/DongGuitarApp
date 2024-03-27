@@ -46,11 +46,14 @@
                 bottom: 10px;
             }
         }
+        .image-select-active {
+            left: calc(100% + 10px)!important;
+        }
         .image-select {
             position: fixed;
             display: flex;
             bottom: -100px;
-            left: calc(50% - 150px);
+            left: calc(100% + 10px);
             gap: 10px;
             transition: 0.23s;
             .sq-img {

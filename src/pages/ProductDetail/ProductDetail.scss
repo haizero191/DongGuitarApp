@@ -76,6 +76,7 @@
                     }
                 }
             }
+            
             .custom-arrow-next {
                 position: absolute;
                 z-index: 1000;
@@ -87,11 +88,15 @@
                 align-items: center;
                 justify-content: center;
                 cursor: pointer;
+                user-select: none!important;
+                touch-action: none;
+                -ms-touch-action: none;
                 i {
                     font-size: 38px;
                     color: white;
                     opacity: 0.5;
-
+                    display: block;
+                    user-select: none!important;
                     &:hover {
                         opacity: 1;
                     }
@@ -310,3 +315,6 @@
         flex-grow: 1;
     }
 }
+
+
+@import url("../../assets/responsive/Mobile_ProductDetail_UI.scss");

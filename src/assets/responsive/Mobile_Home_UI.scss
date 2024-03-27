@@ -1,8 +1,10 @@
 /* Styles for mobile devices (up to 768px) */
 @media only screen and (max-width: 768px) {
     .banner {
-        height: 30vh;
+        height: 55vh;
+        filter: brightness(80%);
     }
+   
    
     .section-view-image {
         padding: 4% 0%!important;
@@ -33,11 +35,17 @@
     }
 
     .section-view-brands {
-        height: 150px;
+        height: 60px;
         margin-bottom: 20px!important;
-        
         .BrandView {
-            padding: 0px;
+            height: 100%;
+            padding: 0;
+
+            img {
+                width: 40%!important;
+                height: 100%!important;
+                object-fit: contain!important;
+            }
         }
     }
 
@@ -49,11 +57,11 @@
         }
         .ProductView {
             .title {
-                margin-bottom: 20px;
-              
+                margin-bottom: 0px;
+                font-size: 18px;
             }
             .container-inner {
-                margin: 0!important;
+                margin: 0 -8px!important;
                 min-height: 260px!important;
                 .row {
                     width: 100%;
