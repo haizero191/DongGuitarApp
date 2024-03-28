@@ -5,15 +5,12 @@ import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import { useLocation, useNavigate } from "react-router-dom";
 
-
-
 const ProductView = ({ title, featureId }) => {
   const [data, setData] = useState([]);
   const [productIdList, setProductIdList] = useState([]);
   const [imageList, setImageList] = useState([]);
   const [productList, setProductList] = useState([]);
   const navigate = useNavigate();
-
 
   // Lấy hình ảnh từ drive theo id
   const getImageFromDriver = (id) => {
@@ -40,14 +37,9 @@ const ProductView = ({ title, featureId }) => {
         Get_Product_Feature_Result.status === 200 &&
         Get_Product_Feature_Result.data.success
       ) {
-        
-
-
-        var pIds = Get_Product_Feature_Result.data.data.map(
-          (fp) => {
-            return fp.Product._id
-          }
-        );
+        var pIds = Get_Product_Feature_Result.data.data.map((fp) => {
+          return fp.Product._id;
+        });
         setProductIdList(pIds);
         setData(Get_Product_Feature_Result.data.data);
       }
@@ -94,13 +86,18 @@ const ProductView = ({ title, featureId }) => {
       </div>
       <div className="main">
         <div className="container-inner">
-          <div className="row">
+          <div className="row flex-nowrap">
             {data.length > 0 ? (
               <>
                 {productList.map((product, index) => {
                   return (
                     <div className="col-6 col-sm-3 padding-0">
-                      <div className="product-card" onClick={(event) => onViewProduct(product._id, product.Alias, event)}>
+                      <div
+                        className="product-card"
+                        onClick={(event) =>
+                          onViewProduct(product._id, product.Alias, event)
+                        }
+                      >
                         <ProductCard
                           name={product.Name}
                           price={product.SellingPrice}
@@ -110,6 +107,12 @@ const ProductView = ({ title, featureId }) => {
                     </div>
                   );
                 })}
+                {/* <div className="col-6 col-sm-3 padding-0">
+                  <div className="product-card p-empty">
+                    <div className="p-empty-container">Xem Thêm</div>
+                  </div>
+                </div> */}
+                ;
               </>
             ) : (
               <>

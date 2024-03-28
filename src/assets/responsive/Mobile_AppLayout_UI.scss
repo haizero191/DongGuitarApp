@@ -1,128 +1,131 @@
 /* Styles for mobile devices (up to 768px) */
 @media only screen and (max-width: 768px) {
+  html div {
+    -webkit-tap-highlight-color: transparent;
+  }
 
-    html div {
-        -webkit-tap-highlight-color: transparent;
-    }
+  .h-100 {
+    height: 100%;
+  }
 
-    .h-100 {
-      height: 100%;
-    }
-  
-    .App-layout {
-      position: relative;
-      width: 100vw;
-      height: auto;
-      overflow-x: hidden;
-    }
-  
-    .app-header {
-      height: 60px !important;
-    }
-  
-    .app-main {
-      margin-top: 60px !important;
-      width: auto;
-      max-width: 100%;
-    }
-  
-    .app-main div {
+  .App-layout {
+    position: relative;
+    width: 100vw;
+    height: auto;
+    overflow-x: hidden;
+  }
 
-    }
-  
-    .app-footer .Footer {
-      padding: 10px 10px;
-    }
-  
-    .app-footer ul {
-      gap: 2px !important;
-    }
-  
-    .app-footer .footer-list-info {
-      margin-bottom: 20px;
-    }
-  
-    .app-footer li {
-      font-size: 12px !important;
-    }
-  
-    .app-footer .text-end {
-      text-align: right;
-    }
-  
-    .app-footer .footer-col-title {
-      font-size: 12px !important;
-    }
-  
-    .app-footer .footer-bottom {
-      padding: 10px 0px;
-    }
-  
-    .app-footer .footer-bottom p {
-      font-size: 12px;
-      line-height: 16px;
-    }
-  
-    .app-footer .footer-bottom .social-container {
-      flex-direction: row;
-      gap: 20px;
-      margin-top: 20px;
-      border-top: 1px solid #dddddd30;
-      align-items: center;
-      padding: 8px 0px;
-      justify-content: space-between;
-    }
-  
-    .app-footer .footer-bottom .social-container .social {
-      margin: 0;
-      justify-content: flex-end;
-    }
-  
-    .app-footer .footer-bottom .social-container p {
-      width: 60%;
-    }
-  
-    .app-footer .footer-bottom .social-container .social-icon {
+  .app-header {
+    height: 60px !important;
+  }
+
+  .app-main {
+    margin-top: 60px !important;
+    width: auto;
+    max-width: 100%;
+  }
+
+  .app-main div {
+  }
+
+  .app-footer .Footer {
+    padding: 10px 10px;
+  }
+
+  .app-footer ul {
+    gap: 2px !important;
+  }
+
+  .app-footer .footer-list-info {
+    margin-bottom: 20px;
+  }
+
+  .app-footer li {
+    font-size: 12px !important;
+  }
+
+  .app-footer .text-end {
+    text-align: right;
+  }
+
+  .app-footer .footer-col-title {
+    font-size: 12px !important;
+  }
+
+  .app-footer .footer-bottom {
+    padding: 10px 0px;
+  }
+
+  .app-footer .footer-bottom p {
+    font-size: 12px;
+    line-height: 16px;
+  }
+
+  .app-footer .footer-bottom .social-container {
+    flex-direction: row;
+    gap: 20px;
+    margin-top: 20px;
+    border-top: 1px solid #dddddd30;
+    align-items: center;
+    padding: 8px 0px;
+    justify-content: space-between;
+  }
+
+  .app-footer .footer-bottom .social-container .social {
+    margin: 0;
+    justify-content: flex-end;
+  }
+
+  .app-footer .footer-bottom .social-container p {
+    width: 60%;
+  }
+
+  .app-footer .footer-bottom .social-container .social-icon {
+    display: flex;
+    align-items: center;
+  }
+
+  .app-footer .Footer .footer-top .row {
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  .App-layout {
+    .contact-circle {
+      bottom: 0!important;
+      height: 10vh;
       display: flex;
       align-items: center;
-    }
-  
-    .app-footer .Footer .footer-top .row {
-      width: 100%;
-      margin: 0 auto;
-    }
-
-
-    .App-layout {
-        .contact-circle {
-            .ContactCircle {
-                .circle {
-                    background-color: rgba(255, 255, 255, 0.162);
-                    border: 1px solid white;
-                    .phone-number {
-                        position: absolute;
-                        left: -250px!important;
-                        padding: 0;
-                        width: fit-content;
-                        padding: 0px 20px;
-                    }
-                }
-                .text {
-                    display: none;
-                    width: 40px;
-                }
-            }
+      justify-content: center;
+      .ContactCircle {
+        flex-direction: row;
+        .circle {
+          background-color: rgba(255, 255, 255, 0.162);
+          border: 1px solid white;
+          .phone-number {
+            position: absolute;
+            left: -250px !important;
+            padding: 0;
+            width: fit-content;
+            padding: 0px 20px;
+          }
         }
-    }
-  
-  }
-  
-  /* Styles for tablets (768px to 992px) */
-  @media only screen and (min-width: 768px) and (max-width: 992px) {
-    .app-header {
-      height: fit-content !important;
+        .text {
+          display: none;
+          width: 40px;
+        }
+      }
     }
   }
-  
-  /* Styles for desktops (992px and above) */
-  @media only screen and (min-width: 992px) {}
+}
+
+/* Styles for tablets (768px to 992px) */
+@media only screen and (min-width: 768px) and (max-width: 992px) {
+  .app-header {
+    height: fit-content !important;
+  }
+}
+
+/* Styles for desktops (992px and above) */
+@media only screen and (min-width: 992px) {
+}

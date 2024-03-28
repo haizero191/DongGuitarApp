@@ -65,13 +65,20 @@
             border: none!important;
             padding: 0!important;
             .p-specs {
-                margin-bottom: 60px!important;
+                margin-bottom: 30px!important;
                 .product-specs-item {
                     margin-bottom: 4px!important;
                     p:nth-child(1) {
                         flex-basis: 50%!important;
                         max-width: 50%!important;
                         min-width: 50%!important;
+                    }
+
+                    .price-value {
+                        color: #e12417;
+                        font-size: 28px!important;
+                        opacity: 1!important;
+                        font-weight: 600;
                     }
 
                     p:nth-child(2) {
@@ -132,10 +139,194 @@
 
 /* Styles for tablets (768px to 992px) */
 @media only screen and (min-width: 768px) and (max-width: 992px) {
-  
+    .img-view-container {
+        width: 60%;
+        min-height: 100vh;
+        margin: 0 auto;
+        position: relative;
+        max-width: 1080px;
+        border-right: 1px solid #dddddd98;
+        border-left: 1px solid #dddddd98;
+        display: flex;
+        align-items: center;
+        background-color: black;
+        &:hover {
+            .image-select {
+                bottom: 10px;
+            }
+        }
+        .image-select-active {
+            left: calc(100% + 10px)!important;
+        }
+        .image-select {
+            position: fixed;
+            display: flex;
+            top: 0;
+            left: calc(33%)!important;
+            gap: 10px;
+            transition: 0.23s;
+      
+            z-index: 10000;
+            .sq-img {
+                width: 60px;
+                height: 60px;
+                background-color: rgba(255, 255, 255, 0.348);
+                opacity: 0.5;
+                border: 1px solid white;
+                border-radius: 8px;
+                overflow: hidden;
+                &:hover {
+                    opacity: 1;
+                }
+                img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                    cursor: pointer;
+                }
+            }
+        }
+        .logo-overlay {
+            width: 150px;
+            height: 150px;
+            position: fixed;
+            bottom: 0;
+            left: 22%;
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: contain;
+                opacity: 0.38;
+            }
+        }
+        .close {
+            position: fixed;
+            background-color: rgba(255, 255, 255, 0.316);
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            right: 22%;
+            top: 20px;
+            cursor: pointer;
+            &:hover {
+                background-color: white;
+                i {
+                    color: black;
+                }
+            }
+            i {
+                color: white;
+                font-size: 26px;
+                width: 30px;
+                height: 30px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+        }
+        img {
+            width: 100%;
+            object-fit: contain;
+        }
+    }
 }
 
 /* Styles for desktops (992px and above) */
 @media only screen and (min-width: 992px) {
- 
+    .img-view-container {
+        width: 60%;
+        min-height: 100vh;
+        margin: 0 auto;
+        position: relative;
+        max-width: 1080px;
+        border-right: 1px solid #dddddd98;
+        border-left: 1px solid #dddddd98;
+        display: flex;
+        align-items: center;
+        background-color: black;
+        &:hover {
+            .image-select {
+                bottom: 10px;
+            }
+        }
+        .image-select-active {
+            left: calc(100% + 10px)!important;
+        }
+        .image-select {
+            position: fixed;
+            display: flex;
+            bottom: 0;
+            left: calc(42%)!important;
+            gap: 10px;
+            transition: 0.23s;
+      
+            z-index: 10000;
+            .sq-img {
+                width: 60px;
+                height: 60px;
+                background-color: rgba(255, 255, 255, 0.348);
+                opacity: 0.5;
+                border: 1px solid white;
+                border-radius: 8px;
+                overflow: hidden;
+                &:hover {
+                    opacity: 1;
+                }
+                img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                    cursor: pointer;
+                }
+            }
+        }
+        .logo-overlay {
+            width: 150px;
+            height: 150px;
+            position: fixed;
+            bottom: 0;
+            left: 22%;
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: contain;
+                opacity: 0.38;
+            }
+        }
+        .close {
+            position: fixed;
+            background-color: rgba(255, 255, 255, 0.316);
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            right: 22%;
+            top: 20px;
+            cursor: pointer;
+            &:hover {
+                background-color: white;
+                i {
+                    color: black;
+                }
+            }
+            i {
+                color: white;
+                font-size: 26px;
+                width: 30px;
+                height: 30px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+        }
+        img {
+            width: 100%;
+            object-fit: contain;
+        }
+
+
+    }
 }

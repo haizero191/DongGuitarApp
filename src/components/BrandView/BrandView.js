@@ -17,7 +17,7 @@ const BrandView = () => {
     const mediaQuery = window.matchMedia("(max-width: 768px)");
     if (mediaQuery.matches) {
       var newSetting = settings
-      newSetting.slidesToShow = 1;
+      newSetting.slidesToShow = 3;
       setSettings(newSetting);
     }
   }, []);
@@ -26,12 +26,6 @@ const BrandView = () => {
     <div className="BrandView">
       {settings && (
         <Slider {...settings}>
-        
-          <div className="brand-icon">
-            <div className="image-contain">
-              <img src="https://nhaccubmt.com/uploads/nha-phan-phoi/martin-co-319.jpg" />
-            </div>
-          </div>
           <div className="brand-icon">
             <div className="image-contain">
               <img src="data:image/png;base64,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" />

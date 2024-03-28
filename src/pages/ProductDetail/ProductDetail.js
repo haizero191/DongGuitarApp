@@ -103,6 +103,7 @@ const ProductDetail = () => {
   const navigateToUrl = (url) => {
     window.open(url, "_blank");
   };
+  
 
 
   // Handle Open view full image
@@ -193,6 +194,14 @@ const ProductDetail = () => {
                             >
                               <p>Brand </p>
                               <p>{product.Brand.Name}</p>
+                            </div>
+
+                            <div
+                              className="product-specs-item price-container d-flex d-md-none"
+                              style={{ textTransform: "capitalize" }}
+                            >
+                              <p>Price </p>
+                              <p className="price-value">{formatCurrency(product.SellingPrice)}</p>
                             </div>
                           </div>
                         </div>

@@ -8,11 +8,11 @@
         margin-bottom: 40px;
         width: fit-content;
         &::before {
-            content:"";
+            content: "";
             position: absolute;
             width: calc(70%);
             height: 4px;
-            background-color: #D52B1E;
+            background-color: #d52b1e;
             top: -4px;
             left: 0;
         }
@@ -23,6 +23,25 @@
         .container-inner {
             margin: 0px -8px;
             min-height: 460px;
+            /* width */
+            ::-webkit-scrollbar {
+                width: 10px;
+            }
+
+            /* Track */
+            ::-webkit-scrollbar-track {
+                background: transparent;
+            }
+
+            /* Handle */
+            ::-webkit-scrollbar-thumb {
+                background: #d52b1e;
+            }
+
+            /* Handle on hover */
+            ::-webkit-scrollbar-thumb:hover {
+                background: #555;
+            }
         }
         .product-card {
             width: 100%;
