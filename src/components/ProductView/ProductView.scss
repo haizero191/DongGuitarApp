@@ -23,25 +23,7 @@
         .container-inner {
             margin: 0px -8px;
             min-height: 460px;
-            /* width */
-            ::-webkit-scrollbar {
-                width: 10px;
-            }
-
-            /* Track */
-            ::-webkit-scrollbar-track {
-                background: transparent;
-            }
-
-            /* Handle */
-            ::-webkit-scrollbar-thumb {
-                background: #d52b1e;
-            }
-
-            /* Handle on hover */
-            ::-webkit-scrollbar-thumb:hover {
-                background: #555;
-            }
+           
         }
         .product-card {
             width: 100%;

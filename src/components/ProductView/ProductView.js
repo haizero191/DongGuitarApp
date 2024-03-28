@@ -86,7 +86,7 @@ const ProductView = ({ title, featureId }) => {
       </div>
       <div className="main">
         <div className="container-inner">
-          <div className="row flex-nowrap">
+          <div className="row flex-nowrap flex-md-wrap">
             {data.length > 0 ? (
               <>
                 {productList.map((product, index) => {

@@ -3,10 +3,10 @@
     .banner {
         height: 55vh;
         filter: brightness(80%);
+
         padding: 15px;
-      
         .Banner {
-            border-radius: 20px!important;
+            border-radius: 10px;
             overflow: hidden;
         }
     }
@@ -80,6 +80,7 @@
                 }
                 .flex-nowrap {
                     overflow-y: hidden;
+                    
                 }
                 .row {
                     width: 100%;

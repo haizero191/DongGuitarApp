@@ -196,7 +196,65 @@
         .main {
             min-height: 400px!important;
         }
+
+        .tone-woods {
+            margin-top: 0px!important;
+            margin-bottom: 0px!important;
+            .ToneWoods {
+                padding-top: 20px;
+                height: fit-content;
+                .ToneWoods-title {
+                    margin-bottom: 30px;
+                    p {
+                        padding: 0!important;
+                        margin: 0;
+                        width: 100%;
+                        font-size: 12px;
+                        line-height: 18px;
+                    }
+                }
+    
+                .custom-arrow-next {
+                    width: 50px!important;
+                    height: 50px!important;
+                    top: calc(50% - 25px)!important;
+                    display: none!important;
+                }
+    
+                .custom-arrow-prev {
+                    width: 50px!important;
+                    height: 50px!important;
+                    top: calc(50% - 25px)!important;
+                    display: none!important;
+                }
+    
+                .ToneWoods-list {
+                    .ToneWoods-inner {
+                        .slide-item {
+                            .slide-image {
+                                overflow: hidden;
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+                                height: 200px!important;
+                                border-radius: 10px;
+                                img {
+                                    width: 100%;
+                                    height: 100%;
+                                }
+                            }
+                            .description {
+                                padding: 0;
+                                text-align: justify;
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
+
+
 }
 
 /* Styles for tablets (768px to 992px) */
