@@ -44,14 +44,29 @@
     .section-view-brands {
         height: 80px;
         margin-bottom: 20px !important;
+        .slick-track {
+            .slick-active {
+
+                &.slick-center {
+    
+                }
+                .image-contain {
+
+                }
+                .image-contain {
+
+                }
+            }
+        }
 
         .BrandView {
             height: 100%;
             padding: 0;
 
             img {
-                width: 80% !important;
+                width: 90% !important;
                 height: 100% !important;
+
                 object-fit: contain !important;
             }
         }
@@ -67,6 +82,7 @@
                 margin-bottom: 0px;
                 font-size: 18px;
             }
+
             .container-inner {
                 margin: 0 -8px !important;
                 min-height: 260px !important;
@@ -83,11 +99,10 @@
                     }
                     /* Track */
                     &::-webkit-scrollbar-track {
-                        
                     }
                     /* Handle */
                     &::-webkit-scrollbar-thumb {
-                        background: #D52B1E !important;
+                        background: #d52b1e !important;
                     }
                 }
                 .row {

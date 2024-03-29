@@ -112,7 +112,6 @@ const ProductView = ({ title, featureId }) => {
                     <div className="p-empty-container">Xem Thêm</div>
                   </div>
                 </div> */}
-                ;
               </>
             ) : (
               <>

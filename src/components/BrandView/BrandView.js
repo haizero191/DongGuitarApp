@@ -11,14 +11,15 @@ const BrandView = () => {
     slidesToShow: 6,
     slidesToScroll: 1,
     autoplayspeed: 500,
+    
   });
 
   useEffect(() => {
     const mediaQuery = window.matchMedia("(max-width: 768px)");
     if (mediaQuery.matches) {
-      var newSetting = settings
-      newSetting.slidesToShow = 3;
-      setSettings(newSetting);
+      var mobileSetting = settings
+      mobileSetting.slidesToShow = 3;
+      setSettings(mobileSetting);
     }
   }, []);
 
