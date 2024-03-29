@@ -1,0 +1,70 @@
+/* Styles for mobile devices (up to 768px) */
+@media only screen and (max-width: 768px) {
+    .About {
+        padding-top: 0 !important;
+        .main {
+            gap: 20px !important;
+            position: relative;
+            padding-bottom: 80px;
+            .title {
+                padding: 0;
+                position: fixed;
+                background-color: white;
+                padding: 15px 15px;
+                p:nth-child(1) {
+                    font-size: 22px;
+                }
+
+                p:nth-child(2) {
+                    font-size: 12px;
+                    letter-spacing: 1px;
+                }
+            }
+            .video {
+                height: 300px !important;
+                display: none;
+            }
+            .content {
+                padding: 0 !important;
+                padding: 40px 30px!important;
+                border: 1px solid #ddd!important;
+                border-radius: 10px!important;
+                h4 {
+                    font-size: 16px!important;
+                    border: none!important;
+                    margin-bottom: 10px!important;
+                    padding: 0!important;
+
+                }
+                h2 {
+                    font-size: 20px!important;
+                    line-height: 26px!important;
+                    margin-bottom: 20px!important;
+             
+                }
+
+            }
+            .image {
+                height: 400px!important;
+                margin-top: 80px;
+                margin-bottom: 20px;
+                overflow: hidden;
+            }
+        }
+    }
+}
+
+/* Styles for tablets (768px to 992px) */
+@media only screen and (min-width: 768px) and (max-width: 992px) {
+
+}
+
+/* Styles for desktops (992px and above) */
+@media only screen and (min-width: 992px) {
+    .About {
+        .main {
+            padding-bottom: 80px!important;
+  
+        }
+    }
+}

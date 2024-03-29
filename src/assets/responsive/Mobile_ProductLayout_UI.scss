@@ -82,12 +82,20 @@
                         position: relative;
                         z-index: 1000;
                         .custom-select__value-container {
+                            .custom-select__input-container {
+                                input {
+                                    pointer-events: none!important;
+                                }
+    
+                            }
                             .custom-select__input {
                                 -webkit-user-select: none;
                                 -moz-user-select: none;
                                 -ms-user-select: none;
                                 user-select: none;
                                 touch-action: none;
+                            
+           
                                
                             }
                             .custom-select__single-value {

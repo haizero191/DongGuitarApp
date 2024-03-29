@@ -46,8 +46,6 @@ const ProductLayout = () => {
 
   useEffect(() => {
     initData();
-
-
     window.scrollTo({ top: 0, behavior: "smooth" });
     var paramsValid = removeEmptyField({
       category: categoryParam ? categoryParam.split("-").join(" ") : null,
@@ -77,7 +75,6 @@ const ProductLayout = () => {
   }, [params]);
 
   useEffect(() => {
-    console.log("Hehehehehehe")
   }, [subCate]);
 
   // Handle search products
@@ -112,7 +109,7 @@ const ProductLayout = () => {
             categoryParam && categoryParam !== "all"
               ? categoryParam.split("-").join(" ")
               : null,
-          brand: brandParam ? brandParam.split(" ") : null,
+          brand: brandParam ? brandParam.split("-").join(" ") : null,
           search: searchParam ? searchParam : null,
           sortBy: sortByParams ? sortByParams : null,
           subCategory: subCategoryParams
@@ -177,7 +174,8 @@ const ProductLayout = () => {
   };
 
   const handleFilterChange = (target, element) => {
-    var paramStringArray = target.map((item) => item.label);
+    var paramStringArray = target.map((item) => item.label.split(" ").join("-"));
+    console.log(paramStringArray)
     setParams({ ...params, [element.name]: paramStringArray.join(" ") });
   };
 
