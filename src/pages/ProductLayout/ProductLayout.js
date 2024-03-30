@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import "./ProductLayout.scss";
 import Select from "react-select";
@@ -38,43 +38,43 @@ const ProductLayout = () => {
   const [subCate, setSubCate] = useState(null);
   const initValue = [];
 
-  // LIFE CYCLE HOOK --->
+  const F_Brand_Ref_Desktop = useRef();
+
+  // ------- LIFE CYCLE HOOK --->
   useEffect(() => {
     initData();
     document.title = "Store - Đồng Guitar";
   }, []);
 
   useEffect(() => {
-    initData();
     window.scrollTo({ top: 0, behavior: "smooth" });
+    paramsLoader();
+    initData();
+    onNavigate(1);
+  }, [brandParam, categoryParam, sortByParams, subCategoryParams, searchParam]);
+
+
+  // Params loading data
+  const paramsLoader = () => {
     var paramsValid = removeEmptyField({
       category: categoryParam ? categoryParam.split("-").join(" ") : null,
-      brand: params.brand,
+      brand: brandParam ? brandParam : null,
       search: searchParam,
-      sortBy: params.sortBy ? params.sortBy : null,
+      sortBy: sortByParams ? sortByParams : null,
       ["sub-category"]: subCategoryParams
         ? subCategoryParams.split("-").join(" ")
         : null,
     });
-    setSearchParams(paramsValid);
-  }, [brandParam, categoryParam, sortByParams, subCategoryParams, searchParam]);
 
-  useEffect(() => {
-    var paramsValid = removeEmptyField({
-      category: params.category ? params.category.split(" ").join("-") : null,
-      brand: params.brand,
-      search: searchParam,
-      sortBy: params.sortBy ? params.sortBy : null,
-      ["sub-category"]: params["sub-category"]
-        ? params["sub-category"].split("-").join(" ")
-        : null,
-    });
-    setSearchParams(paramsValid);
-    console.log("Params: ", paramsValid)
-  }, [params]);
 
-  useEffect(() => {
-  }, [subCate]);
+    if(!paramsValid.brand) {
+      F_Brand_Ref_Desktop.current.clearValue(); 
+    }
+
+
+    setSearchParams({...paramsValid});
+    setParams({...paramsValid})
+  }
 
   // Handle search products
   const onSearchProduct = (event) => {
@@ -89,10 +89,11 @@ const ProductLayout = () => {
 
   // Create option item for filter select
   const createOption = (data) => {
-    if (data) {
+    if (data && data.length !== 0) {
       const dataOption = data;
       var filterData = dataOption.map((item) => {
-        return { value: item._id, label: item.Name };
+        if (item) return { value: item._id, label: item.Name }
+        else return null
       });
       return initValue.concat(filterData);
     } else return [];
@@ -147,15 +148,6 @@ const ProductLayout = () => {
     navigate(`/products/view/${alias}`, { state: data });
   };
 
-  // Get default brands in parameters
-  const getBrandDefault = () => {
-    if (brandParam) {
-      var defaultBrand = brandParam.split(" ").map((brand) => {
-        return { value: brand, label: brand };
-      });
-      return defaultBrand;
-    }
-  };
 
   // Remove empty field
   const removeEmptyField = (obj) => {
@@ -173,33 +165,50 @@ const ProductLayout = () => {
   };
 
   const handleFilterChange = (target, element) => {
-    var paramStringArray = target.map((item) => item.label.split(" ").join("-"));
-    console.log(paramStringArray)
-    setParams({ ...params, [element.name]: paramStringArray.join(" ") });
+    var paramStringArray = target.map((item) =>
+      item.label.split(" ").join("-")
+    );
+    setSearchParams({ ...params, [element.name]: paramStringArray.join(" ") });
   };
 
   const handleSingleFilterChange = (target, element) => {
-    if(target.label !== 'All') {
+
+    if (target.label !== "All") {
       var cateSelect = state.categories.data.find((cate) => {
-        return cate._id === target.value
-      })
-      var subCateList = [{_id: '', Name: 'All'}].concat(cateSelect.SubCategory);
-      setSubCate(subCateList)
-      setParams({ ...params, [element.name]: target.label.split(" ").join("-") });
+        return cate._id === target.value;
+      });
+      var subCateList = [{ _id: "", Name: "All" }].concat(
+        cateSelect.SubCategory
+      );
+      setSubCate(subCateList);
+      setSearchParams({
+        ...params,
+        [element.name]: target.label.split(" ").join("-"),
+      });
+    } else {
+      setSubCate([]);
+      setSearchParams(removeEmptyField({ ...params, [element.name]: null }));
     }
-    else  setParams({ ...params, [element.name]: null });
   };
 
   const handleSubCateFilterChange = (target, element) => {
-    if(target.label !== 'All') {
-      setParams({...params,["sub-category"]: target.label.split(" ").join("-")});
-    }
-    else setParams({...params,["sub-category"]: null});
-
+    if (target && (target.label === "All")) {
+      setSearchParams(removeEmptyField({ ...params, ["sub-category"]: null }));
+    } else {
+      if(target) {
+        setSearchParams({
+          ...params,
+          ["sub-category"]: target.label.split(" ").join("-"),
+        });
+      }
+    } 
+   
   };
 
+ 
+
   const handleSortByChange = (target, element) => {
-    setParams({ ...params, ["sortBy"]: target.value });
+    setSearchParams({ ...params, ["sortBy"]: target.value });
   };
 
   return (
@@ -252,13 +261,15 @@ const ProductLayout = () => {
                   onChange={onSearchProduct}
                 />
               </div>
-              
+
+
+              {/* For mobile UI */}
               <div className="filter-container d-flex d-md-none ">
                 {/* Categories filter for mobile UI */}
                 <div className="p-filter d-flex d-md-none">
                   <span className="title">Type</span>
                   <Select
-                    defaultValue={getBrandDefault}
+
                     classNamePrefix="custom-select"
                     readOnly="true"
                     styles={{
@@ -284,7 +295,9 @@ const ProductLayout = () => {
                     className="filter-select-item"
                     width="400px"
                     placeholder="Product select"
-                    options={createOption( [{_id: '', Name: 'All'}].concat(state.categories.data))}
+                    options={createOption(
+                      [{ _id: "", Name: "All" }].concat(state.categories.data)
+                    )}
                     name="category"
                     onChange={(target, element) =>
                       handleSingleFilterChange(target, element)
@@ -292,7 +305,6 @@ const ProductLayout = () => {
                   />
 
                   <Select
-                    defaultValue={getBrandDefault}
                     classNamePrefix="custom-select"
                     styles={{
                       control: (baseStyles, state) => ({
@@ -322,13 +334,14 @@ const ProductLayout = () => {
                     onChange={(target, element) =>
                       handleSubCateFilterChange(target, element)
                     }
+                    isClearable
                   />
                 </div>
                 {/* Brand filter for mobile UI */}
                 <div className="p-filter d-flex d-md-none">
                   <span className="title">Brands</span>
                   <Select
-                    defaultValue={getBrandDefault}
+
                     classNamePrefix="custom-select"
                     styles={{
                       control: (baseStyles, state) => ({
@@ -368,12 +381,12 @@ const ProductLayout = () => {
         <div className="row">
           <div className="col-xs-12 col-md-3">
             <div className="side">
+              {/* For Desktop UI */}
               <div className="side-filter">
                 {/* side item for filter*/}
                 <div className="side-filter-item">
                   <h2 className="title">Filter By Brand</h2>
                   <Select
-                    defaultValue={getBrandDefault}
                     styles={{
                       control: (baseStyles, state) => ({
                         ...baseStyles,
@@ -394,6 +407,7 @@ const ProductLayout = () => {
                       control: (state) =>
                         state.isFocused ? "border-red-600" : "border-grey-300",
                     }}
+                    ref={F_Brand_Ref_Desktop}
                     className="filter-select-item"
                     width="400px"
                     placeholder="Brand select"
@@ -405,74 +419,6 @@ const ProductLayout = () => {
                     isMulti
                   />
                 </div>
-                {/* side item for filter*/}
-                {/* <div className="side-filter-item">
-                  <h2 className="title">Kiểu dáng</h2>
-                  <Select
-                    defaultValue={[initValue[0]]}
-                    styles={{
-                      control: (baseStyles, state) => ({
-                        ...baseStyles,
-                        border: "none",
-                        padding: "0px",
-                        cursor: state.isFocused ? "pointer" : "pointer",
-                      }),
-                      dropdownIndicator: (baseStyles) => ({
-                        ...baseStyles,
-                        display: "none",
-                      }),
-                      indicatorSeparator: (baseStyles) => ({
-                        ...baseStyles,
-                        display: "none",
-                      }),
-                    }}
-                    classNames={{
-                      control: (state) =>
-                        state.isFocused ? "border-red-600" : "border-grey-300",
-                    }}
-                    className="filter-select-item"
-                    width="400px"
-                    placeholder="Lựa chọn kiểu dáng"
-                    options={brands.brands}
-                    name="category"
-                    onChange={(target, element) =>
-                      handleFilterChange(target, element)
-                    }
-                    isMulti
-                  />
-                </div> */}
-                {/* side item for filter*/}
-                {/* <div className="side-filter-item">
-                  <h2 className="title">Loại dây</h2>
-                  <Select
-                    defaultValue={getBrandDefault}
-                    styles={{
-                      control: (baseStyles, state) => ({
-                        ...baseStyles,
-                        border: "none",
-                        padding: "0px",
-                        cursor: state.isFocused ? "pointer" : "pointer",
-                      }),
-                      dropdownIndicator: (baseStyles) => ({
-                        ...baseStyles,
-                        display: "none",
-                      }),
-                      indicatorSeparator: (baseStyles) => ({
-                        ...baseStyles,
-                        display: "none",
-                      }),
-                    }}
-                    classNames={{
-                      control: (state) =>
-                        state.isFocused ? "border-red-600" : "border-grey-300",
-                    }}
-                    className="filter-select-item"
-                    width="400px"
-                    placeholder="Lựa chọn loại dây"
-                    options={createOption(null)}
-                    isMulti
-                  />
-                </div> */}
               </div>
             </div>
           </div>

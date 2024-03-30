@@ -17,7 +17,10 @@ const Header = () => {
   const [isSearchContainer, setIsSearchContainer] = useState(false);
   const [isSearchResultEnter, setIsSearchResultEnter] = useState(false);
   const [isSubMenu, setIsSubMenu] = useState(false);
+
+  // Parameters variables
   const [searchParams, setSearchParams] = useSearchParams();
+  const categoryParam = searchParams.get("category"); // Access specific param by key
   const subCategoryParams = searchParams.get("sub-category");
 
   // Handle for mobile design
@@ -434,7 +437,7 @@ const Header = () => {
                     return (
                       <div
                         className={
-                          cate.Name === cateSelected
+                          categoryParam && (cate.Name.toLowerCase() === categoryParam.split("+").join(" ").toLowerCase())
                             ? "cate-item cate-active"
                             : "cate-item"
                         }

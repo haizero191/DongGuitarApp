@@ -73,36 +73,40 @@
     }
 
     .section-view-products {
-        margin-bottom: 20px !important;
+        margin-bottom: 0!important;
         .padding-0 {
             padding: 0;
         }
         .ProductView {
+            margin-bottom: 10px!important;
+
             .title {
                 margin-bottom: 0px;
                 font-size: 18px;
             }
 
             .container-inner {
-                margin: 0 -8px !important;
                 min-height: 260px !important;
-
                 .col-6 {
                     width: calc(48%) !important;
                 }
                 .flex-nowrap {
                     overflow-y: hidden;
+
                     /* width */
                     &::-webkit-scrollbar {
                         width: 4px;
                         height: 4px;
+                        display: none;
                     }
                     /* Track */
                     &::-webkit-scrollbar-track {
+                    
                     }
                     /* Handle */
                     &::-webkit-scrollbar-thumb {
-                        background: #d52b1e !important;
+                        background: #d52a1e88 !important;
+                        
                     }
                 }
                 .row {
