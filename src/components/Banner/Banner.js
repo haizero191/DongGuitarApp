@@ -10,7 +10,7 @@ const Banner = () => {
     speed: 650,
     slidesToShow: 1,
     slidesToScroll: 1,
-    autoplay: true
+    // autoplay: true
   };
   return (
     <div className="Banner">
@@ -19,9 +19,9 @@ const Banner = () => {
           <div className="slide-item">
             <LazyLoadImage
               effect="blur"
-              height={"75vh"}
+              height={"100%"}
               src={
-                "https://cdn11.bigcommerce.com/s-8f505/product_images/uploaded_images/gt-gallery-module-4taylor-gt-productstory-gallery-guitarmodel-02.jpg"
+                "https://i.ytimg.com/vi/yBJ3VEHmtaI/maxresdefault.jpg"
               } // use normal <img> attributes as props
               width={"100%"}
             />
@@ -29,7 +29,7 @@ const Banner = () => {
           <div className="slide-item">
             <LazyLoadImage
               effect="blur"
-              height={"75vh"}
+              height={"100%"}
               src={
                 "https://www.taylorguitars.com/sites/default/files/2022-02-08/AD27eFlametop-Gallery%2016.jpg"
               } // use normal <img> attributes as props

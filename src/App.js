@@ -11,10 +11,18 @@ const App = () => {
   const location = useLocation();
   const endpointUrl = location.pathname;
   const [isHeader, setIsHeader] = useState(true);
+  const [isRelativeHeader, setIsRelativeHeader] = useState(false)
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (endpointUrl === "/checkout" || endpointUrl === '/thanks' || endpointUrl === '/update') {
+    if (endpointUrl === "/about" ) {
+      setIsRelativeHeader(true);
+    }
+    else {
+      setIsRelativeHeader(false);
+    }
+
+    if (endpointUrl === "/checkout" || endpointUrl === '/thanks' || endpointUrl === '/update' || endpointUrl === '/thanks') {
       setIsHeader(false);
     }
     else {
@@ -36,10 +44,10 @@ const App = () => {
   return (
     <div className="App">
       <div className="App-layout">
-        <div className="app-header">
+        <div className={"app-header " + (isRelativeHeader ? "app-header-relative" : "")}>
           {isHeader ? <Header /> : <></>}
         </div>
-        <div className={isHeader ? "app-main" : "app-main-full-screen"}>
+        <div className={(isHeader ? "app-main " : "app-main-full-screen ") + (!isRelativeHeader ? "main-padding" : "")} >
           <AppRoutes />
         </div>
         <div className="app-footer">

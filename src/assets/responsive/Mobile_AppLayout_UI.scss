@@ -117,6 +117,13 @@
       }
     }
   }
+
+  .app-main {
+    padding: 60px 0px!important;
+    .main-padding {
+    
+    }
+  }
 }
 
 /* Styles for tablets (768px to 992px) */
@@ -124,8 +131,15 @@
   .app-header {
     height: fit-content !important;
   }
+
+  
+
+  
 }
 
 /* Styles for desktops (992px and above) */
 @media only screen and (min-width: 992px) {
+  .main-padding {
+    padding: 181px 0px;
+  }
 }

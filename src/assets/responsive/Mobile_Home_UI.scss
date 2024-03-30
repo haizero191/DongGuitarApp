@@ -1,9 +1,8 @@
 /* Styles for mobile devices (up to 768px) */
 @media only screen and (max-width: 768px) {
     .banner {
-        height: 55vh;
+        height: 55vh!important;
         filter: brightness(80%);
-
         padding: 15px;
         .Banner {
             border-radius: 10px;
@@ -278,8 +277,21 @@
 
 /* Styles for tablets (768px to 992px) */
 @media only screen and (min-width: 768px) and (max-width: 992px) {
+    .banner {
+        height: fit-content!important;
+        filter: brightness(80%);
+        .Banner {
+            border-radius: 10px;
+            overflow: hidden;
+        }
+    }
+
 }
 
 /* Styles for desktops (992px and above) */
 @media only screen and (min-width: 992px) {
+    .banner {
+        height: 100vh;
+        filter: brightness(80%);
+    }
 }
