@@ -75,7 +75,7 @@ const ProductDetail = () => {
       style: "currency",
       currency: "VND",
     });
-    return formatter.format(amount);
+    return formatter.format(amount).replace("₫", "vnd");
   };
 
   // Lấy hình ảnh từ drive theo id

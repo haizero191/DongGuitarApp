@@ -63,6 +63,11 @@ const ToneWoods = () => {
       name: "Western Cedar",
       desc: "Western Cedar không chắc bằng Spruce, nhưng cho âm thanh dịu hơn, ấm hơn. Các âm thanh khi đàn nhẹ nghe to hơn tuy nhiên khi đàn mạnh Cedar sẽ bị chạm ngưỡng giới hạn về âm lượng. Thường dùng cho người chơi Fingerstyle, Classical. ",
     },
+    {
+      image: "1KuzaOVXPmsA8naD9BBAwWmlsC_tOKvF1",
+      name: "Siamese Rosewood",
+      desc: "Hiện đã cực kì khan hiếm và gỗ đủ tiêu chuẩn để chế tác guitar thì lại cành khó tìm. Đa phần mình mua được từ những ngôi nhà cổ , các đồ bàn ghế tủ kệ xưa làm bằng trắc . Nhưng để kiếm được phù hợp cho guitar thì quả là gian nan và đắt đỏ.",
+    },
   ];
 
   const getImageFromDriver = (id) => {
