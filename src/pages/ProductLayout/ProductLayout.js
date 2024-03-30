@@ -51,7 +51,7 @@ const ProductLayout = () => {
       category: categoryParam ? categoryParam.split("-").join(" ") : null,
       brand: params.brand,
       search: searchParam,
-      sortBy: params.sortBy,
+      sortBy: params.sortBy ? params.sortBy : null,
       ["sub-category"]: subCategoryParams
         ? subCategoryParams.split("-").join(" ")
         : null,
@@ -64,14 +64,13 @@ const ProductLayout = () => {
       category: params.category ? params.category.split(" ").join("-") : null,
       brand: params.brand,
       search: searchParam,
-      sortBy: params.sortBy,
+      sortBy: params.sortBy ? params.sortBy : null,
       ["sub-category"]: params["sub-category"]
         ? params["sub-category"].split("-").join(" ")
         : null,
     });
     setSearchParams(paramsValid);
-
-    console.log("Params: ", params["sub-category"])
+    console.log("Params: ", paramsValid)
   }, [params]);
 
   useEffect(() => {

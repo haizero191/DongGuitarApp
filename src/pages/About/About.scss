@@ -33,10 +33,9 @@
     .video {
         border-radius: 10px;
         overflow: hidden;
-        height: 485px!important;
+        height: 485px !important;
         margin-bottom: 10px;
     }
-
 
     .main {
         display: flex;
@@ -51,8 +50,7 @@
             filter: saturate(0.9) contrast(1.17) brightness(70%);
         }
         .image {
-            height: 100%;
-            border-radius: 10px;
+            height: 580px;
             overflow: hidden;
             img {
                 width: 100%;
@@ -62,11 +60,15 @@
         }
 
         .content {
+            padding: 0px 10%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
             h4 {
                 margin-bottom: 16px;
                 font-size: 18px;
                 font-weight: 300;
-                border-bottom: 1px solid #ddd;
                 padding: 8px 0px;
                 text-transform: uppercase;
             }
@@ -119,6 +121,4 @@
     }
 }
 
-
-
-@import url("../../assets/responsive/Mobile_About_UI.scss")
+@import url("../../assets/responsive/Mobile_About_UI.scss");

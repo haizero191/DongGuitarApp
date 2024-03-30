@@ -14,33 +14,32 @@ const About = () => {
           <p>Đồng Guitar</p>
           <p>Uy tín - Chất lượng - Đẳng cấp</p>
         </div>
-
-        <div className="container">
+        <div className="">
           <div className="row">
-            <div className="col-12">
-              <div className="video">
-                <iframe
-                  width="100%"
-                  height="100%"
-                  src="https://www.youtube.com/embed/Bk2rPMQPFBc?si=NY73WDg5LsJugQRU"
-                  title="YouTube video player"
-                  frameborder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                  allowfullscreen
-                ></iframe>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div className="container">
-          <div className="row">
-            <div className="col-12 col-md-5">
+            <div className="col-12 col-md-6 p-0">
               <div className="image">
                 <img alt="img1" src={POSTER} />
               </div>
             </div>
-            <div className="col-12 d-none d-md-block col-md-7">
+            <div className="col-12 d-none d-md-block col-md-6 p-0">
+              <div
+                className="content"
+              >
+                <h4>Giới thiệu</h4>
+                <h2>
+                  Đồng guitar - Cửa hàng phân phối đàn và nhạc cụ chính hãng
+                </h2>
+                <p>
+                  <b>Đồng Guitar</b> là một cửa hàng chuyên phân phối, bán lẻ
+                  đàn Guitar và các loại nhạc cụ chính hãng tại thành phố Hồ Chí
+                  Minh. Chúng tôi tự hào khi sản phẩm kinh doanh đều có xuất xứ
+                  từ các thương hiệu nổi tiếng như Alvarez, Baton Rouge, Nhẫn
+                  Guitar...
+                </p>
+                <br></br>
+              </div>
+            </div>
+            <div className="col-12 d-block d-md-none col-md-6">
               <div
                 className="content"
                 style={{ paddingLeft: "20px", marginBottom: "10px" }}
@@ -53,7 +52,8 @@ const About = () => {
                   <b>Đồng Guitar</b> là một cửa hàng chuyên phân phối, bán lẻ
                   đàn Guitar và các loại nhạc cụ chính hãng tại thành phố Hồ Chí
                   Minh. Chúng tôi tự hào khi sản phẩm kinh doanh đều có xuất xứ
-                  từ các thương hiệu nổi tiếng như Alvarez, Baton Rouge, Nhẫn Guitar...
+                  từ các thương hiệu nổi tiếng như Alvarez, Baton Rouge, Nhẫn
+                  Guitar...
                 </p>
                 <br></br>
               </div>
@@ -74,8 +74,10 @@ const About = () => {
                 </p>
               </div>
             </div>
-            <div className="col-12 d-block d-md-none col-md-7">
-              <div
+          </div>
+          <div className="row">
+          <div className="col-12 d-none d-md-block col-md-6 p-0">
+              {/* <div
                 className="content"
                 style={{ paddingLeft: "20px", marginBottom: "10px" }}
               >
@@ -87,12 +89,12 @@ const About = () => {
                   <b>Đồng Guitar</b> là một cửa hàng chuyên phân phối, bán lẻ
                   đàn Guitar và các loại nhạc cụ chính hãng tại thành phố Hồ Chí
                   Minh. Chúng tôi tự hào khi sản phẩm kinh doanh đều có xuất xứ
-                  từ các thương hiệu nổi tiếng như Alvarez, Baton Rouge, Nhẫn Guitar...
+                  từ các thương hiệu nổi tiếng như Alvarez, Baton Rouge, Nhẫn
+                  Guitar...
                 </p>
                 <br></br>
-              </div>
-
-              <div className="content" style={{ paddingLeft: "20px" }}>
+              </div> */}
+              <div className="content" >
                 <h4>Mục tiêu</h4>
                 <h2>Đem âm nhạc thế giới lại gần hơn với người Việt.</h2>
                 <p>
@@ -106,6 +108,11 @@ const About = () => {
                   thắc mắc của khách hàng một cách nhanh chóng nhất và hài lòng
                   nhất.
                 </p>
+              </div>
+            </div>
+            <div className="col-12 col-md-6 p-0">
+              <div className="image">
+                <img alt="img1" src={POSTER} />
               </div>
             </div>
           </div>
