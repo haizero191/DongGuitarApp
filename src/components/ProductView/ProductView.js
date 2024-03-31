@@ -1,30 +1,17 @@
 import React, { useEffect, useState } from "react";
 import "./ProductView.scss";
 import ProductCard from "../ProductCard/ProductCard";
-import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import ProductCardLazy from "../ProductCardLazy/ProductCardLazy";
 
 const ProductView = ({ title, featureId }) => {
   const [data, setData] = useState([]);
   const [productIdList, setProductIdList] = useState([]);
   const [imageList, setImageList] = useState([]);
   const [productList, setProductList] = useState([]);
+  const [isProductViewLoad, setIsProductViewLoad] = useState(false);
   const navigate = useNavigate();
-
-  // Lấy hình ảnh từ drive theo id
-  const getImageFromDriver = (id) => {
-    return `https://lh3.googleusercontent.com/d/${id}?authuser=0`;
-  };
-
-  // Go to view detail product
-  const onViewProduct = (id, alias, event) => {
-    const data = {
-      alias: alias,
-      id: id,
-    };
-    navigate(`/products/view/${alias}`, { state: data });
-  };
 
   useEffect(() => {
     const getProductFeature = async (featureId) => {
@@ -67,15 +54,40 @@ const ProductView = ({ title, featureId }) => {
 
     // Handle Images of product [ Get first image ]
     var pIds = productIdList;
+    setIsProductViewLoad(true);
 
     Promise.all(
       pIds.map((id) => {
         return getProduct(id);
       })
-    ).then((result) => {
-      setProductList(result);
-    });
+    )
+      .then((result) => {
+        setTimeout(() => {
+          setIsProductViewLoad(false);
+        }, 450);
+        setProductList(result);
+      })
+      .catch((error) => {
+        setTimeout(() => {
+          setIsProductViewLoad(false);
+        }, 450);
+      });
   }, [productIdList]);
+
+
+
+  // Go to view detail product
+  const onViewProduct = (id, alias, event) => {
+    const data = {
+      alias: alias,
+      id: id,
+    };
+    navigate(`/products/view/${alias}`, { state: data });
+  };
+  // Navigate with endpoint
+  const navigateToPage = (endpoint) => {
+    navigate(`${endpoint}`);
+  };
 
   useEffect(() => {}, [imageList]);
 
@@ -87,7 +99,7 @@ const ProductView = ({ title, featureId }) => {
       <div className="main">
         <div className="container-inner">
           <div className="row flex-nowrap flex-md-wrap">
-            {data.length > 0 ? (
+            {data.length > 0 && !isProductViewLoad ? (
               <>
                 {productList.map((product, index) => {
                   return (
@@ -98,24 +110,53 @@ const ProductView = ({ title, featureId }) => {
                           onViewProduct(product._id, product.Alias, event)
                         }
                       >
-                        <ProductCard
-                          name={product.Name}
-                          price={product.SellingPrice}
-                          images={product.Images}
-                        />
+                        {product ? (
+                          <ProductCard
+                            name={product.Name}
+                            price={product.SellingPrice}
+                            images={product.Images}
+                          />
+                        ) : (
+                          <></>
+                        )}
                       </div>
                     </div>
                   );
                 })}
-                {/* <div className="col-6 col-sm-3 padding-0">
+                <div className="col-6 col-sm-3 padding-0 d-block d-md-none">
                   <div className="product-card p-empty">
-                    <div className="p-empty-container">Xem Thêm</div>
+                    <div
+                      className="p-empty-container"
+                      onClick={() => navigateToPage("/products")}
+                    >
+                      <p>Xem Thêm</p>
+                      <i class="bi bi-three-dots"></i>
+                    </div>
                   </div>
-                </div> */}
+                </div>
               </>
             ) : (
               <>
-                <div className="product-loader"></div>
+                <div className="col-6 col-sm-3 padding-0">
+                  <div className="product-card">
+                    <ProductCardLazy isLoad="true" />
+                  </div>
+                </div>
+                <div className="col-6 col-sm-3 padding-0">
+                  <div className="product-card">
+                    <ProductCardLazy />
+                  </div>
+                </div>
+                <div className="col-6 col-sm-3 padding-0">
+                  <div className="product-card">
+                    <ProductCardLazy />
+                  </div>
+                </div>
+                <div className="col-6 col-sm-3 padding-0">
+                  <div className="product-card">
+                    <ProductCardLazy />
+                  </div>
+                </div>
               </>
             )}
           </div>

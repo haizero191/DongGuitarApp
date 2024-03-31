@@ -1,7 +1,7 @@
 /* Styles for mobile devices (up to 768px) */
 @media only screen and (max-width: 768px) {
     .banner {
-        height: 55vh!important;
+        height: 55vh !important;
         filter: brightness(80%);
         padding: 15px;
         .Banner {
@@ -45,15 +45,11 @@
         margin-bottom: 20px !important;
         .slick-track {
             .slick-active {
-
                 &.slick-center {
-    
                 }
                 .image-contain {
-
                 }
                 .image-contain {
-
                 }
             }
         }
@@ -72,12 +68,12 @@
     }
 
     .section-view-products {
-        margin-bottom: 0!important;
+        margin-bottom: 0 !important;
         .padding-0 {
             padding: 0;
         }
         .ProductView {
-            margin-bottom: 10px!important;
+            margin-bottom: 10px !important;
 
             .title {
                 margin-bottom: 0px;
@@ -100,12 +96,10 @@
                     }
                     /* Track */
                     &::-webkit-scrollbar-track {
-                    
                     }
                     /* Handle */
                     &::-webkit-scrollbar-thumb {
                         background: #d52a1e88 !important;
-                        
                     }
                 }
                 .row {
@@ -117,16 +111,27 @@
                         &.p-empty {
                             display: flex;
                             padding: 8px;
+                            &:hover {
+                                border: none;
+                            }
                             .p-empty-container {
-                                height: calc(70% - 4px);
+                                height: calc(70%);
                                 width: 100%;
                                 border-radius: 10px;
-                                box-shadow:
-                                    rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
-                                    rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+                                border: 1px solid #d52a1edd;
                                 display: flex;
+                                flex-direction: column;
                                 align-items: center;
                                 justify-content: center;
+                                background-color: white;
+                                color: #d52a1edd;
+                                &:active {
+                                    background-color: #d52a1edd;
+                                    color: white;
+                                }
+                                p {
+                                    text-transform: uppercase;
+                                }
                             }
                         }
                         &:active {
@@ -278,14 +283,13 @@
 /* Styles for tablets (768px to 992px) */
 @media only screen and (min-width: 768px) and (max-width: 992px) {
     .banner {
-        height: fit-content!important;
+        height: fit-content !important;
         filter: brightness(80%);
         .Banner {
             border-radius: 10px;
             overflow: hidden;
         }
     }
-
 }
 
 /* Styles for desktops (992px and above) */

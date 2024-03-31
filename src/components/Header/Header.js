@@ -25,7 +25,6 @@ const Header = () => {
 
   // Handle for mobile design
   const [isMenuMobile, setIsMenuMobile] = useState(false);
-  const [subCate, setSubCate] = useState([]);
   const [cateHover, setCateHover] = useState(null);
 
   const navigate = useNavigate();

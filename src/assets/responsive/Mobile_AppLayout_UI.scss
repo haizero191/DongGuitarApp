@@ -120,6 +120,7 @@
 
   .app-main {
     padding: 60px 0px!important;
+    padding-bottom: 0!important;
     .main-padding {
     
     }
@@ -132,14 +133,12 @@
     height: fit-content !important;
   }
 
-  
-
-  
 }
 
 /* Styles for desktops (992px and above) */
 @media only screen and (min-width: 992px) {
   .main-padding {
-    padding: 181px 0px;
+    padding-top: 181px!important;
+    padding-bottom: 0px!important;
   }
 }

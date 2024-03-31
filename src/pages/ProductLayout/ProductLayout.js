@@ -11,11 +11,10 @@ import { getProducts } from "../../redux/services/product.service";
 import { getBrands } from "../../redux/services/brand.service";
 import { useSearchParams } from "react-router-dom";
 import ToneWoods from "../../components/ToneWoods/ToneWoods";
+import ProductCardLazy from "../../components/ProductCardLazy/ProductCardLazy";
 
 const ProductLayout = () => {
   const [page, setPage] = useState(1);
-  const [brands, setBrands] = useState([]);
-  const location = useLocation();
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const state = useSelector((state) => state);
@@ -37,6 +36,7 @@ const ProductLayout = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [subCate, setSubCate] = useState(null);
   const initValue = [];
+  const [isLoading, setIsLoading] = useState(false);
 
   const F_Brand_Ref_Desktop = useRef();
 
@@ -53,6 +53,14 @@ const ProductLayout = () => {
     onNavigate(1);
   }, [brandParam, categoryParam, sortByParams, subCategoryParams, searchParam]);
 
+  // useEffect(() => {
+  //   console.log(state)
+  //   if(state.products.isLoading) {
+  //     setIsLoading(true)
+  //   }else {
+  //     setIsLoading(false)
+  //   }
+  // }, [state.products.isLoading])
 
   // Params loading data
   const paramsLoader = () => {
@@ -66,15 +74,13 @@ const ProductLayout = () => {
         : null,
     });
 
-
-    if(!paramsValid.brand) {
-      F_Brand_Ref_Desktop.current.clearValue(); 
+    if (!paramsValid.brand) {
+      F_Brand_Ref_Desktop.current.clearValue();
     }
 
-
-    setSearchParams({...paramsValid});
-    setParams({...paramsValid})
-  }
+    setSearchParams({ ...paramsValid });
+    setParams({ ...paramsValid });
+  };
 
   // Handle search products
   const onSearchProduct = (event) => {
@@ -92,8 +98,8 @@ const ProductLayout = () => {
     if (data && data.length !== 0) {
       const dataOption = data;
       var filterData = dataOption.map((item) => {
-        if (item) return { value: item._id, label: item.Name }
-        else return null
+        if (item) return { value: item._id, label: item.Name };
+        else return null;
       });
       return initValue.concat(filterData);
     } else return [];
@@ -148,7 +154,6 @@ const ProductLayout = () => {
     navigate(`/products/view/${alias}`, { state: data });
   };
 
-
   // Remove empty field
   const removeEmptyField = (obj) => {
     for (const key in obj) {
@@ -172,7 +177,6 @@ const ProductLayout = () => {
   };
 
   const handleSingleFilterChange = (target, element) => {
-
     if (target.label !== "All") {
       var cateSelect = state.categories.data.find((cate) => {
         return cate._id === target.value;
@@ -192,20 +196,17 @@ const ProductLayout = () => {
   };
 
   const handleSubCateFilterChange = (target, element) => {
-    if (target && (target.label === "All")) {
+    if (target && target.label === "All") {
       setSearchParams(removeEmptyField({ ...params, ["sub-category"]: null }));
     } else {
-      if(target) {
+      if (target) {
         setSearchParams({
           ...params,
           ["sub-category"]: target.label.split(" ").join("-"),
         });
       }
-    } 
-   
+    }
   };
-
- 
 
   const handleSortByChange = (target, element) => {
     setSearchParams({ ...params, ["sortBy"]: target.value });
@@ -261,15 +262,12 @@ const ProductLayout = () => {
                   onChange={onSearchProduct}
                 />
               </div>
-
-
               {/* For mobile UI */}
               <div className="filter-container d-flex d-md-none ">
                 {/* Categories filter for mobile UI */}
                 <div className="p-filter d-flex d-md-none">
                   <span className="title">Type</span>
                   <Select
-
                     classNamePrefix="custom-select"
                     readOnly="true"
                     styles={{
@@ -341,7 +339,6 @@ const ProductLayout = () => {
                 <div className="p-filter d-flex d-md-none">
                   <span className="title">Brands</span>
                   <Select
-
                     classNamePrefix="custom-select"
                     styles={{
                       control: (baseStyles, state) => ({
