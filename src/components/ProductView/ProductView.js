@@ -74,8 +74,6 @@ const ProductView = ({ title, featureId }) => {
       });
   }, [productIdList]);
 
-
-
   // Go to view detail product
   const onViewProduct = (id, alias, event) => {
     const data = {
@@ -84,12 +82,15 @@ const ProductView = ({ title, featureId }) => {
     };
     navigate(`/products/view/${alias}`, { state: data });
   };
+
   // Navigate with endpoint
   const navigateToPage = (endpoint) => {
     navigate(`${endpoint}`);
   };
 
-  useEffect(() => {}, [imageList]);
+  
+
+
 
   return (
     <div className="ProductView">
@@ -112,6 +113,7 @@ const ProductView = ({ title, featureId }) => {
                       >
                         {product ? (
                           <ProductCard
+                            quantity={product.Quantity}
                             name={product.Name}
                             price={product.SellingPrice}
                             images={product.Images}
@@ -160,6 +162,9 @@ const ProductView = ({ title, featureId }) => {
               </>
             )}
           </div>
+        </div>
+        <div className="view-more d-none d-md-flex">
+          <button onClick={() => navigateToPage("/products")}>Xem thêm</button>
         </div>
       </div>
     </div>

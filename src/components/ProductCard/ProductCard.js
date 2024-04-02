@@ -6,8 +6,7 @@ import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 // Import Lazyload for image
 
-
-const ProductCard = ({ images, name, price, isLoad = false }) => {
+const ProductCard = ({ quantity, images, name, price, isLoad = false }) => {
   const [imageSelected, setImageSelected] = useState(null);
 
   // Chuyển đổi sang định dạng VND
@@ -54,11 +53,16 @@ const ProductCard = ({ images, name, price, isLoad = false }) => {
   }, []);
 
 
-  
 
   return (
     <div className="ProductCard">
       <div className="image">
+        {quantity && quantity <= 0 ? (
+          <div className="status-tag d-none d-md-flex"><span>Sold</span></div>
+        ) : (
+          <></>
+        )}
+
         <div className="squares-img">
           {images ? (
             images.map((img, index) => {

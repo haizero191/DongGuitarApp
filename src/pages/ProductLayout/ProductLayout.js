@@ -438,6 +438,7 @@ const ProductLayout = () => {
                         >
                           <div className="product-card">
                             <ProductCard
+                              quantity={item.Quantity}
                               images={item.Images}
                               name={item.Name}
                               price={item.SellingPrice}

@@ -41,6 +41,36 @@
             height: 500px;
             display: flex;
             flex-direction: column;
+            .sold-text {
+                width: fit-content;
+                height: fit-content;
+
+                display: flex;
+                align-items: center;
+
+                top: 35px;
+                left: 15px;
+                position: absolute;
+                z-index: 100;
+                font-size: 52px;
+                line-height: 40px;
+                color: white;
+                user-select: none;
+                p {
+                    position: relative;
+                    z-index: 100;
+                }
+                &::before {
+                    content: "";
+                    position: absolute;
+                    background-color: rgba(255, 0, 0, 0.784);
+                    width: 100%;
+                    height: 60%;
+                    bottom: 0;
+                }
+
+         
+            }
             &:hover {
                 .view-full {
                     display: flex;

@@ -13,7 +13,7 @@ const ProductDetail = () => {
   const [productSpecs, setProductSpecs] = useState([]);
   const [isViewMore, setIsViewMore] = useState(false);
   const [isViewFull, setIsViewFull] = useState(false);
-  const [imgView, setImgView] = useState('');
+  const [imgView, setImgView] = useState("");
 
   const location = useLocation();
   const data = location.state;
@@ -103,20 +103,18 @@ const ProductDetail = () => {
   const navigateToUrl = (url) => {
     window.open(url, "_blank");
   };
-  
-
 
   // Handle Open view full image
   const onOpenViewFull = () => {
-    var imgList = product.Images.map(image => image.DriverId)
-    setIsViewFull(true)
-    setImgView(imgList)
-  }
+    var imgList = product.Images.map((image) => image.DriverId);
+    setIsViewFull(true);
+    setImgView(imgList);
+  };
 
   const handleClose = () => {
-    setIsViewFull(false)
-    setImgView('')
-  }
+    setIsViewFull(false);
+    setImgView("");
+  };
 
   return (
     <div className="ProductDetail">
@@ -126,6 +124,9 @@ const ProductDetail = () => {
           <div className="row">
             <div className="detail-image col-12 col-md-7">
               <div className="product-images-container">
+                {
+                  product && product.Quantity === 0 &&  <div className="sold-text d-none d-md-flex"><p>SOLD OUT</p></div> 
+                }
                 <div className="view-full" onClick={onOpenViewFull}>
                   <i class="bi bi-arrows-fullscreen"></i>
                   <p>Full Image</p>
@@ -141,7 +142,7 @@ const ProductDetail = () => {
                   ) : (
                     product.Images.map((item) => {
                       return (
-                        <div className="slide-item" key={'slide-'+item._id}> 
+                        <div className="slide-item" key={"slide-" + item._id}>
                           <img src={getImageFromDriver(item.DriverId)} />
                         </div>
                       );
@@ -165,9 +166,7 @@ const ProductDetail = () => {
                 <div className="r-info">
                   <div className="product-name-container">
                     <h1>{product.Name}</h1>
-                    <p>
-                      {product.Quantity > 0 ? "In Stock" : "Out of stock"}
-                    </p>
+                    <p>{product.Quantity > 0 ? "In stock" : "Out of stock"}</p>
                   </div>
                   <div className="product-specs-container">
                     <div className="p-specs">
@@ -201,7 +200,9 @@ const ProductDetail = () => {
                               style={{ textTransform: "capitalize" }}
                             >
                               <p>Price </p>
-                              <p className="price-value">{formatCurrency(product.SellingPrice)}</p>
+                              <p className="price-value">
+                                {formatCurrency(product.SellingPrice)}
+                              </p>
                             </div>
                           </div>
                         </div>
@@ -215,7 +216,10 @@ const ProductDetail = () => {
                             {productSpecs.map((ps, index) => {
                               if (index <= 3 || isViewMore) {
                                 return (
-                                  <div className="product-specs-item" key={ps._id}>
+                                  <div
+                                    className="product-specs-item"
+                                    key={ps._id}
+                                  >
                                     <p>{ps.Name} </p>
                                     <p>{ps.Description}</p>
                                   </div>
@@ -237,16 +241,23 @@ const ProductDetail = () => {
                       <div className="product-price">
                         {formatCurrency(product.SellingPrice)}
                       </div>
-                      <div
-                        className="btn-buy "
-                        onClick={() =>
-                          navigateToUrl(
-                            "https://www.facebook.com/profile.php?id=61554988470959"
-                          )
-                        }
-                      >
-                        CONTACT NOW
-                      </div>
+
+                      {product.Quantity < 0 ? (
+                        <div
+                          className="btn-buy"
+                          onClick={() =>
+                            navigateToUrl(
+                              "https://www.facebook.com/profile.php?id=61554988470959"
+                            )
+                          }
+                        >
+                          CONTACT NOW
+                        </div>
+                      ) : (
+                        <div className="btn-buy">
+                          SOLD OUT
+                        </div>
+                      )}
                     </div>
                   </div>
                 </div>
@@ -283,11 +294,12 @@ const ProductDetail = () => {
       </div>
 
       <div className="view-full-container">
-        {
-          isViewFull ? <ImgViewFull onclose={handleClose} data={imgView}/> : <></>
-        }
+        {isViewFull ? (
+          <ImgViewFull onclose={handleClose} data={imgView} />
+        ) : (
+          <></>
+        )}
       </div>
-      
     </div>
   );
 };

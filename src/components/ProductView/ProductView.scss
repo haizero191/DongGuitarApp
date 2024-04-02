@@ -36,5 +36,20 @@
             height: 460px;
             margin-bottom: 10px;
         }
+
+        .view-more {
+            justify-content: center!important;
+            align-items: center;
+            margin-top: 20px;
+            button {
+                border: none;
+                padding: 16px 0px;
+                width: 200px;
+                cursor: pointer;
+                background-color: #d52b1e;
+                color: white;
+                text-transform: uppercase;
+            }
+        }
     }
 }
