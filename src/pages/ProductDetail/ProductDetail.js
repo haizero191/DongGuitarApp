@@ -125,7 +125,7 @@ const ProductDetail = () => {
             <div className="detail-image col-12 col-md-7">
               <div className="product-images-container">
                 {
-                  product && product.Quantity === 0 &&  <div className="sold-text d-none d-md-flex"><p>SOLD OUT</p></div> 
+                  (product && product.Quantity === 0) ? <div className="sold-text d-none d-md-flex"><p>SOLD OUT</p></div> : <></>
                 }
                 <div className="view-full" onClick={onOpenViewFull}>
                   <i class="bi bi-arrows-fullscreen"></i>
@@ -242,7 +242,7 @@ const ProductDetail = () => {
                         {formatCurrency(product.SellingPrice)}
                       </div>
 
-                      {product.Quantity < 0 ? (
+                      {product.Quantity > 0 ? (
                         <div
                           className="btn-buy"
                           onClick={() =>
@@ -251,7 +251,7 @@ const ProductDetail = () => {
                             )
                           }
                         >
-                          CONTACT NOW
+                          CONTACT NOW 
                         </div>
                       ) : (
                         <div className="btn-buy">
